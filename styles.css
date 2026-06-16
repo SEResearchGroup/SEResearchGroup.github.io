@@ -123,6 +123,8 @@ section { padding: 6rem 0 2rem; }
   gap: 2.5rem; margin-bottom: 4rem;
 }
 
+
+
 .person-card { transition: 0.3s; }
 .person-card:hover { transform: translateY(-10px); }
 
