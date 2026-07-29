@@ -1,0 +1,35 @@
+COMO LIGAR O SITE À SUA PLANILHA DO GOOGLE SHEETS
+==================================================
+
+1. Abra a planilha do Google Sheets que já recebe as respostas do seu Google Form.
+2. Menu Extensões > Apps Script.
+3. Apague o conteúdo do arquivo Código.gs e cole o script abaixo.
+4. Clique em Implantar > Nova implantação > tipo "Aplicativo da Web".
+   - Executar como: Eu (seu e-mail)
+   - Quem pode acessar: Qualquer pessoa
+5. Autorize as permissões pedidas e copie a URL do aplicativo da web gerada.
+6. No site (DevEx IA Survey.dc.html), abra o painel de Tweaks e cole essa URL no campo "scriptUrl".
+
+Cada envio do site cria/usa uma aba chamada "Respostas do site" na mesma planilha,
+lado a lado com as respostas do Forms — sem misturar os dados.
+
+--------------------------------------------------
+CÓDIGO (Código.gs)
+--------------------------------------------------
+
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheetName = 'Respostas do site';
+  var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
+
+  var data = JSON.parse(e.postData.contents);
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(Object.keys(data));
+  }
+  sheet.appendRow(Object.values(data));
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: 'ok' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}

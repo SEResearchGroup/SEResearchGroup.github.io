@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></link>
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    ::selection { background: #C1502E33; }
+    a { color: #C1502E; }
+    a:hover { color: #8f3a1f; }
+    @keyframes surveyFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+<div style="min-height:100vh; background:#F6F1E7; font-family:'IBM Plex Sans',sans-serif; color:#211D1A; display:flex; flex-direction:column;">
+  <div style="position:sticky; top:0; z-index:10; background:#F6F1E7cc; backdrop-filter:blur(6px); border-bottom:1px solid #E1D6C3;">
+    <div style="max-width:1080px; margin:0 auto; padding:14px 24px 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <span style="font-family:'Newsreader',serif; font-size:15px; letter-spacing:0.02em; color:#211D1A;">DevEx &amp; AI — UFRGS Survey</span>
+        <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+          <span style="font-size:15px; font-weight:700; color:{{ accentColor }}; font-variant-numeric:tabular-nums;">Page {{ questionNumber }} of {{ totalQuestions }}</span>
+        </sc-if>
+      </div>
+      <div style="height:3px; background:#E1D6C3; border-radius:2px; overflow:hidden;">
+        <div style="height:100%; background:{{ accentColor }}; border-radius:2px; transition:width .35s ease; width:{{ progressPct }}%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; align-items:flex-start; justify-content:center; padding:48px 20px 120px;">
+    <div style="max-width:1080px; width:100%; animation:surveyFadeUp .4s ease both;" key="{{ stepKey }}">
+
+      <sc-if value="{{ showConsent }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#C1502E; font-weight:600; margin:0 0 10px;">Informed Consent</p>
+          <h1 style="font-family:'Newsreader',serif; font-weight:500; font-size:34px; line-height:1.15; margin:0 0 18px; text-wrap:pretty;">Understanding the Impact of AI on the Developer Experience</h1>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 14px;">This survey is conducted by <strong>Karina Kohl Silveira</strong> at the Institute of Informatics at UFRGS. Its aim is to understand how the use of AI tools affects feedback cycles, cognitive load, and flow state in software developers’ everyday work, as well as their perceived impact on creativity, stress, and attention.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 18px;">The questionnaire is anonymous, can be stopped at any time, and responses are used exclusively for academic research purposes.</p>
+
+          <button onClick="{{ toggleTcle }}" style="background:none; border:none; padding:0; font-size:14px; color:#C1502E; font-weight:600; cursor:pointer; margin-bottom:18px; text-decoration:underline;">{{ tcleToggleLabel }}</button>
+
+          <sc-if value="{{ showFullTcle }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFFFFF; border:1px solid #E1D6C3; border-radius:10px; padding:20px 22px; max-height:280px; overflow-y:auto; font-size:13.5px; line-height:1.65; color:#4A443C; margin-bottom:20px;">
+              <p>I, Karina Kohl Silveira, researcher at the Institute of Informatics at UFRGS and responsible for the study “Understanding the Impact of AI on the Developer Experience (DevEx): Feedback Loops, Cognitive Load, Flow State, and Their Interactions with Creativity, Stress, and Attention,” invite you to participate as a volunteer in this study.</p>
+              <p>This research aims to examine how the use of Artificial Intelligence (AI) tools affects the three core dimensions of developer experience (DevEx): feedback cycles, cognitive load, and flow state. It will also explore the perceived effects of AI on subjective aspects such as creativity, stress, and attention, offering a broader view of developers’ experience in an increasingly AI-mediated environment. We believe this study is important because it seeks to provide both quantitative and qualitative evidence from real-world data, analyzed through methodologically rigorous approaches.</p>
+              <p>Your participation will involve completing this questionnaire. Some discomfort may arise while answering it, although the study presents minimal risk to participants. As defined by CNS Resolution No. 510/2016, Article 2, Item XXV, risk refers to the possibility of harm to a person’s physical, psychological, moral, intellectual, social, or cultural well-being at any stage of the research and as a consequence of it.</p>
+              <p>In the context of this study, the main identified risks are psychological and emotional, and there may be embarrassment, stress, fatigue, or discomfort while completing the questionnaire due to the nature of some questions involving subjective aspects of professional experience with the use of AI tools.</p>
+              <p style="margin-bottom:6px;">To minimize these risks, the following precautionary measures are adopted:</p>
+              <ul style="margin:0 0 14px; padding-left:20px;">
+                <li style="margin-bottom:8px;">The questionnaire is anonymous and can be interrupted at any time. You are guaranteed the right not to accept participation or to withdraw your permission at any time, without any penalty or retaliation, by your decision, as provided in CNS Resolution No. 510/2016, Art. 9º, II;</li>
+                <li style="margin-bottom:8px;">The collected data will be treated confidentially and used exclusively for scientific research purposes;</li>
+                <li style="margin-bottom:8px;">The study does not involve collection of sensitive data such as medical information, sexual orientation, or banking data;</li>
+                <li>In case of any harm resulting from participation in the research, you will be entitled to appropriate assistance and compensation, as determined by Brazilian law (CNS Resolution No. 510/2016, Art. 19, §2º).</li>
+              </ul>
+              <p>It is expected that the results of this research will contribute to a deeper and evidence-based understanding of the effects of using Artificial Intelligence tools on the experience of developers, especially considering subjective and psychosocial aspects often neglected in the literature.</p>
+              <p>Throughout the research period you have the right to clarify any questions or request any further clarification, simply by contacting the research lead, Karina Kohl Silveira, by phone/WhatsApp +55 51 98422-0770, or email: karina.kohl@inf.ufrgs.br. If you have any questions about your rights as a research participant, contact the Research Ethics Committee of the Federal University of Rio Grande do Sul (CEP/UFRGS) by phone/WhatsApp +55 51 3308-3787, email: cep@pucrs.br, Monday to Friday from 8am to 12pm and 1:30pm to 5pm. The Ethics Committee is an independent body composed of professionals from different areas of knowledge and community members. Its responsibility is to guarantee the protection of participants’ rights, safety, and well-being through review and approval of the study, among other actions.</p>
+              <p>If you incur expenses due to your participation in this study related to transportation and/or food, you will be appropriately reimbursed by the researchers.</p>
+              <p>The information in this research is confidential and will be disclosed only in scientific events or publications, with no identification of participants, except among those responsible for the study, and confidentiality regarding your participation is assured.</p>
+              <p>By accepting this consent form, you do not waive any legal rights you would otherwise have.</p>
+              <p>Do not accept this consent form unless you have had the opportunity to ask questions and received satisfactory answers to all your doubts.</p>
+              <p>As a participant, after reading (or hearing the reading of) this document and having had the opportunity to speak with the responsible researcher to clarify all my questions, I believe I am sufficiently informed, and it is clear to me that my participation is voluntary and that I can withdraw this consent at any time without penalty or loss of any benefit. I am also aware of the objectives of the research, the procedures to which I will be subjected, the possible damages or risks arising from them, and the guarantee of confidentiality and clarifications whenever I wish.</p>
+              <p>Given the above, I express my voluntary agreement to participate in this study.</p>
+            </div>
+          </sc-if>
+
+          <p style="font-size:15px; font-weight:600; margin:0 0 12px;">Do you agree to participate in this research? *</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ consentOptions }}" as="opt" hint-placeholder-count="2">
+              <button onClick="{{ opt.onSelect }}" style="text-align:left; padding:14px 16px; border-radius:10px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; font-size:14.5px; color:#211D1A; font-family:'IBM Plex Sans',sans-serif; display:flex; align-items:center; gap:10px;">
+                <span style="width:16px; height:16px; border-radius:50%; border:1.5px solid {{ opt.dotBorder }}; background:{{ opt.dotBg }}; flex-shrink:0;"></span>
+                {{ opt.label }}
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showDeclined }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:60px 0;">
+          <p style="font-family:'Newsreader',serif; font-size:28px; margin:0 0 12px;">That’s okay.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; max-width:420px; margin:0 auto;">Thank you for your time. Since you chose not to participate, no responses were recorded. You can close this page whenever you want.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:60px 0;">
+          <p style="font-family:'Newsreader',serif; font-size:28px; margin:0 0 12px;">Thank you for your contribution.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; max-width:440px; margin:0 auto;">Your responses have been submitted successfully. They will be used exclusively for academic research purposes on AI and developer experience.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSectionEyebrow }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:{{ accentColor }}; font-weight:600; margin:0 0 10px;">{{ stepSection }}</p>
+      </sc-if>
+
+      <sc-if value="{{ showSectionIntro }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:14px; line-height:1.7; color:#6B6459; margin:0 0 22px; background:#FFFFFF; border:1px solid #E1D6C3; border-radius:10px; padding:16px 18px;">{{ stepIntro }}</p>
+      </sc-if>
+
+      <sc-if value="{{ showDemoGroup }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:26px;">
+          <sc-for list="{{ demoFields }}" as="field" hint-placeholder-count="9">
+            <div>
+              <p style="font-size:15px; font-weight:500; margin:0 0 10px; line-height:1.5;">{{ field.title }} <sc-if value="{{ field.required }}" hint-placeholder-val="{{ true }}"><span style="color:{{ accentColor }};">*</span></sc-if></p>
+              <sc-if value="{{ field.isRadio }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <sc-for list="{{ field.options }}" as="opt" hint-placeholder-count="5">
+                    <button onClick="{{ opt.onSelect }}" style="padding:8px 13px; border-radius:999px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; color:{{ opt.textColor }}; font-size:13px; font-family:'IBM Plex Sans',sans-serif; cursor:pointer; white-space:nowrap;">{{ opt.label }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ field.isText }}" hint-placeholder-val="{{ false }}">
+                <input value="{{ field.textValue }}" onChange="{{ field.onTextChange }}" placeholder="Your answer" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:12px 2px; border:none; border-bottom:1.5px solid #C7BBA3; background:transparent; outline:none; color:#211D1A;"></input>
+              </sc-if>
+              <sc-if value="{{ field.isTextarea }}" hint-placeholder-val="{{ false }}">
+                <textarea value="{{ field.textValue }}" onChange="{{ field.onTextChange }}" placeholder="Your answer" rows="3" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showQuestionSingle }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:24px; line-height:1.35; margin:0 0 22px; text-wrap:pretty;">{{ stepTitle }} <sc-if value="{{ stepRequired }}" hint-placeholder-val="{{ true }}"><span style="color:{{ accentColor }};">*</span></sc-if></h2>
+
+          <sc-if value="{{ isRadioStep }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <sc-for list="{{ radioOptions }}" as="opt" hint-placeholder-count="4">
+                <button onClick="{{ opt.onSelect }}" style="text-align:left; padding:14px 16px; border-radius:10px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; font-size:14.5px; color:#211D1A; font-family:'IBM Plex Sans',sans-serif; display:flex; align-items:center; gap:10px;">
+                  <span style="width:16px; height:16px; border-radius:50%; border:1.5px solid {{ opt.dotBorder }}; background:{{ opt.dotBg }}; flex-shrink:0;"></span>
+                  {{ opt.label }}
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isTextStep }}" hint-placeholder-val="{{ false }}">
+            <input value="{{ textValue }}" onChange="{{ onTextChange }}" placeholder="Your answer" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:12px 2px; border:none; border-bottom:1.5px solid #C7BBA3; background:transparent; outline:none; color:#211D1A;"></input>
+          </sc-if>
+
+          <sc-if value="{{ isTextareaStep }}" hint-placeholder-val="{{ false }}">
+            <textarea value="{{ textValue }}" onChange="{{ onTextChange }}" placeholder="Your answer" rows="4" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showLikert }}" hint-placeholder-val="{{ false }}">
+        <div style="overflow-x:auto; border:1px solid #E1D6C3; border-radius:10px; background:#FFFFFF;">
+          <div style="min-width:720px;">
+            <div style="display:grid; grid-template-columns:1fr repeat(5, 96px); border-bottom:1.5px solid {{ accentColor }};">
+              <div style="padding:12px 16px;"></div>
+              <sc-for list="{{ likertScaleLabels }}" as="lab" hint-placeholder-count="5">
+                <div style="padding:10px 8px; font-size:10px; line-height:1.3; text-align:center; color:#6B6459; font-weight:600; align-self:end; word-break:normal;">{{ lab }}</div>
+              </sc-for>
+            </div>
+            <sc-for list="{{ likertRows }}" as="row" hint-placeholder-count="6">
+              <div style="display:grid; grid-template-columns:1fr repeat(5, 96px); border-top:1px solid #EFE8D9;">
+                <div style="padding:14px 16px; font-size:13.5px; line-height:1.5; color:#211D1A;">{{ row.text }}</div>
+                <sc-for list="{{ row.options }}" as="opt" hint-placeholder-count="5">
+                  <div style="display:flex; align-items:center; justify-content:center;">
+                    <button onClick="{{ opt.onSelect }}" aria-label="{{ opt.label }}" style="width:20px; height:20px; border-radius:50%; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; padding:0;"></button>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showLikertFollowUp }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:26px; margin-top:26px;">
+          <sc-for list="{{ likertFollowUps }}" as="fu" hint-placeholder-count="2">
+            <div>
+              <p style="font-size:15px; font-weight:500; margin:0 0 6px; line-height:1.5;">{{ fu.title }} <sc-if value="{{ fu.required }}" hint-placeholder-val="{{ false }}"><span style="color:{{ accentColor }};">*</span></sc-if></p>
+              <p style="font-size:12.5px; color:#8A8172; margin:0 0 10px; line-height:1.5;">{{ fu.hint }}</p>
+              <textarea value="{{ fu.textValue }}" onChange="{{ fu.onTextChange }}" placeholder="Your answer" rows="3" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showEndPanel }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:26px; margin:0 0 14px;">Ready to send</h2>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 8px;">Review your responses using the “Back” button if you need to adjust anything. When you confirm, your data will be sent anonymously to the research database.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+        <p style="color:#B5442E; font-size:13.5px; margin:14px 0 0;">{{ error }}</p>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky; bottom:0; background:#F6F1E7ee; backdrop-filter:blur(6px); border-top:1px solid #E1D6C3;">
+        <sc-if value="{{ showEncouragement }}" hint-placeholder-val="{{ false }}">
+        <p style="max-width:1080px; margin:0 auto; padding:10px 20px 0; text-align:center; font-size:13px; color:#8A8172; font-style:italic;">{{ encouragementText }}</p>
+      </sc-if>
+      <div style="max-width:1080px; margin:0 auto; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onBack }}" style="background:none; border:none; color:#6B6459; font-size:14px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; padding:10px 4px;">← Back</button>
+        </sc-if>
+        <sc-if value="{{ canGoBackInverse }}" hint-placeholder-val="{{ false }}"><span></span></sc-if>
+        <button onClick="{{ primaryAction }}" disabled="{{ primaryDisabled }}" style="background:{{ accentColor }}; color:#FBF6EC; border:none; padding:13px 26px; border-radius:999px; font-size:14.5px; font-weight:600; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; opacity:{{ primaryOpacity }};">{{ primaryLabel }}</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:900},&quot;scriptUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycby-mSIBTKEF85XEBhH0VG37e1X-YfUsfiAaU904rToSDNOZLd6EmhgGQ8OQPIBzUO6z/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integration&quot;},&quot;requireAllAnswers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Integration&quot;},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C1502E&quot;,&quot;options&quot;:[&quot;#C1502E&quot;,&quot;#3C6E47&quot;,&quot;#2B3A67&quot;,&quot;#B08628&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Visual&quot;}}">
+
+const LIKERT_LABELS = ['Never', 'Rarely', 'Sometimes', 'Often', 'Very often'];
+
+const DEMO_INTRO = 'The next questions are meant to help us better understand the profile of the people completing this survey. There are no right or wrong answers — we want to capture the diversity of experiences and contexts in software development practice. All responses are anonymous.';
+const ATENCAO_INTRO = 'We use well-established and validated instruments to explore how common experiences in software development may show up in your daily life. There are no right or wrong answers — please respond based on the situations that best reflect your current routine.';
+const FEEDBACK_INTRO = 'This section explores your perception of feedback loops during development — specifically, the speed and usefulness of the responses you receive from tools, colleagues, or automated systems. Please indicate how often each statement reflects your everyday experience.';
+const CARGA_INTRO = 'This section aims to understand how the use of AI affects your mental load during programming activities. Please indicate how often you experienced each situation based on your recent experiences with AI tools.';
+const FLOW_INTRO = 'The statements below refer to how you usually feel when engaging in activities that require concentration and skill, such as programming or solving technical problems. Please indicate how strongly each statement applies to you in general.';
+const ATENCAO_FLOW_INTRO = 'We use well-established and validated instruments to explore how common experiences in software development may appear in your daily life — including moments of attention and concentration, as well as states of immersion and flow during challenging tasks. There are no right or wrong answers — please respond based on the situations that best reflect your current routine.';
+const CARGA_STRESS_INTRO = 'This section aims to understand how the use of AI affects your mental load during programming activities, as well as your perception of stress and control in everyday work. Please indicate how often you experienced each situation based on your recent experiences.';
+const OPEN_HINT = 'You do not need to answer, but your perspective is very valuable to this research — even a short response is helpful.';
+
+class Component extends DCLogic {
+  state = {
+    step: 0,
+    answers: {},
+    declined: false,
+    submitted: false,
+    submitting: false,
+    error: '',
+    showFullTcle: false,
+  };
+
+  steps = [
+    { key: 'consent', type: 'consent' },
+    { key: 'demograficos', type: 'demo-group', section: 'Demographics', intro: DEMO_INTRO, fields: [
+      { key: 'faixa_etaria', type: 'radio', title: 'What is your age group?', options: ['18 - 24', '25 - 34', '35 - 44', '45 - 54', '55 - 64', '64 or +'] },
+      { key: 'genero', type: 'radio', title: 'What gender do you identify with?', options: ['Female', 'Male', 'Non-binary', 'Other', 'Prefer not to answer'] },
+      { key: 'neurodivergencia', type: 'radio', title: 'Do you have any diagnosed neurodivergent condition?', options: ['No', 'ADHD', 'Autism (ASD)', 'ADHD and Autism (ASD)', 'Other', 'Prefer not to answer'] },
+      { key: 'pais', type: 'text', title: 'In which country do you currently reside?' },
+      { key: 'anos_experiencia', type: 'radio', title: 'How many years have you worked in software development?', options: ['Less than 1 year', '1 to 2 years', '3 to 5 years', '6 to 10 years', '11 to 15 years', '15 or +'] },
+      { key: 'ferramentas_ia', type: 'textarea', title: 'Which AI tools have you used to assist in software development?' },
+      { key: 'frequencia_uso', type: 'radio', title: 'How often do you use AI tools in your daily work?', options: ['Never', 'Rarely', 'A few times per week', 'Daily', 'Almost all the time'] },
+      { key: 'tempo_uso', type: 'radio', title: 'How long have you been using AI tools in development?', options: ['1–6 months', '7–12 months', '1 to 2 years', '3+ years'] },
+      { key: 'experiencia_ia', type: 'textarea', title: 'How has your experience been using AI tools in development?' },
+      { key: 'ajuda_atrapalha_exemplo', type: 'textarea', title: 'In what ways do these tools help or hinder your work? Have you noticed changes in productivity or quality with the use of AI? Can you give an example?' },
+    ]},
+    { key: 'atencao_flow', type: 'likert', section: 'Attention & Flow', intro: ATENCAO_FLOW_INTRO, rows: [
+      'How often do you have difficulty finishing the details of a project, even after completing the hardest parts?',
+      'How often do you have difficulty staying focused on long tasks (such as reading documentation, reviewing code, or planning)?',
+      'How often do you avoid or delay starting tasks that require sustained mental effort?',
+      'How often do you lose things needed to complete tasks (such as notes, devices, or work tools)?',
+      'How often do you get distracted by activities or sounds around you?',
+      'How often do you have difficulty remembering commitments or obligations?',
+      'When I am involved in a challenging task, my focus is entirely on it.',
+      'I always know what needs to be done during the tasks I carry out.',
+      'I lose track of time when I am involved in challenging tasks.',
+      'I feel very capable in the tasks I perform.',
+      'I feel completely engaged in my tasks.',
+      'I feel fully in control of what I am doing.',
+      'I forget myself while working.',
+      'I have a clear sense of progress while performing a task.',
+      'I feel very satisfied during challenging tasks.',
+    ], followUps: [
+      { key: 'foco_ia', title: 'Do you feel that having AI present — even without actively using its suggestions — changes your willingness to start or maintain a task? How?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_flow1', title: 'Have you ever used AI as if it were a partner working alongside you — for example, narrating what you are doing or asking it to follow your reasoning — even when you did not need its technical answers?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_flow2', title: 'Have you used AI specifically to get started on a task you were avoiding (such as procrastination or startup paralysis)? What changed?', required: false, hint: OPEN_HINT },
+      { key: 'sentiu_flow', title: 'Have you ever felt “in flow” while using AI? What makes that experience easier or harder?', required: false, hint: OPEN_HINT }      
+    ] },
+    { key: 'carga_stress', type: 'likert', section: 'Cognitive Load & Stress', intro: CARGA_STRESS_INTRO, rows: [
+      'Using AI required significant mental effort from me.',
+      'The task I was performing was complex, even with AI support.',
+      'I had to review or interpret the AI suggestions multiple times before understanding how to apply them.',
+      'AI helped me reduce mental load during coding.',
+      'The way AI presents its responses made it harder for me to focus on the task.',
+      'Even with AI, I had to work very hard to complete the task.',
+      'How often did you feel you did not have control over the demands of your work?',
+      'How often did you feel confident in dealing with technical challenges or changes in the project?',
+      'How often did you get the impression that tasks were getting out of control?',
+      'How often were you able to handle your responsibilities well within the team or project?',
+      'How often did you feel calm when dealing with unexpected changes in code, scope, or deadlines?',
+      'How often did you feel overloaded with too many tasks, bugs, or interruptions?',
+      'How often were you able to stay calm even under technical problems or pressure to deliver?',
+      'How often did you feel in control of your daily life as a developer?',
+      'How often did small things (such as unexpected errors, meetings, or rework) frustrate you?',
+      'How often did you feel that problems were piling up faster than you could solve them?',
+    ], followUps: [
+      { key: 'momentos_carga', title: 'In what situations does AI increase or reduce your cognitive load?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_carga1', title: 'Do you use AI to help carry parts of the problem for you — for example, maintaining context, reminding you of next steps, or breaking a large task into smaller pieces — in a way that reduces the feeling of overload?', required: false, hint: OPEN_HINT },
+      { key: 'estresse_ia', title: 'Does the feeling that AI is observing you or will react to your progress change your anxiety or your sense of responsibility toward the task?', required: false, hint: OPEN_HINT },
+    ] },
+    { key: 'feedback', type: 'likert', section: 'Feedback Loops', intro: FEEDBACK_INTRO, rows: [
+      'I receive quick feedback when I make a programming mistake.',
+      'The feedback from the tools I use helps me progress in code.',
+      'The time for code review slows down my workflow.',
+      'The responses I receive from colleagues or AI are useful for my progress.',
+      'I like the speed with which I can validate whether my code is working.',
+    ], followUps: [
+      { key: 'fluxo_interrompido', title: 'Do AI suggestions interrupt your workflow? Is this useful or harmful? What kind of feedback would you like AI to offer that it still does not offer?' },
+    ] },
+    { key: 'end', type: 'end' },
+  ];
+
+  setAnswer(key, val) {
+    this.setState(s => ({ answers: { ...s.answers, [key]: val }, error: '' }));
+  }
+
+  setLikert(stepKey, rowIdx, val) {
+    this.setState(s => ({
+      answers: { ...s.answers, [stepKey]: { ...(s.answers[stepKey] || {}), [rowIdx]: val } },
+      error: '',
+    }));
+  }
+
+  isValid(step) {
+    const req = this.props.requireAllAnswers ?? true;
+    if (!req) return true;
+    if (step.type === 'consent') return this.state.answers.consent === 'sim' || this.state.answers.consent === 'não';
+    if (step.type === 'radio' || step.type === 'text' || step.type === 'textarea') {
+      if (step.required === false) return true;
+      const v = this.state.answers[step.key];
+      return !!(v && String(v).trim());
+    }
+    if (step.type === 'likert') {
+      const a = this.state.answers[step.key] || {};
+      const rowsOk = step.required === false ? true : step.rows.every((_, i) => !!a[i]);
+      const fus = step.followUps || [];
+      const fusOk = fus.every(fu => fu.required === false || !!(this.state.answers[fu.key] && String(this.state.answers[fu.key]).trim()));
+      return rowsOk && fusOk;
+    }
+    if (step.type === 'demo-group') {
+      return step.fields.every(f => {
+        if (f.required === false) return true;
+        const v = this.state.answers[f.key];
+        return !!(v && String(v).trim());
+      });
+    }
+    return true;
+  }
+
+  goNext() {
+    const step = this.steps[this.state.step];
+    if (!this.isValid(step)) {
+      this.setState({ error: 'Please answer before continuing.' });
+      return;
+    }
+    if (step.type === 'consent' && this.state.answers.consent === 'não') {
+      this.setState({ declined: true });
+      return;
+    }
+    if (this.state.step >= this.steps.length - 1) return;
+    this.setState(s => ({ step: s.step + 1, error: '' }));
+  }
+
+  goBack() {
+    if (this.state.step > 0) this.setState(s => ({ step: s.step - 1, error: '' }));
+  }
+
+  flatten() {
+    const out = { timestamp: new Date().toISOString() };
+    this.steps.forEach(step => {
+      if (step.type === 'likert') {
+        const a = this.state.answers[step.key] || {};
+        step.rows.forEach((_, i) => { out[`${step.key}_${i + 1}`] = a[i] || ''; });
+        (step.followUps || []).forEach(fu => { out[fu.key] = this.state.answers[fu.key] || ''; });
+      } else if (step.type === 'demo-group') {
+        step.fields.forEach(f => { out[f.key] = this.state.answers[f.key] || ''; });
+      } else if (step.type === 'consent') {
+        out.consent = this.state.answers.consent || '';
+      } else if (step.type !== 'end') {
+        out[step.key] = this.state.answers[step.key] || '';
+      }
+    });
+    return out;
+  }
+
+  async submit() {
+    this.setState({ submitting: true });
+    const payload = this.flatten();
+    const url = this.props.scriptUrl;
+    try {
+      if (url) {
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+        });
+      }
+    } catch (e) { /* fire and forget */ }
+    this.setState({ submitting: false, submitted: true });
+  }
+
+  renderVals() {
+    const step = this.steps[this.state.step];
+    const accentColor = this.props.accentColor || '#C1502E';
+    const totalQuestions = this.steps.length - 2;
+    const questionNumber = Math.min(Math.max(this.state.step, 0), totalQuestions);
+    const progressPct = this.state.declined || this.state.submitted ? 100 : Math.round((questionNumber / totalQuestions) * 100);
+
+    const radioOptions = step.type === 'radio' ? step.options.map(o => {
+      const selected = this.state.answers[step.key] === o;
+      return { label: o, onSelect: () => this.setAnswer(step.key, o), selected,
+        borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor + '14' : '#FFFFFF',
+        dotBorder: selected ? accentColor : '#C7BBA3', dotBg: selected ? accentColor : 'transparent' };
+    }) : [];
+
+    const consentOptions = step.type === 'consent' ? [
+      { value: 'sim', label: 'Yes, I agree to participate' },
+      { value: 'não', label: 'No, I do not want to participate' },
+    ].map(o => {
+      const selected = this.state.answers.consent === o.value;
+      return { label: o.label, onSelect: () => this.setAnswer('consent', o.value), selected,
+        borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor + '14' : '#FFFFFF',
+        dotBorder: selected ? accentColor : '#C7BBA3', dotBg: selected ? accentColor : 'transparent' };
+    }) : [];
+
+    const demoFields = step.type === 'demo-group' ? step.fields.map(f => {
+      const val = this.state.answers[f.key] || '';
+      const opts = f.type === 'radio' ? f.options.map(o => {
+        const selected = val === o;
+        return { label: o, onSelect: () => this.setAnswer(f.key, o), selected,
+          borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor : '#FFFFFF',
+          textColor: selected ? '#FBF6EC' : '#4A443C' };
+      }) : [];
+      return {
+        key: f.key, title: f.title, isRadio: f.type === 'radio', isText: f.type === 'text', isTextarea: f.type === 'textarea',
+        options: opts, textValue: val, onTextChange: (e) => this.setAnswer(f.key, e.target.value),
+        required: f.required !== false,
+      };
+    }) : [];
+
+    const likertRows = step.type === 'likert' ? step.rows.map((text, idx) => {
+      const current = (this.state.answers[step.key] || {})[idx];
+      return {
+        text, idx,
+        options: LIKERT_LABELS.map(label => {
+          const selected = current === label;
+          return { label, onSelect: () => this.setLikert(step.key, idx, label),
+            borderColor: selected ? accentColor : '#C7BBA3', bg: selected ? accentColor : '#FFFFFF' };
+        }),
+      };
+    }) : [];
+
+    const isEnd = step.type === 'end';
+    const lastQuestionIndex = this.steps.length - 2;
+    const canGoBack = this.state.step > 0 && !this.state.declined && !this.state.submitted;
+
+    return {
+      accentColor,
+      showProgress: !this.state.declined && !this.state.submitted && step.type !== 'consent',
+      questionNumber, totalQuestions, progressPct,
+      stepKey: step.key,
+      showConsent: step.type === 'consent' && !this.state.declined,
+      showDeclined: this.state.declined,
+      showSubmitted: this.state.submitted,
+      showFullTcle: this.state.showFullTcle,
+      tcleToggleLabel: this.state.showFullTcle ? 'Hide full consent form' : 'Read full consent form',
+      toggleTcle: () => this.setState(s => ({ showFullTcle: !s.showFullTcle })),
+      consentOptions,
+      showSectionEyebrow: !this.state.declined && !this.state.submitted && !!step.section && step.type !== 'consent',
+      stepSection: step.section || '',
+      showSectionIntro: !this.state.declined && !this.state.submitted && !!step.intro,
+      stepIntro: step.intro || '',
+      showDemoGroup: !this.state.declined && !this.state.submitted && step.type === 'demo-group',
+      demoFields,
+      showQuestionSingle: !this.state.declined && !this.state.submitted && (step.type === 'radio' || step.type === 'text' || step.type === 'textarea'),
+      stepTitle: step.title || '',
+      stepRequired: step.required !== false,
+      isRadioStep: step.type === 'radio',
+      isTextStep: step.type === 'text',
+      isTextareaStep: step.type === 'textarea',
+      textValue: this.state.answers[step.key] || '',
+      onTextChange: (e) => this.setAnswer(step.key, e.target.value),
+      radioOptions,
+      showLikert: !this.state.declined && !this.state.submitted && step.type === 'likert',
+      likertRows,
+      likertScaleLabels: LIKERT_LABELS,
+      showLikertFollowUp: !this.state.declined && !this.state.submitted && step.type === 'likert' && !!(step.followUps && step.followUps.length),
+      likertFollowUps: (step.followUps || []).map(fu => ({
+        key: fu.key, title: fu.title, required: fu.required !== false, hint: fu.hint || '',
+        textValue: this.state.answers[fu.key] || '', onTextChange: (e) => this.setAnswer(fu.key, e.target.value),
+      })),
+      showEndPanel: !this.state.declined && !this.state.submitted && isEnd,
+      showError: !!this.state.error,
+      error: this.state.error,
+      showFooter: !this.state.declined && !this.state.submitted,
+      showEncouragement: !this.state.declined && !this.state.submitted && step.type !== 'consent' && step.type !== 'end' && progressPct >= 40,
+      encouragementText: 'Don’t give up, you are almost done! Your participation is very important.',
+      canGoBack,
+      canGoBackInverse: !canGoBack,
+      onBack: () => this.goBack(),
+      onNext: () => this.goNext(),
+      primaryAction: isEnd ? (() => this.submit()) : (() => this.goNext()),
+      primaryLabel: isEnd ? (this.state.submitting ? 'Sending…' : 'Submit responses') : (step.type === 'consent' ? 'Next' : (this.state.step === lastQuestionIndex ? 'Finish' : 'Next')),
+      primaryDisabled: isEnd && this.state.submitting,
+      primaryOpacity: isEnd && this.state.submitting ? 0.6 : 1,
+    };
+  }
+}
+</script>
+</body>
+</html>

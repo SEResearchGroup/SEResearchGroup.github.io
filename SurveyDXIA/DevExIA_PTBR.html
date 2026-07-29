@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></link>
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    ::selection { background: #C1502E33; }
+    a { color: #C1502E; }
+    a:hover { color: #8f3a1f; }
+    @keyframes surveyFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+<div style="min-height:100vh; background:#F6F1E7; font-family:'IBM Plex Sans',sans-serif; color:#211D1A; display:flex; flex-direction:column;">
+  <div style="position:sticky; top:0; z-index:10; background:#F6F1E7cc; backdrop-filter:blur(6px); border-bottom:1px solid #E1D6C3;">
+    <div style="max-width:1080px; margin:0 auto; padding:14px 24px 12px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <span style="font-family:'Newsreader',serif; font-size:15px; letter-spacing:0.02em; color:#211D1A;">DevEx &amp; IA — Pesquisa UFRGS</span>
+        <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+          <span style="font-size:15px; font-weight:700; color:{{ accentColor }}; font-variant-numeric:tabular-nums;">Página {{ questionNumber }} de {{ totalQuestions }}</span>
+        </sc-if>
+      </div>
+      <div style="height:3px; background:#E1D6C3; border-radius:2px; overflow:hidden;">
+        <div style="height:100%; background:{{ accentColor }}; border-radius:2px; transition:width .35s ease; width:{{ progressPct }}%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; align-items:flex-start; justify-content:center; padding:48px 20px 120px;">
+    <div style="max-width:1080px; width:100%; animation:surveyFadeUp .4s ease both;" key="{{ stepKey }}">
+
+      <sc-if value="{{ showConsent }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#C1502E; font-weight:600; margin:0 0 10px;">Termo de Consentimento</p>
+          <h1 style="font-family:'Newsreader',serif; font-weight:500; font-size:34px; line-height:1.15; margin:0 0 18px; text-wrap:pretty;">Modelando o Impacto da IA na Experiência do Desenvolvedor</h1>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 14px;">Pesquisa conduzida por <strong>Karina Kohl Silveira</strong>, do Instituto de Informática da UFRGS. O objetivo é entender como o uso de ferramentas de IA afeta ciclos de feedback, carga cognitiva e estado de fluxo no dia a dia de quem desenvolve software — além de seus efeitos percebidos em criatividade, estresse e atenção.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 18px;">O questionário é anônimo, pode ser interrompido a qualquer momento, e as respostas são usadas exclusivamente para fins de pesquisa acadêmica.</p>
+
+          <button onClick="{{ toggleTcle }}" style="background:none; border:none; padding:0; font-size:14px; color:#C1502E; font-weight:600; cursor:pointer; margin-bottom:18px; text-decoration:underline;">{{ tcleToggleLabel }}</button>
+
+          <sc-if value="{{ showFullTcle }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFFFFF; border:1px solid #E1D6C3; border-radius:10px; padding:20px 22px; max-height:280px; overflow-y:auto; font-size:13.5px; line-height:1.65; color:#4A443C; margin-bottom:20px;">
+              <p>Eu, Karina Kohl Silveira, pesquisadora do Instituto de Informática da UFRGS, responsável pela pesquisa "Modelando o Impacto da IA a Experiência do Desenvolvedor (DevEx): Ciclos de Feedback, Carga Cognitiva, Estado de Fluxo e suas Interações com Criatividade, Estresse e Atenção", estou fazendo um convite para você participar como voluntário nesse estudo.</p>
+              <p>Esta pesquisa pretende observar como o uso de ferramentas de Inteligência Artificial (IA) afeta os três pilares centrais da experiência do desenvolvedor (DevEx): ciclos de feedback, carga cognitiva e estado de fluxo. Além disso, serão explorados os efeitos percebidos da IA em aspectos subjetivos, como criatividade, estresse e atenção, oferecendo uma visão mais ampla da experiência dos desenvolvedores em um cenário cada vez mais mediado por inteligência artificial. Acreditamos que ela seja importante pois tem como objetivo prover uma avaliação quantitativa e qualitativa de dados coletados em campo, criando uma base de conhecimento com informações analisadas através de estratégias com rigor metodológico.</p>
+              <p>Sua participação será realizada através desse questionário. É possível que aconteça algum desconforto durante o preenchimento do mesmo apesar de esta pesquisa apresentar risco mínimo aos participantes. Conforme definição da Resolução CNS nº 510/2016, Art. 2º, Inciso XXV, entende-se por risco a possibilidade de danos à dimensão física, psíquica, moral, intelectual, social ou cultural do ser humano, em qualquer etapa da pesquisa e dela decorrente.</p>
+              <p>No contexto deste estudo, os principais riscos identificados são de ordem psíquica e emocional, podendo haver constrangimento, estresse, cansaço ou desconforto durante o preenchimento do questionário, devido à natureza de algumas perguntas que envolvem aspectos subjetivos da experiência profissional com o uso de ferramentas de inteligência artificial.</p>
+              <p style="margin-bottom:6px;">Para minimizar esses riscos, adotam-se as seguintes medidas de precaução:</p>
+              <ul style="margin:0 0 14px; padding-left:20px;">
+                <li style="margin-bottom:8px;">O questionário é anônimo e pode ser interrompido a qualquer momento. Você tem garantido o seu direito de não aceitar participar ou de retirar sua permissão, a qualquer momento, sem nenhum tipo de prejuízo ou retaliação, pela sua decisão, conforme previsto na Resolução CNS nº 510/2016, Art. 9º, II;</li>
+                <li style="margin-bottom:8px;">Os dados coletados serão tratados de forma confidencial e utilizados exclusivamente para fins de pesquisa científica;</li>
+                <li style="margin-bottom:8px;">A pesquisa não envolve coleta de dados sensíveis, como informações médicas, orientação sexual ou dados bancários;</li>
+                <li>Em caso de eventuais danos decorrentes da participação na pesquisa, você terá direito à devida assistência e indenização, conforme determina a legislação brasileira (Resolução CNS nº 510/2016, Art. 19, §2º).</li>
+              </ul>
+              <p>Espera-se que os resultados desta pesquisa contribuam para um entendimento mais aprofundado e baseado em evidências sobre os efeitos do uso de ferramentas de Inteligência Artificial na experiência de desenvolvedores, especialmente considerando aspectos subjetivos e psicossociais frequentemente negligenciados na literatura.</p>
+              <p>Durante todo o período da pesquisa você tem o direito de esclarecer qualquer dúvida ou pedir qualquer outro esclarecimento, bastando para isso entrar em contato, com a responsável pela pesquisa, Karina Kohl Silveira no telefone/Whatsapp +55 51 98422-0770, e-mail: karina.kohl@inf.ufrgs.br. Caso você tenha qualquer dúvida quanto aos seus direitos como participante de pesquisa, entre em contato com Comitê de Ética em Pesquisa da Universidade Federal do Rio Grande do Sul (CEP/UFRGS) no telefone/Whatsapp +55 51 3308-3787, e-mail: cep@pucrs.br, de segunda a sexta-feira das 8h às 12h e das 13h30 às 17h. O Comitê de Ética é um órgão independente constituído de profissionais das diferentes áreas do conhecimento e membros da comunidade. Sua responsabilidade é garantir a proteção dos direitos, a segurança e o bem-estar dos participantes por meio da revisão e da aprovação do estudo, entre outras ações.</p>
+              <p>Se por algum motivo você tiver despesas decorrentes da sua participação neste estudo com transporte e/ou alimentação, você será reembolsado adequadamente pelos pesquisadores.</p>
+              <p>As informações desta pesquisa são confidenciais, e serão divulgadas apenas em eventos ou publicações científicas, não havendo identificação dos participantes, a não ser entre os responsáveis pelo estudo, sendo assegurado o sigilo sobre sua participação.</p>
+              <p>Ao aceitar este termo de consentimento, você não abre mão de nenhum direito legal que teria de outra forma.</p>
+              <p>Não aceite este termo de consentimento a menos que tenha tido a oportunidade de fazer perguntas e tenha recebido respostas satisfatórias para todas as suas dúvidas.</p>
+              <p>Como participante, após a leitura (ou a escuta da leitura) deste documento e de ter tido a oportunidade de conversar com o pesquisador responsável, para esclarecer todas as minhas dúvidas, acredito estar suficientemente informado, ficando claro para mim que minha participação é voluntária e que posso retirar este consentimento a qualquer momento sem penalidades ou perda de qualquer benefício. Estou ciente também dos objetivos da pesquisa, dos procedimentos aos quais serei submetido, dos possíveis danos ou riscos deles provenientes e da garantia de confidencialidade e esclarecimentos sempre que desejar.</p>
+              <p>Diante do exposto expresso minha concordância de espontânea vontade em participar deste estudo.</p>
+            </div>
+          </sc-if>
+
+          <p style="font-size:15px; font-weight:600; margin:0 0 12px;">Você concorda em participar desta pesquisa? *</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ consentOptions }}" as="opt" hint-placeholder-count="2">
+              <button onClick="{{ opt.onSelect }}" style="text-align:left; padding:14px 16px; border-radius:10px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; font-size:14.5px; color:#211D1A; font-family:'IBM Plex Sans',sans-serif; display:flex; align-items:center; gap:10px;">
+                <span style="width:16px; height:16px; border-radius:50%; border:1.5px solid {{ opt.dotBorder }}; background:{{ opt.dotBg }}; flex-shrink:0;"></span>
+                {{ opt.label }}
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showDeclined }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:60px 0;">
+          <p style="font-family:'Newsreader',serif; font-size:28px; margin:0 0 12px;">Tudo bem.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; max-width:420px; margin:0 auto;">Obrigada pelo seu tempo. Como você optou por não participar, nenhuma resposta foi registrada. Você pode fechar esta página quando quiser.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:60px 0;">
+          <p style="font-family:'Newsreader',serif; font-size:28px; margin:0 0 12px;">Obrigada pela sua contribuição.</p>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; max-width:440px; margin:0 auto;">Suas respostas foram enviadas com sucesso. Elas serão usadas exclusivamente para fins de pesquisa acadêmica sobre IA e experiência do desenvolvedor.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showSectionEyebrow }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:{{ accentColor }}; font-weight:600; margin:0 0 10px;">{{ stepSection }}</p>
+      </sc-if>
+
+      <sc-if value="{{ showSectionIntro }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:14px; line-height:1.7; color:#6B6459; margin:0 0 22px; background:#FFFFFF; border:1px solid #E1D6C3; border-radius:10px; padding:16px 18px;">{{ stepIntro }}</p>
+      </sc-if>
+
+      <sc-if value="{{ showDemoGroup }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:26px;">
+          <sc-for list="{{ demoFields }}" as="field" hint-placeholder-count="9">
+            <div>
+              <p style="font-size:15px; font-weight:500; margin:0 0 10px; line-height:1.5;">{{ field.title }} <sc-if value="{{ field.required }}" hint-placeholder-val="{{ true }}"><span style="color:{{ accentColor }};">*</span></sc-if></p>
+              <sc-if value="{{ field.isRadio }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <sc-for list="{{ field.options }}" as="opt" hint-placeholder-count="5">
+                    <button onClick="{{ opt.onSelect }}" style="padding:8px 13px; border-radius:999px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; color:{{ opt.textColor }}; font-size:13px; font-family:'IBM Plex Sans',sans-serif; cursor:pointer; white-space:nowrap;">{{ opt.label }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ field.isText }}" hint-placeholder-val="{{ false }}">
+                <input value="{{ field.textValue }}" onChange="{{ field.onTextChange }}" placeholder="Sua resposta" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:12px 2px; border:none; border-bottom:1.5px solid #C7BBA3; background:transparent; outline:none; color:#211D1A;"></input>
+              </sc-if>
+              <sc-if value="{{ field.isTextarea }}" hint-placeholder-val="{{ false }}">
+                <textarea value="{{ field.textValue }}" onChange="{{ field.onTextChange }}" placeholder="Sua resposta" rows="3" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showQuestionSingle }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:24px; line-height:1.35; margin:0 0 22px; text-wrap:pretty;">{{ stepTitle }} <sc-if value="{{ stepRequired }}" hint-placeholder-val="{{ true }}"><span style="color:{{ accentColor }};">*</span></sc-if></h2>
+
+          <sc-if value="{{ isRadioStep }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <sc-for list="{{ radioOptions }}" as="opt" hint-placeholder-count="4">
+                <button onClick="{{ opt.onSelect }}" style="text-align:left; padding:14px 16px; border-radius:10px; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; font-size:14.5px; color:#211D1A; font-family:'IBM Plex Sans',sans-serif; display:flex; align-items:center; gap:10px;">
+                  <span style="width:16px; height:16px; border-radius:50%; border:1.5px solid {{ opt.dotBorder }}; background:{{ opt.dotBg }}; flex-shrink:0;"></span>
+                  {{ opt.label }}
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isTextStep }}" hint-placeholder-val="{{ false }}">
+            <input value="{{ textValue }}" onChange="{{ onTextChange }}" placeholder="Sua resposta" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:12px 2px; border:none; border-bottom:1.5px solid #C7BBA3; background:transparent; outline:none; color:#211D1A;"></input>
+          </sc-if>
+
+          <sc-if value="{{ isTextareaStep }}" hint-placeholder-val="{{ false }}">
+            <textarea value="{{ textValue }}" onChange="{{ onTextChange }}" placeholder="Sua resposta" rows="4" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showLikert }}" hint-placeholder-val="{{ false }}">
+        <div style="overflow-x:auto; border:1px solid #E1D6C3; border-radius:10px; background:#FFFFFF;">
+          <div style="min-width:720px;">
+            <div style="display:grid; grid-template-columns:1fr repeat(5, 96px); border-bottom:1.5px solid {{ accentColor }};">
+              <div style="padding:12px 16px;"></div>
+              <sc-for list="{{ likertScaleLabels }}" as="lab" hint-placeholder-count="5">
+                <div style="padding:10px 8px; font-size:10px; line-height:1.3; text-align:center; color:#6B6459; font-weight:600; align-self:end; word-break:normal;">{{ lab }}</div>
+              </sc-for>
+            </div>
+            <sc-for list="{{ likertRows }}" as="row" hint-placeholder-count="6">
+              <div style="display:grid; grid-template-columns:1fr repeat(5, 96px); border-top:1px solid #EFE8D9;">
+                <div style="padding:14px 16px; font-size:13.5px; line-height:1.5; color:#211D1A;">{{ row.text }}</div>
+                <sc-for list="{{ row.options }}" as="opt" hint-placeholder-count="5">
+                  <div style="display:flex; align-items:center; justify-content:center;">
+                    <button onClick="{{ opt.onSelect }}" aria-label="{{ opt.label }}" style="width:20px; height:20px; border-radius:50%; border:1.5px solid {{ opt.borderColor }}; background:{{ opt.bg }}; cursor:pointer; padding:0;"></button>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showLikertFollowUp }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:26px; margin-top:26px;">
+          <sc-for list="{{ likertFollowUps }}" as="fu" hint-placeholder-count="2">
+            <div>
+              <p style="font-size:15px; font-weight:500; margin:0 0 6px; line-height:1.5;">{{ fu.title }} <sc-if value="{{ fu.required }}" hint-placeholder-val="{{ false }}"><span style="color:{{ accentColor }};">*</span></sc-if></p>
+              <p style="font-size:12.5px; color:#8A8172; margin:0 0 10px; line-height:1.5;">{{ fu.hint }}</p>
+              <textarea value="{{ fu.textValue }}" onChange="{{ fu.onTextChange }}" placeholder="Sua resposta" rows="3" style="width:100%; font-size:15px; font-family:'IBM Plex Sans',sans-serif; padding:14px; border-radius:10px; border:1.5px solid #E1D6C3; background:#FFFFFF; outline:none; color:#211D1A; resize:vertical;"></textarea>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showEndPanel }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:26px; margin:0 0 14px;">Pronto para enviar</h2>
+          <p style="font-size:15px; line-height:1.7; color:#4A443C; margin:0 0 8px;">Revise suas respostas usando o botão "Voltar" se precisar ajustar algo. Ao confirmar, seus dados serão enviados de forma anônima para a base da pesquisa.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+        <p style="color:#B5442E; font-size:13.5px; margin:14px 0 0;">{{ error }}</p>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky; bottom:0; background:#F6F1E7ee; backdrop-filter:blur(6px); border-top:1px solid #E1D6C3;">
+        <sc-if value="{{ showEncouragement }}" hint-placeholder-val="{{ false }}">
+        <p style="max-width:1080px; margin:0 auto; padding:10px 20px 0; text-align:center; font-size:13px; color:#8A8172; font-style:italic;">{{ encouragementText }}</p>
+      </sc-if>
+      <div style="max-width:1080px; margin:0 auto; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onBack }}" style="background:none; border:none; color:#6B6459; font-size:14px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; padding:10px 4px;">← Voltar</button>
+        </sc-if>
+        <sc-if value="{{ canGoBackInverse }}" hint-placeholder-val="{{ false }}"><span></span></sc-if>
+        <button onClick="{{ primaryAction }}" disabled="{{ primaryDisabled }}" style="background:{{ accentColor }}; color:#FBF6EC; border:none; padding:13px 26px; border-radius:999px; font-size:14.5px; font-weight:600; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; opacity:{{ primaryOpacity }};">{{ primaryLabel }}</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:900},&quot;scriptUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycby-mSIBTKEF85XEBhH0VG37e1X-YfUsfiAaU904rToSDNOZLd6EmhgGQ8OQPIBzUO6z/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integração&quot;},&quot;requireAllAnswers&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Integração&quot;},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C1502E&quot;,&quot;options&quot;:[&quot;#C1502E&quot;,&quot;#3C6E47&quot;,&quot;#2B3A67&quot;,&quot;#B08628&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Visual&quot;}}">
+
+const LIKERT_LABELS = ['Nunca', 'Raramente', 'Às vezes', 'Frequentemente', 'Muito Frequentemente'];
+
+const DEMO_INTRO = 'As próximas perguntas têm o objetivo de entender melhor o perfil das pessoas que estão respondendo a esta pesquisa. Não existem respostas certas ou erradas — queremos entender a diversidade de experiências e contextos na prática do desenvolvimento de software. Todas as respostas são anônimas.';
+const ATENCAO_INTRO = 'Utilizamos instrumentos reconhecidos e validados para investigar como certas experiências comuns no desenvolvimento de software podem se manifestar no seu dia a dia. Não existe resposta certa ou errada — responda pensando nas situações que mais se aplicam à sua rotina atual.';
+const FEEDBACK_INTRO = 'Esta seção avalia sua percepção sobre os ciclos de feedback durante o desenvolvimento — o tempo e a utilidade das respostas que você recebe ao interagir com ferramentas, colegas ou sistemas automatizados. Indique com que frequência cada afirmação reflete sua experiência cotidiana.';
+const CARGA_INTRO = 'Esta seção busca entender como o uso de IA impacta sua carga mental durante atividades de programação. Indique com que frequência você vivenciou cada situação, com base em suas experiências recentes com ferramentas de IA.';
+const FLOW_INTRO = 'As afirmações a seguir se referem a como você geralmente se sente ao realizar atividades que exigem concentração e habilidade — como programar ou resolver problemas técnicos. Indique o quanto cada afirmação se aplica a você em geral.';
+const ATENCAO_FLOW_INTRO = 'Utilizamos instrumentos reconhecidos e validados para investigar como certas experiências comuns no desenvolvimento de software podem se manifestar no seu dia a dia — incluindo momentos de atenção e concentração, e também estados de imersão e fluxo ao realizar tarefas desafiadoras. Não existe resposta certa ou errada — responda pensando nas situações que mais se aplicam à sua rotina atual.';
+const CARGA_STRESS_INTRO = 'Esta seção busca entender como o uso de IA impacta sua carga mental durante atividades de programação, além de sua percepção sobre estresse e controle no dia a dia de trabalho. Indique com que frequência você vivenciou cada situação, com base em suas experiências recentes.';
+const OPEN_HINT = 'Não é obrigatório responder, mas sua perspectiva é muito importante para a pesquisa — uma resposta curta já ajuda bastante.';
+
+class Component extends DCLogic {
+  state = {
+    step: 0,
+    answers: {},
+    declined: false,
+    submitted: false,
+    submitting: false,
+    error: '',
+    showFullTcle: false,
+  };
+
+  steps = [
+    { key: 'consent', type: 'consent' },
+    { key: 'demograficos', type: 'demo-group', section: 'Demográficos', intro: DEMO_INTRO, fields: [
+      { key: 'faixa_etaria', type: 'radio', title: 'Qual sua faixa etária?', options: ['18 - 24', '25 - 34', '35 - 44', '45 - 54', '55 - 64', '64 ou +'] },
+      { key: 'genero', type: 'radio', title: 'Com qual gênero você se identifica?', options: ['Feminino', 'Masculino', 'Não-binário', 'Outro', 'Prefiro não responder'] },
+      { key: 'neurodivergencia', type: 'radio', title: 'Você possui alguma condição de neurodivergência diagnosticada?', options: ['Não', 'TDAH', 'Autismo (TEA)', 'TDAH e Autismo (TEA)', 'Outra', 'Prefiro não responder'] },
+      { key: 'pais', type: 'text', title: 'Em qual país você reside atualmente?' },
+      { key: 'anos_experiencia', type: 'radio', title: 'Há quantos anos você trabalha com desenvolvimento de software?', options: ['Menos de 1 ano', '1 a 2 anos', '3 a 5 anos', '6 a 10 anos', '11 a 15 anos', '15 ou +'] },
+      { key: 'ferramentas_ia', type: 'textarea', title: 'Quais ferramentas de IA você já utilizou para auxiliar no desenvolvimento de software?' },
+      { key: 'frequencia_uso', type: 'radio', title: 'Com que frequência você utiliza ferramentas de IA no seu dia a dia de trabalho?', options: ['Nunca', 'Raramente', 'Algumas vezes por semana', 'Diariamente', 'Quase o tempo todo'] },
+      { key: 'tempo_uso', type: 'radio', title: 'Há quanto tempo você utiliza ferramentas de IA no desenvolvimento?', options: ['1–6 meses', '7–12 meses', '1 a 2 anos', '3+ anos'] },
+      { key: 'experiencia_ia', type: 'textarea', title: 'Como tem sido sua experiência ao usar ferramentas de IA no desenvolvimento?' },
+      { key: 'ajuda_atrapalha_exemplo', type: 'textarea', title: 'De que forma essas ferramentas ajudam ou atrapalham seu trabalho? Você percebeu mudanças na produtividade ou qualidade com o uso de IA? Pode dar um exemplo?' },
+    ]},
+    { key: 'atencao_flow', type: 'likert', section: 'Atenção & Flow', intro: ATENCAO_FLOW_INTRO, rows: [
+      'Com que frequência você tem dificuldade em finalizar os detalhes de um projeto, mesmo depois de ter feito as partes mais difíceis?',
+      'Com que frequência você tem dificuldade para manter o foco em tarefas demoradas (como ler documentação, revisar código ou planejar)?',
+      'Com que frequência você evita ou adia começar tarefas que exigem esforço mental contínuo?',
+      'Com que frequência você perde coisas necessárias para completar tarefas (como anotações, dispositivos, ferramentas de trabalho)?',
+      'Com que frequência você se distrai com atividades ou sons ao seu redor?',
+      'Com que frequência você tem dificuldade em lembrar compromissos ou obrigações?',
+      'Quando estou envolvido em uma tarefa desafiadora, meu foco está totalmente nela.',
+      'Eu sempre sei o que precisa ser feito durante as tarefas que realizo.',
+      'Perco a noção do tempo quando estou envolvido em tarefas desafiadoras.',
+      'Me sinto muito habilidoso nas tarefas que realizo.',
+      'Me sinto totalmente envolvido em minhas tarefas.',
+      'Eu me sinto em controle total do que estou fazendo.',
+      'Me esqueço de mim mesmo enquanto trabalho.',
+      'Tenho uma sensação clara de progresso ao realizar uma tarefa.',
+      'Me sinto muito satisfeito durante tarefas desafiadoras.',
+    ], followUps: [
+      { key: 'foco_ia', title: 'Você sente que ter a IA presente (mesmo sem estar usando ativamente as sugestões dela) muda sua disposição para começar ou manter uma tarefa? Como?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_flow1', title: 'Já usou a IA como se fosse alguém trabalhando ao seu lado — por exemplo, narrando o que está fazendo, pedindo pra ela acompanhar o raciocínio — mesmo sem precisar das respostas técnicas dela?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_flow2', title: 'Você já usou IA especificamente para começar uma tarefa que estava evitando (procrastinação/paralisia de início)? O que mudou?', required: false, hint: OPEN_HINT },
+      { key: 'sentiu_flow', title: 'Você já sentiu estar "em flow" ao usar IA? O que facilita ou atrapalha essa experiência?', required: false, hint: OPEN_HINT }      
+    ] },
+    { key: 'carga_stress', type: 'likert', section: 'Carga Cognitiva & Stress', intro: CARGA_STRESS_INTRO, rows: [
+      'O uso da IA exigiu esforço mental significativo da minha parte.',
+      'A tarefa que eu estava realizando era complexa, mesmo com o apoio da IA.',
+      'Tive que revisar ou interpretar várias vezes as sugestões da IA até compreender como aplicá-las.',
+      'A IA me ajudou a reduzir a carga mental durante a codificação.',
+      'A forma como a IA apresenta suas respostas dificultou meu foco na tarefa.',
+      'Mesmo com o uso de IA, precisei me esforçar bastante para concluir a tarefa.',
+      'Com que frequência você sentiu que não tinha controle sobre as demandas do seu trabalho?',
+      'Com que frequência você se sentiu confiante para lidar com desafios técnicos ou mudanças no projeto?',
+      'Com que frequência você teve a impressão de que as tarefas estavam fugindo do controle?',
+      'Com que frequência você conseguiu lidar bem com as suas responsabilidades no time ou projeto?',
+      'Com que frequência você se sentiu tranquilo(a) ao lidar com mudanças inesperadas no código, escopo ou prazos?',
+      'Com que frequência você se sentiu sobrecarregado(a) com muitas tarefas, bugs ou interrupções?',
+      'Com que frequência você conseguiu manter a calma mesmo diante de problemas técnicos ou pressão por entregas?',
+      'Com que frequência você sentiu que estava no controle do seu dia a dia como desenvolvedor(a)?',
+      'Com que frequência pequenas coisas (como erros inesperados, reuniões ou retrabalho) te deixaram frustrado(a)?',
+      'Com que frequência você sentiu que os problemas estavam se acumulando mais rápido do que você conseguia resolver?',
+    ], followUps: [
+      { key: 'momentos_carga', title: 'Em quais momentos a IA aumenta ou reduz sua carga cognitiva?', required: false, hint: OPEN_HINT },
+      { key: 'body_double_carga1', title: 'Você usa a IA para segurar partes do problema pra você — como manter contexto, lembrar próximos passos, ou quebrar uma tarefa grande em pedaços — de um jeito que reduz a sensação de sobrecarga?', required: false, hint: OPEN_HINT },
+      { key: 'estresse_ia', title: 'Sentir que a IA está observando ou vai reagir ao seu progresso muda sua ansiedade ou seu senso de responsabilidade com a tarefa?', required: false, hint: OPEN_HINT },
+    ] },
+    { key: 'feedback', type: 'likert', section: 'Feedback Loops', intro: FEEDBACK_INTRO, rows: [
+      'Recebo retorno rápido quando cometo um erro de programação.',
+      'Os feedbacks das ferramentas que uso me ajudam a progredir no código.',
+      'O tempo para revisão de código atrasa meu fluxo de trabalho.',
+      'As respostas que recebo de colegas ou IA são úteis para meu progresso.',
+      'Gosto da rapidez com que consigo validar se meu código está funcionando.',
+    ], followUps: [
+      { key: 'fluxo_interrompido', title: 'As sugestões da IA interrompem seu fluxo de trabalho? Isso é útil ou prejudicial? Que tipo de feedback você gostaria que a IA oferecesse e que ainda não oferece?' },
+    ] },
+    { key: 'end', type: 'end' },
+  ];
+
+  setAnswer(key, val) {
+    this.setState(s => ({ answers: { ...s.answers, [key]: val }, error: '' }));
+  }
+
+  setLikert(stepKey, rowIdx, val) {
+    this.setState(s => ({
+      answers: { ...s.answers, [stepKey]: { ...(s.answers[stepKey] || {}), [rowIdx]: val } },
+      error: '',
+    }));
+  }
+
+  isValid(step) {
+    const req = this.props.requireAllAnswers ?? true;
+    if (!req) return true;
+    if (step.type === 'consent') return this.state.answers.consent === 'sim' || this.state.answers.consent === 'não';
+    if (step.type === 'radio' || step.type === 'text' || step.type === 'textarea') {
+      if (step.required === false) return true;
+      const v = this.state.answers[step.key];
+      return !!(v && String(v).trim());
+    }
+    if (step.type === 'likert') {
+      const a = this.state.answers[step.key] || {};
+      const rowsOk = step.required === false ? true : step.rows.every((_, i) => !!a[i]);
+      const fus = step.followUps || [];
+      const fusOk = fus.every(fu => fu.required === false || !!(this.state.answers[fu.key] && String(this.state.answers[fu.key]).trim()));
+      return rowsOk && fusOk;
+    }
+    if (step.type === 'demo-group') {
+      return step.fields.every(f => {
+        if (f.required === false) return true;
+        const v = this.state.answers[f.key];
+        return !!(v && String(v).trim());
+      });
+    }
+    return true;
+  }
+
+  goNext() {
+    const step = this.steps[this.state.step];
+    if (!this.isValid(step)) {
+      this.setState({ error: 'Por favor responda antes de continuar.' });
+      return;
+    }
+    if (step.type === 'consent' && this.state.answers.consent === 'não') {
+      this.setState({ declined: true });
+      return;
+    }
+    if (this.state.step >= this.steps.length - 1) return;
+    this.setState(s => ({ step: s.step + 1, error: '' }));
+  }
+
+  goBack() {
+    if (this.state.step > 0) this.setState(s => ({ step: s.step - 1, error: '' }));
+  }
+
+  flatten() {
+    const out = { timestamp: new Date().toISOString() };
+    this.steps.forEach(step => {
+      if (step.type === 'likert') {
+        const a = this.state.answers[step.key] || {};
+        step.rows.forEach((_, i) => { out[`${step.key}_${i + 1}`] = a[i] || ''; });
+        (step.followUps || []).forEach(fu => { out[fu.key] = this.state.answers[fu.key] || ''; });
+      } else if (step.type === 'demo-group') {
+        step.fields.forEach(f => { out[f.key] = this.state.answers[f.key] || ''; });
+      } else if (step.type === 'consent') {
+        out.consent = this.state.answers.consent || '';
+      } else if (step.type !== 'end') {
+        out[step.key] = this.state.answers[step.key] || '';
+      }
+    });
+    return out;
+  }
+
+  async submit() {
+    this.setState({ submitting: true });
+    const payload = this.flatten();
+    const url = this.props.scriptUrl;
+    try {
+      if (url) {
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+        });
+      }
+    } catch (e) { /* fire and forget */ }
+    this.setState({ submitting: false, submitted: true });
+  }
+
+  renderVals() {
+    const step = this.steps[this.state.step];
+    const accentColor = this.props.accentColor || '#C1502E';
+    const totalQuestions = this.steps.length - 2;
+    const questionNumber = Math.min(Math.max(this.state.step, 0), totalQuestions);
+    const progressPct = this.state.declined || this.state.submitted ? 100 : Math.round((questionNumber / totalQuestions) * 100);
+
+    const radioOptions = step.type === 'radio' ? step.options.map(o => {
+      const selected = this.state.answers[step.key] === o;
+      return { label: o, onSelect: () => this.setAnswer(step.key, o), selected,
+        borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor + '14' : '#FFFFFF',
+        dotBorder: selected ? accentColor : '#C7BBA3', dotBg: selected ? accentColor : 'transparent' };
+    }) : [];
+
+    const consentOptions = step.type === 'consent' ? [
+      { value: 'sim', label: 'Sim, eu concordo em participar' },
+      { value: 'não', label: 'Não, eu não desejo participar' },
+    ].map(o => {
+      const selected = this.state.answers.consent === o.value;
+      return { label: o.label, onSelect: () => this.setAnswer('consent', o.value), selected,
+        borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor + '14' : '#FFFFFF',
+        dotBorder: selected ? accentColor : '#C7BBA3', dotBg: selected ? accentColor : 'transparent' };
+    }) : [];
+
+    const demoFields = step.type === 'demo-group' ? step.fields.map(f => {
+      const val = this.state.answers[f.key] || '';
+      const opts = f.type === 'radio' ? f.options.map(o => {
+        const selected = val === o;
+        return { label: o, onSelect: () => this.setAnswer(f.key, o), selected,
+          borderColor: selected ? accentColor : '#E1D6C3', bg: selected ? accentColor : '#FFFFFF',
+          textColor: selected ? '#FBF6EC' : '#4A443C' };
+      }) : [];
+      return {
+        key: f.key, title: f.title, isRadio: f.type === 'radio', isText: f.type === 'text', isTextarea: f.type === 'textarea',
+        options: opts, textValue: val, onTextChange: (e) => this.setAnswer(f.key, e.target.value),
+        required: f.required !== false,
+      };
+    }) : [];
+
+    const likertRows = step.type === 'likert' ? step.rows.map((text, idx) => {
+      const current = (this.state.answers[step.key] || {})[idx];
+      return {
+        text, idx,
+        options: LIKERT_LABELS.map(label => {
+          const selected = current === label;
+          return { label, onSelect: () => this.setLikert(step.key, idx, label),
+            borderColor: selected ? accentColor : '#C7BBA3', bg: selected ? accentColor : '#FFFFFF' };
+        }),
+      };
+    }) : [];
+
+    const isEnd = step.type === 'end';
+    const lastQuestionIndex = this.steps.length - 2;
+    const canGoBack = this.state.step > 0 && !this.state.declined && !this.state.submitted;
+
+    return {
+      accentColor,
+      showProgress: !this.state.declined && !this.state.submitted && step.type !== 'consent',
+      questionNumber, totalQuestions, progressPct,
+      stepKey: step.key,
+      showConsent: step.type === 'consent' && !this.state.declined,
+      showDeclined: this.state.declined,
+      showSubmitted: this.state.submitted,
+      showFullTcle: this.state.showFullTcle,
+      tcleToggleLabel: this.state.showFullTcle ? 'Ocultar termo completo' : 'Ler termo de consentimento completo',
+      toggleTcle: () => this.setState(s => ({ showFullTcle: !s.showFullTcle })),
+      consentOptions,
+      showSectionEyebrow: !this.state.declined && !this.state.submitted && !!step.section && step.type !== 'consent',
+      stepSection: step.section || '',
+      showSectionIntro: !this.state.declined && !this.state.submitted && !!step.intro,
+      stepIntro: step.intro || '',
+      showDemoGroup: !this.state.declined && !this.state.submitted && step.type === 'demo-group',
+      demoFields,
+      showQuestionSingle: !this.state.declined && !this.state.submitted && (step.type === 'radio' || step.type === 'text' || step.type === 'textarea'),
+      stepTitle: step.title || '',
+      stepRequired: step.required !== false,
+      isRadioStep: step.type === 'radio',
+      isTextStep: step.type === 'text',
+      isTextareaStep: step.type === 'textarea',
+      textValue: this.state.answers[step.key] || '',
+      onTextChange: (e) => this.setAnswer(step.key, e.target.value),
+      radioOptions,
+      showLikert: !this.state.declined && !this.state.submitted && step.type === 'likert',
+      likertRows,
+      likertScaleLabels: LIKERT_LABELS,
+      showLikertFollowUp: !this.state.declined && !this.state.submitted && step.type === 'likert' && !!(step.followUps && step.followUps.length),
+      likertFollowUps: (step.followUps || []).map(fu => ({
+        key: fu.key, title: fu.title, required: fu.required !== false, hint: fu.hint || '',
+        textValue: this.state.answers[fu.key] || '', onTextChange: (e) => this.setAnswer(fu.key, e.target.value),
+      })),
+      showEndPanel: !this.state.declined && !this.state.submitted && isEnd,
+      showError: !!this.state.error,
+      error: this.state.error,
+      showFooter: !this.state.declined && !this.state.submitted,
+      showEncouragement: !this.state.declined && !this.state.submitted && step.type !== 'consent' && step.type !== 'end' && progressPct >= 40,
+      encouragementText: 'Não desista, está acabando! Sua participação é muito importante.',
+      canGoBack,
+      canGoBackInverse: !canGoBack,
+      onBack: () => this.goBack(),
+      onNext: () => this.goNext(),
+      primaryAction: isEnd ? (() => this.submit()) : (() => this.goNext()),
+      primaryLabel: isEnd ? (this.state.submitting ? 'Enviando…' : 'Enviar respostas') : (step.type === 'consent' ? 'Avançar' : (this.state.step === lastQuestionIndex ? 'Concluir' : 'Próxima')),
+      primaryDisabled: isEnd && this.state.submitting,
+      primaryOpacity: isEnd && this.state.submitting ? 0.6 : 1,
+    };
+  }
+}
+</script>
+</body>
+</html>
