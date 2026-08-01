@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"></link>
+  <style>
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    a { color: #C1502E; }
+    a:hover { color: #8f3a1f; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#F6F1E7; font-family:'IBM Plex Sans',sans-serif; color:#211D1A; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px;">
+  <div style="max-width:640px; width:100%; text-align:center;">
+    <h1 style="font-family:'Newsreader',serif; font-size:48px; font-weight:500; margin:0 0 20px; line-height:1.2; text-wrap:pretty;">DevEx &amp; AI Research</h1>
+    
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:48px;">
+        <button onClick="{{ selectPortuguese }}" style="padding:20px 24px; border-radius:12px; border:2px solid #C1502E; background:#C1502E; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:600; color:#FBF6EC; transition:all .3s ease;">
+        🇧🇷 Português
+      </button>
+      <button onClick="{{ selectEnglish }}" style="padding:20px 24px; border-radius:12px; border:2px solid #C1502E; background:#FFFFFF; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:600; color:#C1502E; transition:all .3s ease;">
+        🇺🇸 English
+      </button>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; padding:40px; background:#FFFFFF; border-radius:12px; border:1px solid #E1D6C3;">
+      <div style="text-align:left;">
+        <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#C1502E; font-weight:600; margin:0 0 12px;">Bem-vindo</p>
+        <p style="font-size:14px; line-height:1.7; color:#4A443C; margin:0;">Esta é uma pesquisa conduzida por Karina Kohl Silveira, do Instituto de Informática da UFRGS. Queremos entender como ferramentas de IA afetam sua experiência como desenvolvedor — especificamente ciclos de feedback, carga cognitiva, estado de fluxo, estresse e atenção.</p>
+        <p style="font-size:14px; line-height:1.7; color:#4A443C; margin:16px 0 0;">A pesquisa é anônima, leva cerca de 15–20 minutos, e pode ser pausada a qualquer momento.</p>
+      </div>
+      <div style="text-align:left;">
+        <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#C1502E; font-weight:600; margin:0 0 12px;">Welcome</p>
+        <p style="font-size:14px; line-height:1.7; color:#4A443C; margin:0;">This is a research survey conducted by Karina Kohl Silveira at the Institute of Informatics at UFRGS. We want to understand how AI tools affect your experience as a developer — specifically your feedback loops, cognitive load, flow state,  stress, and attention.</p>
+        <p style="font-size:14px; line-height:1.7; color:#4A443C; margin:16px 0 0;">The survey is anonymous, takes about 15–20 minutes, and can be paused at any time.</p>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      selectEnglish: () => {
+        window.location.href = './DevExIA_EN.html';
+      },
+      selectPortuguese: () => {
+        window.location.href = './DevExIA_PTBR.html';
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
