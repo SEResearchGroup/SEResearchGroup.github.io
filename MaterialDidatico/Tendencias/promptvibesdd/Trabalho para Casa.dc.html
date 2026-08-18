@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-0b1aab68-5e23-4466-a9d6-2e603dcaaf4b/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="./doc-page.js"></script>
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+<doc-page margin="0.65in">
+  <div style="font-family:var(--font-body); color:var(--color-text)">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; font-size:9pt; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">
+      <span>Trabalho para casa</span><span>Duas semanas · individual ou em dupla</span>
+    </div>
+    <div style="height:2px; background:var(--color-text); margin:8pt 0 14pt"></div>
+    <h1 style="font-family:var(--font-heading); font-weight:800; font-size:24pt; line-height:1.05; letter-spacing:-0.02em; margin:0 0 10pt">Uma funcionalidade real, conduzida por especificação</h1>
+    <p style="font-size:11pt; line-height:1.5; margin:0 0 14pt; max-width:38em">Escolha <strong>uma</strong> das duas ferramentas — GitHub Spec Kit ou OpenSpec — e use-a para levar uma funcionalidade de verdade da intenção ao código. A escolha é sua e faz parte da avaliação: você vai precisar justificá-la.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Escolha da ferramenta</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 14pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:18%">Opção</th><th style="padding:5pt 7pt; width:30%">Instalação</th><th style="padding:5pt 7pt">Escolha se</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">A · GitHub Spec Kit</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace; font-size:9pt">Python 3.11+, Git, uv<br>uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</td><td style="padding:5pt 7pt; line-height:1.45">Você começa um projeto do zero, quer os pontos de verificação explícitos entre fases e uma constituição de projeto formal.</td></tr>
+        <tr><td style="padding:5pt 7pt; font-weight:700">B · OpenSpec</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace; font-size:9pt">Node.js 20.19+<br>npm install -g @fission-ai/openspec@latest<br>openspec init</td><td style="padding:5pt 7pt; line-height:1.45">Você vai mexer em um código que já existe, prefere iterar sem portões de fase e quer as especificações organizadas por capacidade no repositório.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 14pt; border-left:4px solid var(--color-accent); padding-left:10pt">Qualquer assistente de IA suportado serve — Copilot, Claude Code, Cursor, Codex, Gemini CLI e outros. Registre no relato qual agente e qual modelo você usou.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Escopo da funcionalidade</h2>
+    <p style="font-size:10.5pt; line-height:1.5; margin:0 0 6pt">Escolha algo que caiba em duas semanas de trabalho de estudo e que tenha <em>mais de um caminho possível de implementação</em> — é onde a especificação prova seu valor. Bons candidatos:</p>
+    <ul style="font-size:10.5pt; line-height:1.5; margin:0 0 8pt; padding-left:1.1em">
+      <li>Uma funcionalidade nova em um projeto seu, do trabalho ou da faculdade (caminho preferido).</li>
+      <li>Uma extensão do leitor de RSS dos laboratórios: sincronização entre dispositivos, busca, agrupamento por pasta, exportação OPML.</li>
+      <li>Uma ferramenta pequena com regras de negócio de verdade: controle de empréstimos, conciliação de lançamentos, agenda com conflitos de horário.</li>
+    </ul>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 14pt; color:var(--color-neutral-800)">Não vale um CRUD de uma tela só, nem um script de uma função. Se a especificação couber em cinco linhas, o escopo é pequeno demais.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Cronograma</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 14pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:16%">Quando</th><th style="padding:5pt 7pt; width:26%">O que fazer</th><th style="padding:5pt 7pt">Como fica evidente</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Dias 1–2</td><td style="padding:5pt 7pt">Instalar, inicializar, escolher a funcionalidade</td><td style="padding:5pt 7pt; line-height:1.45">Primeiro commit com a estrutura da ferramenta criada e um parágrafo dizendo o que você vai construir.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Dias 3–7</td><td style="padding:5pt 7pt">Artefatos de intenção</td><td style="padding:5pt 7pt; line-height:1.45">Spec Kit: constituição, especificação (com clarify), plano e tarefas. OpenSpec: proposta, deltas de especificação, design e tarefas. <strong>Nenhum código de produção nesta semana.</strong></td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Dias 8–12</td><td style="padding:5pt 7pt">Implementação</td><td style="padding:5pt 7pt; line-height:1.45">Commits pequenos, um por tarefa ou grupo de tarefas, cada um verificado contra a especificação.</td></tr>
+        <tr><td style="padding:5pt 7pt; font-weight:600">Dias 13–14</td><td style="padding:5pt 7pt">Fechamento e relato</td><td style="padding:5pt 7pt; line-height:1.45">Artefatos atualizados com o que a implementação revelou, mais o <code style="font-family:'IBM Plex Mono',monospace">RELATO.md</code>.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">O que entregar</h2>
+    <ol style="font-size:10.5pt; line-height:1.55; margin:0 0 14pt; padding-left:1.2em">
+      <li><strong>Link do repositório</strong> (público ou com acesso concedido), com histórico de commits — não um zip do estado final.</li>
+      <li><strong>Os artefatos da ferramenta escolhida</strong>, comitados: <code style="font-family:'IBM Plex Mono',monospace">constitution.md · spec.md · plan.md · tasks.md</code> no Spec Kit, ou <code style="font-family:'IBM Plex Mono',monospace">openspec/</code> com a pasta da mudança e os deltas no OpenSpec.</li>
+      <li><strong>O código</strong> da funcionalidade, ainda que incompleto. Funcionalidade parcial com artefatos coerentes vale mais que código completo sem rastro de intenção.</li>
+      <li><strong><code style="font-family:'IBM Plex Mono',monospace">RELATO.md</code></strong>, no máximo uma página, respondendo às cinco perguntas abaixo.</li>
+    </ol>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">As cinco perguntas do relato</h2>
+    <ol style="font-size:10.5pt; line-height:1.55; margin:0 0 14pt; padding-left:1.2em">
+      <li>Por que você escolheu essa ferramenta, e o que ela facilitou ou atrapalhou no seu caso concreto?</li>
+      <li>Qual requisito você só descobriu ao escrever a especificação — e que teria virado retrabalho se você tivesse começado pelo código?</li>
+      <li>O que a IA propôs que você recusou, e por quê?</li>
+      <li>O que mudou nos artefatos <em>durante</em> a implementação? Cite a mudança e o que a provocou.</li>
+      <li>Comparado ao laboratório 3 feito à mão, o que a ferramenta fez por você que valeu o custo de instalar e aprender?</li>
+      <li>Em que nível você acabou operando de fato — spec-first ou spec-anchored — e o que faltou para subir um degrau?</li>
+    </ol>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Em que nível você deve operar</h2>
+    <p style="font-size:10.5pt; line-height:1.5; margin:0 0 6pt">O laboratório da aula ficou em <strong>spec-first</strong>: escrevemos a intenção, geramos código e paramos ali. Neste trabalho a meta é <strong>spec-anchored</strong>: os artefatos precisam continuar verdadeiros no dia 14, atualizados pelo que a implementação revelou. Não é preciso chegar a <strong>spec-as-source</strong> — nenhuma das duas ferramentas sustenta esse nível hoje, e a tentativa gasta o tempo que deveria ir para a especificação.</p>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 14pt; color:var(--color-neutral-800)">Os três níveis seguem a taxonomia de Birgitta Böckeler (Thoughtworks), em <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html</a> — leitura recomendada antes de começar.</p>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:13pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Como será avaliado</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 12pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:34%">Critério</th><th style="padding:5pt 7pt; width:10%">Peso</th><th style="padding:5pt 7pt">O que se espera</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Qualidade da especificação</td><td style="padding:5pt 7pt">30%</td><td style="padding:5pt 7pt; line-height:1.45">Critérios de aceitação observáveis e testáveis, requisitos não funcionais escritos, casos extremos listados, nada de "como implementar".</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Rastreabilidade</td><td style="padding:5pt 7pt">25%</td><td style="padding:5pt 7pt; line-height:1.45">Dá para seguir cada requisito até uma decisão do plano, uma tarefa e um commit — e voltar.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Artefatos vivos</td><td style="padding:5pt 7pt">20%</td><td style="padding:5pt 7pt; line-height:1.45">Os arquivos mudaram junto com o entendimento, com histórico que mostra isso. Artefato intocado desde o dia 5 é sinal de que virou documentação morta.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:600">Relato crítico</td><td style="padding:5pt 7pt">15%</td><td style="padding:5pt 7pt; line-height:1.45">Respostas concretas e honestas, incluindo o que não funcionou. Elogio genérico à ferramenta não pontua.</td></tr>
+        <tr><td style="padding:5pt 7pt; font-weight:600">Código</td><td style="padding:5pt 7pt">10%</td><td style="padding:5pt 7pt; line-height:1.45">Roda, faz o que a especificação diz e respeita as restrições que você mesmo escreveu.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 12pt"><strong>Perde ponto:</strong> especificação gerada pela IA e comitada sem revisão; artefatos escritos depois do código para parecer que houve processo; tarefas grandes e vagas do tipo "implementar autenticação".</p>
+
+    <div style="height:2px; background:var(--color-text); margin:6pt 0 8pt"></div>
+    <p style="font-size:9pt; line-height:1.5; margin:0; color:var(--color-neutral-700)">Referências: módulo <em>Introdução ao desenvolvimento controlado por especificações e ao GitHub Spec Kit</em> no Microsoft Learn · Birgitta Böckeler, <em>Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl</em>, martinfowler.com · Deepak Babu Piskala, <em>Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants</em>, arXiv · <a href="https://github.com/github/spec-kit">github.com/github/spec-kit</a> · <a href="https://openspec.dev/">openspec.dev</a> · <a href="https://github.com/Fission-AI/OpenSpec/">github.com/Fission-AI/OpenSpec</a>.</p>
+  </div>
+</doc-page>
+</x-dc>
+</body>
+</html>

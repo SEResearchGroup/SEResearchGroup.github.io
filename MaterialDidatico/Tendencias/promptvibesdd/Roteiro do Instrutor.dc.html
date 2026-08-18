@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-0b1aab68-5e23-4466-a9d6-2e603dcaaf4b/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="./doc-page.js"></script>
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+  <div style="font-family:var(--font-body); color:var(--color-text)">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; font-size:9pt; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">
+      <span>Roteiro do instrutor</span><span>180 minutos · 46 slides</span>
+    </div>
+    <div style="height:2px; background:var(--color-text); margin:8pt 0 16pt"></div>
+    <h1 style="font-family:var(--font-heading); font-weight:800; font-size:26pt; line-height:1.05; letter-spacing:-0.02em; margin:0 0 10pt">Engenharia de prompt, vibe coding e spec-driven development</h1>
+    <p style="font-size:11pt; line-height:1.5; margin:0 0 6pt; max-width:38em">Aula-laboratório de três horas com ênfase em spec-driven development, baseada no módulo do Microsoft Learn <em>Introdução ao desenvolvimento controlado por especificações e ao GitHub Spec Kit</em>, com o OpenSpec apresentado como segunda ferramenta. Três laboratórios curtos, um por tema — nenhum deles exige instalação. O trabalho para casa, de duas semanas, é onde o aluno instala e usa uma das duas ferramentas.</p>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 18pt; color:var(--color-neutral-700)">Cada bloco abaixo traz o tempo acumulado, os slides correspondentes, o que dizer e onde a turma tende a travar. Os cronômetros dos laboratórios estão nos próprios slides; o botão fica no canto direito.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 8pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Preparação — antes da aula</h2>
+    <ul style="font-size:10.5pt; line-height:1.55; margin:0 0 18pt; padding-left:1.1em">
+      <li>Enviar o handout. <strong>Nada precisa ser instalado para a aula</strong> — os três laboratórios rodam com um editor de texto e o chat de IA que o aluno já tiver. As instalações valem para o trabalho de casa.</li>
+      <li>O slide 36 simula o fluxo do Spec Kit comando por comando — use-o em vez de demo ao vivo, já que não instalamos nada em sala.</li>
+      <li>Abrir os slides em tela cheia e conferir que os botões dos slides interativos respondem ao clique (8, 15, 23, 26, 30, 36, 40).</li>
+      <li>Ajustar a duração dos laboratórios nos controles do arquivo de slides se a turma for maior que 20 pessoas. Levar impresso ou enviar antes o documento <em>Trabalho para Casa</em>.</li>
+    </ul>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Bloco de abertura · 00:00 → 00:10 · slides 1–4</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:16%">Tempo</th><th style="padding:6pt 8pt; width:14%">Slide</th><th style="padding:6pt 8pt">O que fazer e dizer</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">0–3</td><td style="padding:6pt 8pt">1</td><td style="padding:6pt 8pt; line-height:1.45">Abrir com o recorte: não é aula de ferramenta, é sobre onde a intenção do software mora. Perguntar quem já usa IA para escrever código no trabalho — contar as mãos em voz alta.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">3–6</td><td style="padding:6pt 8pt">2–3</td><td style="padding:6pt 8pt; line-height:1.45">Contratar o tempo. Formar as duplas agora, misturando quem vem de produto ou QA com quem vem de desenvolvimento. Deixar claro que o cronômetro manda.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">6–10</td><td style="padding:6pt 8pt">4</td><td style="padding:6pt 8pt; line-height:1.45">As três colunas são o esqueleto da aula: prompt vive uma mensagem, vibe coding vive uma sessão, spec-driven vive no repositório. Não detalhar — elas voltam no slide 40.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Bloco 01 · engenharia de prompt · 00:10 → 00:55 · slides 5–11</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:16%">Tempo</th><th style="padding:6pt 8pt; width:14%">Slide</th><th style="padding:6pt 8pt">O que fazer e dizer</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">10–16</td><td style="padding:6pt 8pt">5–6</td><td style="padding:6pt 8pt; line-height:1.45">Definição sem misticismo: um modelo preenche lacunas, e engenharia de prompt reduz o espaço de invenção. Usar a pergunta de controle do slide como régua de toda a aula.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">16–22</td><td style="padding:6pt 8pt">7</td><td style="padding:6pt 8pt; line-height:1.45">Passar rápido pelos seis blocos. Frase-chave: quase nenhum prompt precisa dos seis, mas todo prompt ruim está faltando um deles.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">22–28</td><td style="padding:6pt 8pt"><strong>8</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Escolher um dos três casos nos botões. Mostrar só o lado ruim e pedir três respostas da turma sobre o que falta. Só então clicar em <em>Revelar</em>. Repetir com um segundo caso se sobrar tempo.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">28–33</td><td style="padding:6pt 8pt">9–10</td><td style="padding:6pt 8pt; line-height:1.45">Cinco técnicas, uma frase cada; a que importa é iteração dirigida. Nos anti-padrões, pedir que levantem a mão quem cometeu cada um hoje — todos levantam em pelo menos dois.</td></tr>
+        <tr><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">33–55</td><td style="padding:6pt 8pt"><strong>11</strong> · lab 1</td><td style="padding:6pt 8pt; line-height:1.45">Ler os quatro passos, iniciar o cronômetro de 20 min e circular pelas duplas nos primeiros cinco minutos. Fechar pedindo dois prompts lidos em voz alta e uma suposição surpreendente.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Bloco 02 · vibe coding · 00:55 → 01:25 · slides 12–16</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:16%">Tempo</th><th style="padding:6pt 8pt; width:14%">Slide</th><th style="padding:6pt 8pt">O que fazer e dizer</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">55–62</td><td style="padding:6pt 8pt">12–13</td><td style="padding:6pt 8pt; line-height:1.45">Ler a citação da Microsoft na tela — é a definição que o módulo usa e que vamos manter. Sublinhar "cada sessão de chat opera isolada".</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">62–66</td><td style="padding:6pt 8pt">14</td><td style="padding:6pt 8pt; line-height:1.45">Não demonizar: o próprio módulo lista onde abordagens mais leves são apropriadas. Perguntar quem reconhece um caso da coluna esquerda no trabalho.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">66–70</td><td style="padding:6pt 8pt"><strong>15</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Mostrar o caminho A e pedir que a turma preveja o que quebra antes de alternar para o B. É a transição para o bloco 3.</td></tr>
+        <tr><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">70–85</td><td style="padding:6pt 8pt"><strong>16</strong> · lab 2</td><td style="padding:6pt 8pt; line-height:1.45">15 min. Insistir: o objetivo não é o código, é o <code style="font-family:'IBM Plex Mono',monospace">suposicoes.md</code>. Ele é a matéria-prima do laboratório 3, então ninguém pode perdê-lo.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Intervalo · 01:25 → 01:35 · slide 17</h2>
+    <p style="font-size:10.5pt; line-height:1.5; margin:0 0 18pt">Deixar o cronômetro de 10 minutos rodando na tela. Use o intervalo para verificar quem não conseguiu instalar nada e rearranjar duplas antes do laboratório 3.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Bloco 03 · spec-driven development · 01:35 → 02:20 · slides 18–40</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:16%">Tempo</th><th style="padding:6pt 8pt; width:14%">Slide</th><th style="padding:6pt 8pt">O que fazer e dizer</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">95–104</td><td style="padding:6pt 8pt">18–20</td><td style="padding:6pt 8pt; line-height:1.45">O slide 19 é o eixo da aula: as especificações não servem ao código, o código atende às especificações. Ler devagar e deixar assentar. No 20, a frase que fecha: documentar melhor tenta restringir a lacuna; o SDD a elimina.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">104–110</td><td style="padding:6pt 8pt">21–22</td><td style="padding:6pt 8pt; line-height:1.45">Dos quatro recursos, insistir em documentação dinâmica: depurar passa a ser corrigir a especificação. A terceira tendência é a que convence gestão: pivô deixa de ser interrupção.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">110–120</td><td style="padding:6pt 8pt"><strong>23</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Clicar as quatro fases em ordem e ler saída e ponto de verificação de cada uma. Este slide substitui três slides de tópicos — não corra.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">120–126</td><td style="padding:6pt 8pt">24–25</td><td style="padding:6pt 8pt; line-height:1.45">Artefatos vivos e a divisão de papéis. Frase para a turma mista: humanos dão direção e verificação, a IA dá rascunho.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">126–133</td><td style="padding:6pt 8pt"><strong>26</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Percorrer as seis seções do <code style="font-family:'IBM Plex Mono',monospace">spec.md</code>. Perguntar qual delas costuma faltar: a resposta quase sempre é casos extremos.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">133–142</td><td style="padding:6pt 8pt">27–29</td><td style="padding:6pt 8pt; line-height:1.45">Fases 2 a 4. Destacar a verificação da constituição — é o gancho do Spec Kit — e a separação entre spec e plano (trocar de banco muda o plano, não a spec).</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">142–147</td><td style="padding:6pt 8pt"><strong>30</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Perguntar qual metodologia a turma usa e abrir só aquela coluna. Não leia a tabela inteira. Fechar no slide 31 com honestidade: é ferramenta de repertório, não bala de prata.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">147–152</td><td style="padding:6pt 8pt"><strong>32</strong></td><td style="padding:6pt 8pt; line-height:1.45">Os três níveis — spec-first, spec-anchored, spec-as-source. Atribuir a taxonomia a Birgitta Böckeler (Thoughtworks, martinfowler.com) e usar a frase de fecho: o erro não é escolher o nível errado, é não saber em qual você está. Pergunte à turma em qual nível o time deles opera hoje: a resposta honesta quase sempre é "spec-once". Diga onde nos posicionamos: o laboratório é spec-first, o trabalho de casa deve chegar a spec-anchored.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">152–158</td><td style="padding:6pt 8pt">33–35</td><td style="padding:6pt 8pt; line-height:1.45">Spec Kit: "um copiloto para o seu copiloto", e não é um modelo de IA. O slide 35 (instalação) é referência para o trabalho de casa — aponte e siga, sem ler linha por linha.</td></tr>
+        <tr><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">158–165</td><td style="padding:6pt 8pt"><strong>36–37</strong></td><td style="padding:6pt 8pt; line-height:1.45">Avançar o simulador comando por comando, narrando o que cada um produz — é a substituta da demo. Em 37, destacar <code style="font-family:'IBM Plex Mono',monospace">/speckit.analyze</code>: no laboratório a turma vai fazer isso à mão.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">165–172</td><td style="padding:6pt 8pt"><strong>38–39</strong></td><td style="padding:6pt 8pt; line-height:1.45">OpenSpec como segunda ferramenta: mesma ideia, camada mais leve, unidade de trabalho é a mudança e não a fase. No comparativo, diga em voz alta que o "completo, mas pesado" sobre o Spec Kit vem da documentação do próprio OpenSpec — não é veredito neutro. As duas são as opções do trabalho de casa.</td></tr>
+        <tr><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">172–176</td><td style="padding:6pt 8pt"><strong>40</strong> · interativo</td><td style="padding:6pt 8pt; line-height:1.45">Usar o checklist como verificação coletiva antes de soltar a turma para o laboratório — ele volta durante o lab.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 10pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Laboratório 3 e fecho · 02:20 → 03:00 · slides 41–46</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:16%">Tempo</th><th style="padding:6pt 8pt; width:14%">Slide</th><th style="padding:6pt 8pt">O que fazer e dizer</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">140–175</td><td style="padding:6pt 8pt"><strong>41–42</strong></td><td style="padding:6pt 8pt; line-height:1.45">35 min, <strong>sem framework</strong>: pasta <code style="font-family:'IBM Plex Mono',monospace">spec/</code> e quatro arquivos escritos à mão, com a turma fazendo o papel do clarify e do analyze. Anunciar os marcos: constituição em 8, spec clarificada em 18, plano e tarefas com analyze em 28. Se atrasar, pare em <code style="font-family:'IBM Plex Mono',monospace">tasks.md</code> — a implementação é a parte menos importante hoje. Frase de fecho do lab: "o que vocês acabaram de fazer à mão é exatamente o que as duas ferramentas automatizam".</td></tr>
+        <tr><td style="padding:6pt 8pt; font-family:'IBM Plex Mono',monospace">175–180</td><td style="padding:6pt 8pt">43–46</td><td style="padding:6pt 8pt; line-height:1.45">Passar o trabalho de casa no slide 43 — duas semanas, ferramenta à escolha, entrega por repositório com <code style="font-family:'IBM Plex Mono',monospace">RELATO.md</code>; o enunciado completo está no documento. Depois retomar as três colunas e fechar com a pergunta do slide 44. Os slides 45 e 46 são as referências: módulo da Microsoft na ordem e leitura complementar — deixe o 46 aberto enquanto a sala se desfaz.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:14pt; margin:0 0 8pt; padding-bottom:4pt; border-bottom:2px solid var(--color-text)">Planos de contingência</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:10pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:6pt 8pt; width:34%">Se acontecer</th><th style="padding:6pt 8pt">Faça</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-weight:600">Rede cai ou a IA fica indisponível</td><td style="padding:6pt 8pt; line-height:1.45">O laboratório 3 já é à mão: as duplas escrevem os quatro arquivos e trocam entre si o papel do clarify e do analyze, sem IA nenhuma.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-weight:600">Alguém sem máquina ou sem IA</td><td style="padding:6pt 8pt; line-height:1.45">Trios em volta de uma máquina; quem não digita assume o papel de revisor da especificação e conduz o checklist do slide 40.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6pt 8pt; font-weight:600">Atraso de 15 minutos ou mais</td><td style="padding:6pt 8pt; line-height:1.45">Corte o laboratório 2 para 8 minutos (só os passos 1 e 4) e o slide 35. Nunca corte os slides 23, 26, 32 e 39 nem o laboratório 3 — o 32 dá o vocabulário e o 39 sustenta a escolha do trabalho de casa.</td></tr>
+        <tr><td style="padding:6pt 8pt; font-weight:600">Turma muito adiantada</td><td style="padding:6pt 8pt; line-height:1.45">Peça um segundo <code style="font-family:'IBM Plex Mono',monospace">plan.md</code> com outra pilha, a partir da mesma especificação, e uma comparação dos dois. É o argumento de "várias abordagens de implementação" do slide 31. Outra opção: pedir que classifiquem o próprio lab nos níveis do slide 32 e digam o que faltaria para chegar a spec-anchored.</td></tr>
+      </tbody>
+    </table>
+
+    <div style="height:2px; background:var(--color-text); margin:6pt 0 8pt"></div>
+    <p style="font-size:9pt; line-height:1.5; margin:0; color:var(--color-neutral-700)">Conteúdo conceitual e citações do módulo <em>Introdução ao desenvolvimento controlado por especificações e ao GitHub Spec Kit</em>, Microsoft Learn (unidades 1 a 11), reproduzidos para fins didáticos. Os três níveis de SDD seguem a taxonomia de Birgitta Böckeler (Thoughtworks) em martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html. Ferramentas: github.com/github/spec-kit · openspec.dev · github.com/Fission-AI/OpenSpec. Documentos de apoio: Handout do Aluno e Trabalho para Casa.</p>
+  </div>
+</doc-page>
+</x-dc>
+</body>
+</html>
