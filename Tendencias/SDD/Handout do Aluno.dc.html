@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-0b1aab68-5e23-4466-a9d6-2e603dcaaf4b/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="./doc-page.js"></script>
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+<doc-page margin="0.6in">
+  <div style="font-family:var(--font-body); color:var(--color-text)">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; font-size:8.5pt; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">
+      <span>Handout do aluno</span><span>Aula de 3 horas · leve para o trabalho</span>
+    </div>
+    <div style="height:2px; background:var(--color-text); margin:7pt 0 14pt"></div>
+    <h1 style="font-family:var(--font-heading); font-weight:800; font-size:23pt; line-height:1.05; letter-spacing:-0.02em; margin:0 0 12pt">Prompt, vibe coding e spec-driven development</h1>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12pt; margin:0 0 16pt">
+      <div style="border:2px solid var(--color-text); padding:9pt 10pt">
+        <div style="font-size:8pt; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); margin-bottom:4pt">Prompt</div>
+        <div style="font-size:9.5pt; line-height:1.4">Vive uma mensagem. Toda lacuna é uma decisão que a IA toma no seu lugar.</div>
+      </div>
+      <div style="border:2px solid var(--color-text); padding:9pt 10pt">
+        <div style="font-size:8pt; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); margin-bottom:4pt">Vibe coding</div>
+        <div style="font-size:9.5pt; line-height:1.4">Vive uma sessão. Rápido para descobrir se algo é possível; sem memória entre conversas.</div>
+      </div>
+      <div style="border:2px solid var(--color-accent); background:var(--color-accent-100); padding:9pt 10pt">
+        <div style="font-size:8pt; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); margin-bottom:4pt">Spec-driven</div>
+        <div style="font-size:9.5pt; line-height:1.4">Vive no repositório. A especificação é o artefato primário; o código é a saída.</div>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Os seis blocos de um bom prompt</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3pt 18pt; font-size:10pt; line-height:1.45; margin:0 0 16pt">
+      <div><strong>Papel</strong> — quem responde, com que vocabulário.</div>
+      <div><strong>Restrições</strong> — bibliotecas, limites, o que é proibido.</div>
+      <div><strong>Contexto</strong> — stack, versões, o que não pode quebrar.</div>
+      <div><strong>Formato</strong> — arquivo único, diff, tabela, JSON.</div>
+      <div><strong>Tarefa</strong> — um verbo, um alvo.</div>
+      <div><strong>Exemplos</strong> — um par entrada/saída resolvido.</div>
+    </div>
+    <p style="font-size:10pt; line-height:1.45; margin:0 0 16pt; border-left:4px solid var(--color-accent); padding-left:10pt">Régua: <em>duas pessoas competentes leriam esse pedido e construiriam a mesma coisa?</em> Se não, a IA vai escolher por você. Ao corrigir, não repita o pedido: diga qual parte está errada e por quê.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">As quatro fases do SDD</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:9.5pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:16%">Fase</th><th style="padding:5pt 7pt; width:30%">Pergunta</th><th style="padding:5pt 7pt; width:26%">Saída</th><th style="padding:5pt 7pt">Ponto de verificação</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">Especificar</td><td style="padding:5pt 7pt">O quê e por quê, não como</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">spec.md</td><td style="padding:5pt 7pt">A especificação está completa e clara?</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">Planejar</td><td style="padding:5pt 7pt">Como construir isso</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">plan.md</td><td style="padding:5pt 7pt">O plano é viável e detalhado o suficiente?</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">Tarefas</td><td style="padding:5pt 7pt">Em que pedaços isso se divide</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">tasks.md</td><td style="padding:5pt 7pt">As tarefas cobrem todos os requisitos?</td></tr>
+        <tr><td style="padding:5pt 7pt; font-weight:700">Implementar</td><td style="padding:5pt 7pt">Código, tarefa por tarefa</td><td style="padding:5pt 7pt">Código testado</td><td style="padding:5pt 7pt">O código foi validado contra a especificação?</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Três níveis de rigor</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:9.5pt; margin:0 0 8pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:20%">Nível</th><th style="padding:5pt 7pt; width:44%">O que acontece com a spec</th><th style="padding:5pt 7pt">Quando faz sentido</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">Spec-first</td><td style="padding:5pt 7pt; line-height:1.45">Escrita antes, gera a implementação inicial, depois não é mais mantida. É andaime.</td><td style="padding:5pt 7pt; line-height:1.45">Exploração, ferramenta descartável. Onde quase todo time começa.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt; font-weight:700">Spec-anchored</td><td style="padding:5pt 7pt; line-height:1.45">Vive ao lado do código; requisito muda, a spec muda primeiro e a implementação é verificada contra ela.</td><td style="padding:5pt 7pt; line-height:1.45">Quando a deriva é cara: contrato de API, vários times, sistema que precisa durar.</td></tr>
+        <tr><td style="padding:5pt 7pt; font-weight:700">Spec-as-source<br>(spec-as-code)</td><td style="padding:5pt 7pt; line-height:1.45">A spec <em>é</em> o fonte; o código é gerado e nunca editado à mão.</td><td style="padding:5pt 7pt; line-height:1.45">Experimental, ou domínio regulado e auditável.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:9.5pt; line-height:1.45; margin:0 0 16pt; color:var(--color-neutral-800)">Taxonomia de Birgitta Böckeler (Thoughtworks). O erro comum não é escolher o nível errado — é não saber em qual você está, e pagar o custo do nível de cima colhendo o benefício do de baixo.</p>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">As seis seções de um <span style="font-family:'IBM Plex Mono',monospace; font-weight:500">spec.md</span></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3pt 18pt; font-size:10pt; line-height:1.45; margin:0 0 16pt">
+      <div><strong>Resumo</strong> — o recurso em uma ou duas frases.</div>
+      <div><strong>Requisitos funcionais</strong> — comportamento do sistema.</div>
+      <div><strong>Histórias do usuário</strong> — intenção e valor.</div>
+      <div><strong>Requisitos não funcionais</strong> — segurança, desempenho.</div>
+      <div><strong>Critérios de aceitação</strong> — fatos observáveis e testáveis.</div>
+      <div><strong>Casos extremos</strong> — erro, fronteira, cenário raro.</div>
+    </div>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Duas ferramentas — instalar em casa</h2>
+    <div style="border:2px solid var(--color-text); background:var(--color-neutral-900); color:#f4f2f2; padding:10pt 12pt; font-family:'IBM Plex Mono',monospace; font-size:9pt; line-height:1.7; margin:0 0 10pt">
+      <div style="color:var(--color-neutral-500)"># pré-requisitos: Python 3.11+, Git, um assistente de IA configurado</div>
+      <div style="color:var(--color-neutral-500)"># uv — macOS e Linux</div>
+      <div>curl -LsSf https://astral.sh/uv/install.sh | sh</div>
+      <div style="color:var(--color-neutral-500)"># uv — Windows, no PowerShell</div>
+      <div>powershell -c "irm https://astral.sh/uv/install.ps1 | iex"</div>
+      <div style="color:var(--color-neutral-500)"># CLI specify — instalação global (recomendada)</div>
+      <div>uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</div>
+      <div style="color:var(--color-neutral-500)"># uso único, sem instalar</div>
+      <div>uvx --from git+https://github.com/github/spec-kit.git specify init</div>
+      <div style="color:var(--color-neutral-500)"># conferir</div>
+      <div style="color:#ff9783">specify check</div>
+    </div>
+    <div style="border:2px solid var(--color-accent); background:var(--color-accent-100); padding:9pt 11pt; font-family:'IBM Plex Mono',monospace; font-size:9pt; line-height:1.7; margin:0 0 10pt">
+      <div style="color:var(--color-accent-700)"># OpenSpec — requer Node.js 20.19+</div>
+      <div>npm install -g @fission-ai/openspec@latest</div>
+      <div>cd seu-projeto &amp;&amp; openspec init</div>
+      <div style="color:var(--color-accent-700)"># no chat do agente: /opsx:propose · /opsx:apply · /opsx:archive</div>
+    </div>
+    <p style="font-size:9.5pt; line-height:1.45; margin:0 0 16pt; color:var(--color-neutral-800)">Comando não encontrado? Feche e reabra o terminal, confira o PATH (no Windows pode ser preciso reiniciar) e rode <code style="font-family:'IBM Plex Mono',monospace">uv tool list</code> para ver se o specify-cli aparece. Agentes suportados: GitHub Copilot, Claude Code, Cursor, Windsurf, Amazon Q, Gemini CLI e outros — os artefatos são idênticos em qualquer um.</p>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">O fluxo do Spec Kit, na ordem</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:9.5pt; margin:0 0 16pt">
+      <thead><tr style="background:var(--color-text); color:#fff; text-align:left"><th style="padding:5pt 7pt; width:6%">#</th><th style="padding:5pt 7pt; width:32%">Comando</th><th style="padding:5pt 7pt; width:20%">Saída</th><th style="padding:5pt 7pt">Seu trabalho</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">1</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">specify init nome-do-projeto</td><td style="padding:5pt 7pt">estrutura</td><td style="padding:5pt 7pt">Escolher o agente que você usa de verdade.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">2</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.constitution</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">constitution.md</td><td style="padding:5pt 7pt">Revisar com cuidado: a IA usa isso em tudo.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">3</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.specify &lt;descrição&gt;</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">spec.md</td><td style="padding:5pt 7pt">Conferir integridade, corrigir, completar, remover.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">4</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.clarify</td><td style="padding:5pt 7pt">spec.md atualizada</td><td style="padding:5pt 7pt">Responder às perguntas de ambiguidade.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">5</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.plan &lt;pilha e restrições&gt;</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">plan.md</td><td style="padding:5pt 7pt">Ver se a arquitetura cobre toda a especificação.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">6</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.tasks</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">tasks.md</td><td style="padding:5pt 7pt">Quebrar tarefas vagas ou grandes demais.</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:5pt 7pt">7</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.analyze</td><td style="padding:5pt 7pt">relatório</td><td style="padding:5pt 7pt">Corrigir o que aparecer antes de implementar.</td></tr>
+        <tr><td style="padding:5pt 7pt">8</td><td style="padding:5pt 7pt; font-family:'IBM Plex Mono',monospace">/speckit.implement</td><td style="padding:5pt 7pt">código</td><td style="padding:5pt 7pt">Verificar cada tarefa contra spec, plano e constituição.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Os três laboratórios</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12pt; margin:0 0 16pt; font-size:9.5pt; line-height:1.45">
+      <div style="border-top:2px solid var(--color-accent); padding-top:6pt">
+        <div style="font-weight:800; font-family:var(--font-heading); font-size:11pt; margin-bottom:4pt">Lab 1 · 20 min</div>
+        Peça um validador de feed em uma frase. Liste tudo que a IA decidiu sozinha. Reescreva com os seis blocos e rode em sessão nova. Entregue <code style="font-family:'IBM Plex Mono',monospace">prompts.md</code>.
+      </div>
+      <div style="border-top:2px solid var(--color-accent); padding-top:6pt">
+        <div style="font-weight:800; font-family:var(--font-heading); font-size:11pt; margin-bottom:4pt">Lab 2 · 15 min</div>
+        Vibe code um leitor de RSS. Peça uma mudança em sessão limpa e observe o que a IA desconhece. Entregue <code style="font-family:'IBM Plex Mono',monospace">suposicoes.md</code>.
+      </div>
+      <div style="border-top:2px solid var(--color-accent); padding-top:6pt">
+        <div style="font-weight:800; font-family:var(--font-heading); font-size:11pt; margin-bottom:4pt">Lab 3 · 35 min</div>
+        SDD à mão, sem framework: escreva <code style="font-family:'IBM Plex Mono',monospace">constitution.md</code>, <code style="font-family:'IBM Plex Mono',monospace">spec.md</code>, <code style="font-family:'IBM Plex Mono',monospace">plan.md</code> e <code style="font-family:'IBM Plex Mono',monospace">tasks.md</code> na pasta <code style="font-family:'IBM Plex Mono',monospace">spec/</code>, fazendo o papel de clarify e analyze você mesmo.
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Antes de virar a especificação em plano</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2pt 18pt; font-size:10pt; line-height:1.5; margin:0 0 16pt">
+      <div>☐ Cada história tem critério de aceitação observável.</div>
+      <div>☐ Nada descreve <em>como</em> implementar — só o quê e por quê.</div>
+      <div>☐ Os critérios são testáveis sem te perguntar nada.</div>
+      <div>☐ Nenhum requisito depende de conhecimento não escrito.</div>
+      <div>☐ Segurança e desempenho estão escritos.</div>
+      <div>☐ Suposições abertas estão marcadas como perguntas.</div>
+      <div>☐ Casos extremos e erros estão listados.</div>
+      <div>☐ Outro desenvolvedor entenderia sem reunião.</div>
+    </div>
+
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Trabalho para casa · duas semanas</h2>
+    <p style="font-size:10pt; line-height:1.5; margin:0 0 6pt">Uma funcionalidade real levada da intenção ao código com <strong>uma</strong> das duas ferramentas, à sua escolha. Semana 1: só artefatos de intenção. Semana 2: implementação, com os artefatos atualizados pelo que você descobrir. Entrega: repositório com histórico, artefatos, código e um <code style="font-family:'IBM Plex Mono',monospace">RELATO.md</code> de uma página. O enunciado completo, com critérios de avaliação, está no documento do trabalho.</p>
+    <p style="font-size:9.5pt; line-height:1.45; margin:0 0 16pt; color:var(--color-neutral-800)"><strong>Spec Kit</strong> — fases explícitas, constituição formal, bom para começar do zero. <strong>OpenSpec</strong> — unidade de trabalho é a mudança, sem portões de fase, pensado para código que já existe.</p>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:12.5pt; margin:0 0 7pt; padding-bottom:3pt; border-bottom:2px solid var(--color-text)">Para continuar</h2>
+    <p style="font-size:9.5pt; line-height:1.5; margin:0 0 4pt">Os três níveis: Birgitta Böckeler, <em>Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl</em> — <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html</a> · Podcast Thoughtworks, <a href="https://www.thoughtworks.com/insights/podcasts/technology-podcasts/what-is-spec-driven-development">What is spec-driven development?</a> · Deepak Babu Piskala, <em>Spec-Driven Development: From Code to Contract</em>, <a href="https://arxiv.org/html/2602.00180v1">arXiv</a> · <a href="https://www.ibm.com/think/topics/spec-driven-development">IBM Think</a>.</p>
+    <p style="font-size:9.5pt; line-height:1.5; margin:0 0 4pt">Módulo completo, na ordem da aula: <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/">Introdução ao desenvolvimento controlado por especificações e ao GitHub Spec Kit</a> — unidades 1 a 11, incluindo o exercício guiado de aplicativo greenfield e a avaliação do módulo. Repositórios: <a href="https://github.com/github/spec-kit">github.com/github/spec-kit</a> e <a href="https://github.com/Fission-AI/OpenSpec/">github.com/Fission-AI/OpenSpec</a> · <a href="https://openspec.dev/">openspec.dev</a>.</p>
+    <p style="font-size:8.5pt; line-height:1.5; margin:0; color:var(--color-neutral-700)">Conteúdo conceitual e citações do módulo Microsoft Learn, reproduzidos para fins didáticos.</p>
+  </div>
+</doc-page>
+</x-dc>
+</body>
+</html>

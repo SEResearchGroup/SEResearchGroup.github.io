@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); }
+  a { color: var(--color-accent-700); }
+  a:hover { color: var(--color-accent); }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Capa" data-screen-label="01" style="padding:96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="display:flex; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; color:var(--color-neutral-700)">
+    <span>Laboratório </span>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:44px">
+    <div style="height:2px; background:var(--color-text)"></div>
+    <h1 style="font-family:var(--font-heading); font-weight:800; font-size:132px; line-height:0.96; letter-spacing:-0.03em; margin:0; max-width:1500px">Engenharia de prompt, vibe coding e spec-driven development</h1>
+    <p style="font-size:38px; line-height:1.35; margin:0; max-width:1180px; color:var(--color-neutral-800)">Três formas de pedir software a uma IA.</p>
+    <div style="height:2px; background:var(--color-divider)"></div>
+    <div style="display:flex; gap:64px; font-size:26px; color:var(--color-neutral-700)">
+      <span>Profa. Karina Kohl</span>
+      
+      <span>2026/2</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Mapa da aula" data-screen-label="02"  style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:40px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Mapa</span><span></span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:72px; line-height:1.02; letter-spacing:-0.02em; margin:0">Como a aula se divide</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:32px 28px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">Bloco 01 </span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:40px; line-height:1.05">Engenharia de prompt</span>
+      <span style="font-size:26px; color:var(--color-neutral-800); line-height:1.4">Anatomia do prompt, técnicas, anti-padrões</span>
+      <span style="font-size:24px; font-weight:600; margin-top:auto">Lab 1</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px 28px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">Bloco 02</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:40px; line-height:1.05">Vibe coding</span>
+      <span style="font-size:26px; color:var(--color-neutral-800); line-height:1.4">O que é, onde serve, onde falha</span>
+      <span style="font-size:24px; font-weight:600; margin-top:auto">Lab 2</span>
+    </div>
+    <div style="background:var(--color-accent-100); padding:32px 28px; display:flex; flex-direction:column; gap:14px; border-left:2px solid var(--color-accent)">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">Bloco 03</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:40px; line-height:1.05">Spec-driven development</span>
+      <span style="font-size:26px; color:var(--color-neutral-800); line-height:1.4">Quatro fases, artefatos vivos, Spec Kit e OpenSpec</span>
+      <span style="font-size:24px; font-weight:600; margin-top:auto">Lab 3</span>
+    </div>
+  </div>
+  
+</section>
+
+<section data-label="Como trabalhamos" data-screen-label="03" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:40px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Abertura</span><span>Combinados</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:72px; line-height:1.02; letter-spacing:-0.02em; margin:0">Como vamos trabalhar</h2>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-divider)">
+    <div style="background:var(--color-bg); padding:30px 34px 30px 0; display:flex; flex-direction:column; gap:10px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Em duplas, uma máquina por dupla</span>
+      
+    </div>
+    <div style="background:var(--color-bg); padding:30px 0 30px 34px; display:flex; flex-direction:column; gap:10px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Tudo que a IA produz fica no repositório</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Prompts, especificações e planos são entregáveis da aula, não rascunho descartável.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:30px 34px 30px 0; display:flex; flex-direction:column; gap:10px; border-top:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">O cronômetro na tela manda</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Quando zera, paramos onde está. Laboratório inacabado é resultado válido.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:30px 0 30px 34px; display:flex; flex-direction:column; gap:10px; border-top:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Turma mista é proposital</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Quem vem de produto ou QA escreve a especificação; quem vem de dev conduz o plano.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Três modos de pedir" data-screen-label="04" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:40px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Abertura</span><span>Recorte</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:72px; line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:1400px">Três modos de pedir a mesma coisa</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:80px; font-family:var(--font-heading); font-weight:800; color:var(--color-neutral-400); line-height:1">01</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:38px">Prompt solto</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Uma frase, uma resposta. O que a IA presume, ninguém registrou.</span>
+      <span style="font-size:24px; margin-top:auto; color:var(--color-accent-700); font-weight:600">Vive uma mensagem</span>
+    </div>
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:80px; font-family:var(--font-heading); font-weight:800; color:var(--color-neutral-400); line-height:1">02</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:38px">Vibe coding</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Conversa fluida até o código parecer certo. Cada sessão começa do zero.</span>
+      <span style="font-size:24px; margin-top:auto; color:var(--color-accent-700); font-weight:600">Vive uma sessão</span>
+    </div>
+    <div style="background:var(--color-accent-100); padding:34px 30px; display:flex; flex-direction:column; gap:18px; border-left:2px solid var(--color-accent)">
+      <span style="font-size:80px; font-family:var(--font-heading); font-weight:800; color:var(--color-accent); line-height:1">03</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:38px">Spec-driven</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">A intenção vira arquivo versionado. O código é a saída, não a fonte.</span>
+      <span style="font-size:24px; margin-top:auto; color:var(--color-accent-700); font-weight:600">Vive no repositório</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Divisor 01" data-screen-label="05" style="padding:96px; background:var(--color-accent); color:#ffffff; font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="font-size:24px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700">Bloco 01</div>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="height:2px; background:#ffffff"></div>
+    <span style="font-size:220px; font-family:var(--font-heading); font-weight:800; line-height:0.85; letter-spacing:-0.04em">01</span>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:104px; line-height:0.98; letter-spacing:-0.03em; margin:0">Engenharia de prompt</h2>
+    <p style="font-size:36px; margin:0; max-width:1100px; line-height:1.35">Projetar a entrada para que a saída deixe de ser sorte.</p>
+  </div>
+</section>
+
+<section data-label="O que é engenharia de prompt" data-screen-label="06" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:40px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>01 · Engenharia de prompt</span><span>Definição</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:72px; line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:1500px">Engenharia de prompt é controlar o que a IA não vai precisar adivinhar</h2>
+  <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:26px; font-size:30px; line-height:1.45; color:var(--color-neutral-900)">
+      <p style="margin:0">Um modelo preenche lacunas. <strong> informação que você não dá, ele inventa,</strong> de forma plausível, consistente com o que já viu, e frequentemente diferente do que você queria.</p>
+      <p style="margin:0">Engenharia de prompt é a disciplina de reduzir esse espaço de invenção: papel, contexto, tarefa, restrições, formato e exemplos.</p>
+      <p style="margin:0; font-weight:600">É a mesma ideia do spec-driven development, na escala de uma mensagem em vez de um projeto.</p>
+    </div>
+    <div style="border:2px solid var(--color-text); padding:34px; display:flex; flex-direction:column; gap:18px; background:var(--color-neutral-100)">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">A pergunta de controle</span>
+      <span style="font-size:34px; line-height:1.3; font-family:var(--font-heading); font-weight:700">"Duas pessoas competentes leriam esse pedido e construiriam a mesma coisa?"</span>
+      <span style="font-size:26px; line-height:1.4; color:var(--color-neutral-800)">Se a resposta é não, o prompt está incompleto e a IA vai escolher por você.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Anatomia do prompt" data-screen-label="07" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>01 · Engenharia de prompt</span><span>Anatomia</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Seis blocos de um prompt de engenharia</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:1fr 1fr; gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Papel</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Quem responde</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Define vocabulário e nível de detalhe. "Revisor de segurança", não "assistente".</span>
+    </div>
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Contexto</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Onde isso vive</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Stack, versões, arquivos relevantes, o que já existe e não pode quebrar.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Tarefa</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Um verbo, um alvo</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Duas tarefas em um prompt viram duas respostas medianas.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Restrições</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">O que é proibido</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Bibliotecas permitidas, limites de desempenho, regras de segurança.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Formato</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Forma da saída</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Arquivo único, diff, tabela, JSON. Sem isso, você recebe prosa.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:28px 26px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Exemplos</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Um caso resolvido</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Um par entrada/saída corrige mais que três parágrafos de instrução.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Comparador de prompts" data-screen-label="08" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:28px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>01 · Engenharia de prompt</span><span>Interativo </span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:60px; line-height:1.02; letter-spacing:-0.02em; margin:0">Prompt ruim → prompt bom</h2>
+  <div style="display:flex; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+    <sc-for list="{{ promptTabs }}" as="tab" hint-placeholder-count="3">
+      <button onClick="{{ tab.onClick }}" style="flex:1; border:none; padding:20px 24px; text-align:left; font-family:var(--font-body); font-size:26px; font-weight:600; cursor:pointer; background:{{ tab.bg }}; color:{{ tab.fg }}">{{ tab.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); flex:1; border:2px solid var(--color-text)">
+    <div style="background:var(--color-neutral-100); padding:32px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Como se pede normalmente</span>
+      <div style="font-family:'IBM Plex Mono', monospace; font-size:27px; line-height:1.5; background:var(--color-bg); border-left:6px solid var(--color-neutral-500); padding:22px 24px">{{ promptSel.ruim }}</div>
+      <span style="font-size:26px; line-height:1.4; color:var(--color-neutral-800)"><strong>A IA precisa adivinhar:</strong> {{ promptSel.adivinha }}</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:18px">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Como se pede com engenharia</span>
+        <button onClick="{{ togglePrompt }}" style="border:2px solid var(--color-accent); background:{{ revealBg }}; color:{{ revealFg }}; font-family:var(--font-body); font-size:24px; font-weight:700; padding:10px 18px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ revealLabel }}</button>
+      </div>
+      <sc-if value="{{ promptRevealed }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:18px">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.5; background:var(--color-accent-100); border-left:6px solid var(--color-accent); padding:22px 24px; white-space:pre-wrap">{{ promptSel.bom }}</div>
+          <span style="font-size:26px; line-height:1.4; color:var(--color-neutral-800)"><strong>O que mudou:</strong> {{ promptSel.mudou }}</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ promptHidden }}" hint-placeholder-val="{{ false }}">
+        <span style="font-size:28px; line-height:1.45; color:var(--color-neutral-600); border:2px dashed var(--color-neutral-400); padding:28px">O que está faltando nesse pedido? </span>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<section data-label="Técnicas" data-screen-label="09" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>01 · Engenharia de prompt</span><span>Técnicas</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Cinco técnicas que valem o tempo</h2>
+  <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-text)">
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:40px; padding:26px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Instrução direta</span>
+      <span style="font-size:28px; line-height:1.4; color:var(--color-neutral-800)">Sem exemplo, só especificação. Serve para tarefas que o modelo já viu mil vezes.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:40px; padding:26px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Exemplos (few-shot)</span>
+      <span style="font-size:28px; line-height:1.4; color:var(--color-neutral-800)">Dois ou três pares entrada/saída fixam convenção de nome, estilo e formato melhor que qualquer descrição.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:40px; padding:26px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Raciocínio explícito</span>
+      <span style="font-size:28px; line-height:1.4; color:var(--color-neutral-800)">"Liste as hipóteses antes de propor o patch." Você ganha um ponto de auditoria antes do código.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:40px; padding:26px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px">Decomposição</span>
+      <span style="font-size:28px; line-height:1.4; color:var(--color-neutral-800)">Uma tarefa por mensagem, com a saída anterior como entrada. É o embrião da fase de tarefas do SDD.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:40px; padding:26px 0; border-bottom:2px solid var(--color-text)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px; color:var(--color-accent-700)">Iteração dirigida</span>
+      <span style="font-size:28px; line-height:1.4; color:var(--color-neutral-800)">Não repita o pedido: diga qual parte está errada e por quê. "Refaça" perde contexto; "troque X por Y porque Z" mantém.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Anti-padrões" data-screen-label="10" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>01 · Engenharia de prompt</span><span>Anti-padrões</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Quatro jeitos de desperdiçar um prompt</h2>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Pedir tudo de uma vez</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">"Cria o backend, o front e os testes." A IA entrega os três pela metade e você revisa três coisas ao mesmo tempo.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Omitir o que não pode mudar</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Sem dizer que o schema é intocável, a IA refatora o banco para deixar o código mais bonito.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Aceitar a primeira resposta</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Código que compila não é código correto. A revisão é sua, e continua sendo.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Recomeçar a conversa a cada erro</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Sessão nova é contexto zero. Ou você corrige com contexto, ou registra o contexto em arquivo — que é o bloco 3.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Lab 1" data-screen-label="11" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:32px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">
+    <span>Laboratório 1</span><span>Engenharia de prompt</span>
+  </div>
+  <div style="height:2px; background:var(--color-accent)"></div>
+  <div style="display:grid; grid-template-columns:1.35fr 1fr; gap:56px; flex:1">
+    <div style="display:flex; flex-direction:column; gap:26px">
+      <h2 style="font-family:var(--font-heading); font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-0.02em; margin:0">Reescreva até a saída ficar previsível</h2>
+      <div style="display:flex; flex-direction:column; gap:20px; font-size:28px; line-height:1.4">
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">1</span><span>Peça à IA, com uma frase só: <em>"faça um validador de feed RSS"</em>. Guarde a resposta.</span></div>
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">2</span><span>Liste por escrito tudo que a IA decidiu sem você: linguagem, dependências, o que conta como inválido, o que ela faz com erro de rede.</span></div>
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">3</span><span>Reescreva o prompt com os seis blocos e rode em uma sessão nova.</span></div>
+    
+      </div>
+      <div style="border-top:2px solid var(--color-divider); padding-top:20px; font-size:26px; color:var(--color-neutral-800)"><strong>Entregável:</strong> um arquivo <code style="font-family:'IBM Plex Mono', monospace">prompts.md</code> com as duas versões e a lista de suposições.</div>
+    </div>
+    <div style="border:2px solid var(--color-text); padding:36px; display:flex; flex-direction:column; gap:24px; background:var(--color-neutral-100)">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Cronômetro</span>
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:132px; font-weight:500; line-height:1; letter-spacing:-0.02em; color:{{ lab1.color }}">{{ lab1.time }}</span>
+      <div style="display:flex; gap:12px">
+        <button onClick="{{ lab1.toggle }}" style="flex:1; border:2px solid var(--color-accent); background:var(--color-accent); color:#fff; font-family:var(--font-body); font-size:24px; font-weight:700; padding:16px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ lab1.label }}</button>
+        <button onClick="{{ lab1.reset }}" style="border:2px solid var(--color-text); background:transparent; color:var(--color-text); font-family:var(--font-body); font-size:24px; font-weight:700; padding:16px 22px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">Zerar</button>
+      </div>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Quem não tem IA na máquina faz em dupla e assume o papel de revisor: sua função é achar a lacuna.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Divisor 02" data-screen-label="12" style="padding:96px; background:var(--color-accent); color:#ffffff; font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="font-size:24px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700">Bloco 02</div>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="height:2px; background:#ffffff"></div>
+    <span style="font-size:220px; font-family:var(--font-heading); font-weight:800; line-height:0.85; letter-spacing:-0.04em">02</span>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:104px; line-height:0.98; letter-spacing:-0.03em; margin:0">Vibe coding</h2>
+    <p style="font-size:36px; margin:0; max-width:1200px; line-height:1.35">Rápido, agradável, e sem memória entre uma conversa e a próxima.</p>
+  </div>
+</section>
+
+<section data-label="O que é vibe coding" data-screen-label="13" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>02 · Vibe coding</span><span>Definição</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:1500px">Desenvolvimento centrado em código, com IA</h2>
+  <div style="border-left:8px solid var(--color-accent); padding:8px 0 8px 40px; max-width:1560px">
+    <p style="font-size:38px; line-height:1.35; margin:0; font-family:var(--font-heading); font-weight:600">"A abordagem de 'vibe coding' geralmente envolve o fornecimento de um prompt de alto nível que retorna um bloco de código que aparenta estar correto, mas pode perder a intenção ou conter erros. Pode ser rápido, mas às vezes está desalinhado."</p>
+    <p style="font-size:24px; margin:22px 0 0; color:var(--color-neutral-700); letter-spacing:0.06em; text-transform:uppercase">Microsoft Learn · O que é o desenvolvimento controlado por especificações?</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:30px 34px 10px 0"><span style="font-size:28px; line-height:1.45; color:var(--color-neutral-900)"><strong>O código é a fonte da verdade.</strong> A especificação, quando existe, é andaime: serve para começar e é descartada.</span></div>
+    <div style="background:var(--color-bg); padding:30px 0 10px 34px"><span style="font-size:28px; line-height:1.45; color:var(--color-neutral-900)"><strong>Cada sessão de chat opera isolada</strong>, sem reconhecimento das decisões anteriores ou dos requisitos do projeto.</span></div>
+  </div>
+</section>
+
+<section data-label="Onde vibe coding serve" data-screen-label="14" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>02 · Vibe coding</span><span>Onde serve e onde não</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Não é errado. É de uso limitado.</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); flex:1; border:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:36px; display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Use quando</span>
+      <div style="display:flex; flex-direction:column; gap:18px; font-size:28px; line-height:1.4">
+        <span>Protótipos e provas de conceito: você está descobrindo se algo é possível.</span>
+        <span>Scripts e utilitários pontuais, que ninguém vai manter.</span>
+        <span>Experimentação rápida: muitos testes pequenos para aprender.</span>
+      </div>
+      <span style="margin-top:auto; font-size:24px; color:var(--color-neutral-700); border-top:2px solid var(--color-divider); padding-top:18px">Nos três casos, a especificação completa atrasaria você.</span>
+    </div>
+    <div style="background:var(--color-neutral-100); padding:36px; display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Não use quando</span>
+      <div style="display:flex; flex-direction:column; gap:18px; font-size:28px; line-height:1.4">
+        <span>O sistema é grande, integra serviços e precisa continuar alinhado à intenção original.</span>
+        <span>Há requisito regulatório, de segurança ou de conformidade.</span>
+        <span>Mais de uma pessoa toca o código — ou a IA precisa voltar amanhã.</span>
+      </div>
+      <span style="margin-top:auto; font-size:24px; color:var(--color-neutral-700); border-top:2px solid var(--color-divider); padding-top:18px">Aqui o custo aparece na terceira semana, não na primeira hora.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Vibe coding vs SDD" data-screen-label="15" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:20px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>02 · Vibe coding</span><span>Interativo · alterne o caminho</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <div style="display:flex; align-items:baseline; gap:36px; flex-wrap:wrap">
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:60px; line-height:1.02; letter-spacing:-0.02em; margin:0">Mesmo pedido, dois caminhos</h2>
+    <span style="font-size:26px; color:var(--color-neutral-700)">"Quero um leitor de RSS que marque o que já foi lido."</span>
+  </div>
+  <div style="display:flex; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+    <sc-for list="{{ pathTabs }}" as="tab" hint-placeholder-count="2">
+      <button onClick="{{ tab.onClick }}" style="flex:1; border:none; padding:20px 24px; text-align:left; font-family:var(--font-body); font-size:26px; font-weight:600; cursor:pointer; background:{{ tab.bg }}; color:{{ tab.fg }}">{{ tab.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Como se desenrola</span>
+      <sc-for list="{{ pathSel.passos }}" as="p" hint-placeholder-count="5">
+        <div style="display:grid; grid-template-columns:44px 1fr; gap:18px; padding:14px 0; border-bottom:2px solid var(--color-divider); font-size:27px; line-height:1.4">
+          <span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">{{ p.n }}</span>
+          <span>{{ p.txt }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <div style="border:2px solid var(--color-text); background:{{ pathSel.bg }}; padding:30px; display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Uma semana depois</span>
+        <span style="font-size:30px; line-height:1.4">{{ pathSel.depois }}</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:30px; display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">O que sobrou escrito</span>
+        <span style="font-size:30px; line-height:1.4">{{ pathSel.artefatos }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Lab 2" data-screen-label="16" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:32px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">
+    <span>Laboratório 2</span><span>Vibe coding</span>
+  </div>
+  <div style="height:2px; background:var(--color-accent)"></div>
+  <div style="display:grid; grid-template-columns:1.35fr 1fr; gap:56px; flex:1">
+    <div style="display:flex; flex-direction:column; gap:26px">
+      <h2 style="font-family:var(--font-heading); font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-0.02em; margin:0">Vibe code de propósito — e depois faça a autópsia</h2>
+      <div style="display:flex; flex-direction:column; gap:20px; font-size:28px; line-height:1.4">
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">1</span><span>Em uma sessão nova, peça em uma frase: <em>"faça um leitor de RSS que marque artigos lidos"</em>. Aceite o que vier.</span></div>
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">2</span><span>Rode. Anote em quanto tempo apareceu algo funcionando.</span></div>
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">3</span><span>Abra uma sessão limpa e peça uma mudança: <em>"agora sincronize entre dois dispositivos"</em>. Observe o que a IA desconhece.</span></div>
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:20px"><span style="font-family:var(--font-heading); font-weight:800; color:var(--color-accent)">4</span><span>Escreva <code style="font-family:'IBM Plex Mono', monospace">suposicoes.md</code>: toda decisão que a IA tomou e que ninguém validou.</span></div>
+      </div>
+      <div style="border-top:2px solid var(--color-divider); padding-top:20px; font-size:26px; color:var(--color-neutral-800)"><strong>Guardem esse arquivo.</strong> No laboratório 3 ele vira matéria-prima da especificação.</div>
+    </div>
+    <div style="border:2px solid var(--color-text); padding:36px; display:flex; flex-direction:column; gap:24px; background:var(--color-neutral-100)">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Cronômetro</span>
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:132px; font-weight:500; line-height:1; letter-spacing:-0.02em; color:{{ lab2.color }}">{{ lab2.time }}</span>
+      <div style="display:flex; gap:12px">
+        <button onClick="{{ lab2.toggle }}" style="flex:1; border:2px solid var(--color-accent); background:var(--color-accent); color:#fff; font-family:var(--font-body); font-size:24px; font-weight:700; padding:16px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ lab2.label }}</button>
+        <button onClick="{{ lab2.reset }}" style="border:2px solid var(--color-text); background:transparent; color:var(--color-text); font-family:var(--font-body); font-size:24px; font-weight:700; padding:16px 22px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">Zerar</button>
+      </div>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Se o código não rodar em 15 minutos, isso também é dado. Anote e siga.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Intervalo" data-screen-label="17" style="padding:96px; background:var(--color-neutral-900); color:#ffffff; font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="font-size:24px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-400)">Metade da aula</div>
+  <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:60px">
+    <div style="display:flex; flex-direction:column; gap:28px">
+      <h2 style="font-family:var(--font-heading); font-weight:800; font-size:120px; line-height:0.98; letter-spacing:-0.03em; margin:0">Intervalo</h2>
+      <p style="font-size:34px; margin:0; max-width:900px; line-height:1.35; color:var(--color-neutral-300)">Na volta: spec-driven development, o bloco maior da aula.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; align-items:flex-end">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:150px; font-weight:500; line-height:1; letter-spacing:-0.02em">{{ brk.time }}</span>
+      <div style="display:flex; gap:12px">
+        <button onClick="{{ brk.toggle }}" style="border:2px solid #fff; background:transparent; color:#fff; font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px 26px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ brk.label }}</button>
+        <button onClick="{{ brk.reset }}" style="border:2px solid var(--color-neutral-600); background:transparent; color:var(--color-neutral-300); font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px 26px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">Zerar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Divisor 03" data-screen-label="18" style="padding:96px; background:var(--color-accent); color:#ffffff; font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="font-size:24px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700">Bloco 03</div>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="height:2px; background:#ffffff"></div>
+    <span style="font-size:220px; font-family:var(--font-heading); font-weight:800; line-height:0.85; letter-spacing:-0.04em">03</span>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:104px; line-height:0.98; letter-spacing:-0.03em; margin:0">Spec-driven development</h2>
+    <p style="font-size:36px; margin:0; max-width:1200px; line-height:1.35">As especificações não servem ao código. O código atende às especificações.</p>
+  </div>
+</section>
+
+<section data-label="A inversão" data-screen-label="19" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>A inversão</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">O SDD inverte a estrutura de poder centrada em código</h2>
+  <div style="display:grid; grid-template-columns:1fr 80px 1fr; gap:0; align-items:stretch; flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="padding:36px 40px 36px 0; display:flex; flex-direction:column; gap:22px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Desenvolvimento tradicional</span>
+      <span style="font-size:32px; line-height:1.4; color:var(--color-neutral-900)">O PRD é um guia para a implementação. O plano técnico informa a codificação. Diagramas visualizam a arquitetura.</span>
+      <span style="font-size:32px; line-height:1.4; color:var(--color-neutral-900)">Todos esses documentos são subordinados ao código e à medida que o código avança, raramente mantêm o ritmo.</span>
+      <span style="margin-top:auto; font-family:var(--font-heading); font-weight:800; font-size:38px">Código é a fonte da verdade.</span>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center"><span style="font-size:64px; color:var(--color-accent); font-weight:800">→</span></div>
+    <div style="padding:36px 0 36px 40px; display:flex; flex-direction:column; gap:22px; background:var(--color-accent-100); margin-left:-1px; border-left:2px solid var(--color-accent)">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); padding-left:40px">Spec-driven development</span>
+      <span style="font-size:32px; line-height:1.4; color:var(--color-neutral-900); padding-left:40px">O PRD é a origem que gera a implementação. Planos técnicos são definições precisas que produzem código.</span>
+      <span style="font-size:32px; line-height:1.4; color:var(--color-neutral-900); padding-left:40px">Manter software significa evoluir especificações, não aplicar patch de código.</span>
+      <span style="margin-top:auto; font-family:var(--font-heading); font-weight:800; font-size:38px; padding-left:40px">A especificação é a fonte da verdade.</span>
+    </div>
+  </div>
+  <span style="font-size:24px; color:var(--color-neutral-700)">Fonte: Microsoft Learn, unidade 2 — <em>O que é o desenvolvimento controlado por especificações?</em></span>
+</section>
+
+<section data-label="A lacuna" data-screen-label="20" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:40px; justify-content:center">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Por que documentar melhor não resolve</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:64px; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:28px">
+      <h2 style="font-family:var(--font-heading); font-weight:800; font-size:64px; line-height:1.02; letter-spacing:-0.02em; margin:0">A lacuna entre especificação e implementação</h2>
+      <p style="font-size:31px; line-height:1.45; margin:0; color:var(--color-neutral-900)">Documentação melhor, requisitos mais detalhados e processos mais rigorosos falham pelo mesmo motivo: aceitam a lacuna como inevitável. Tentam restringi-la, nunca eliminá-la.</p>
+      <p style="font-size:31px; line-height:1.45; margin:0; color:var(--color-neutral-900); font-weight:600">O SDD elimina a lacuna tornando as especificações executáveis. Quando especificações e planos geram código, não há lacuna, só transformação.</p>
+    </div>
+    <div style="border:2px solid var(--color-text); padding:36px; background:var(--color-neutral-100); display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">A analogia da obra</span>
+      <span style="font-size:29px; line-height:1.45">Equipes podem improvisar com plantas mínimas. O SDD é criar um projeto detalhado primeiro, que o construtor, a IA, segue estritamente.</span>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <span style="font-size:29px; line-height:1.45">"Construir recurso de login" pode ser mal interpretado. Com requisitos de segurança, fluxo de autenticação e tratamento de erros na especificação, a IA produz exatamente o que é necessário.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Quatro recursos do SDD" data-screen-label="21" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Princípios</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Quatro recursos que distinguem o SDD</h2>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">01</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Especificação como artefato primário</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">O código torna-se sua expressão em uma linguagem e uma estrutura específicas.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">02</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Especificações executáveis</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Precisas, completas e inequívocas o suficiente para gerar sistemas de trabalho.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">03</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Documentação dinâmica</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Depurar é corrigir especificações e planos que geram código incorreto. Refatorar é reestruturar especificações para maior clareza.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">04</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Colaboração entre IA e humanos</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">A geração bruta de IA sem estrutura produz caos. O SDD fornece a estrutura.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Por que agora" data-screen-label="22" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Por que agora</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Três tendências tornam o SDD necessário</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:32px 28px; display:flex; flex-direction:column; gap:16px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px; line-height:1.1">A IA ultrapassou um limite crítico</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">Especificações em linguagem natural já geram código de trabalho de forma confiável. Não se trata de substituir desenvolvedores, e sim de automatizar a tradução mecânica de especificação para implementação.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px 28px; display:flex; flex-direction:column; gap:16px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px; line-height:1.1">A complexidade cresce exponencialmente</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">Sistemas modernos integram dezenas de serviços, estruturas e dependências. Manter tudo alinhado à intenção original por processo manual é cada vez mais difícil.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:32px 28px; display:flex; flex-direction:column; gap:16px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:34px; line-height:1.1">O ritmo da mudança acelera</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">Pivotar não é mais excepcional, é esperado. Requisitos mudam mais rápido do que a documentação consegue acompanhar.</span>
+    </div>
+  </div>
+  <div style="border-left:8px solid var(--color-accent); padding-left:36px; max-width:1560px">
+    <span style="font-size:34px; line-height:1.35; font-family:var(--font-heading); font-weight:600">Quando as especificações impulsionam a implementação, pivôs se tornam regenerações sistemáticas em vez de regravações manuais.</span>
+  </div>
+</section>
+
+<section data-label="As quatro fases" data-screen-label="23" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:28px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Interativo · clique nas fases</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:60px; line-height:1.02; letter-spacing:-0.02em; margin:0">Especificar → Planejar → Tarefas → Implementar</h2>
+  <div style="display:flex; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+    <sc-for list="{{ phaseTabs }}" as="tab" hint-placeholder-count="4">
+      <button onClick="{{ tab.onClick }}" style="flex:1; border:none; padding:22px 26px; text-align:left; font-family:var(--font-body); cursor:pointer; background:{{ tab.bg }}; color:{{ tab.fg }}; display:flex; flex-direction:column; gap:6px">
+        <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; opacity:0.7">Fase {{ tab.n }}</span>
+        <span style="font-size:32px; font-weight:700; font-family:var(--font-heading)">{{ tab.label }}</span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">{{ phaseSel.pergunta }}</span>
+      <span style="font-size:34px; line-height:1.4; font-family:var(--font-heading); font-weight:600">{{ phaseSel.resumo }}</span>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <sc-for list="{{ phaseSel.pontos }}" as="p" hint-placeholder-count="3">
+        <div style="display:grid; grid-template-columns:24px 1fr; gap:18px; font-size:27px; line-height:1.4">
+          <span style="color:var(--color-accent); font-weight:800">—</span><span>{{ p.txt }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <div style="border:2px solid var(--color-text); background:var(--color-accent-100); padding:30px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Saída da fase</span>
+        <span style="font-size:31px; line-height:1.35; font-weight:600">{{ phaseSel.saida }}</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:30px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Ponto de verificação antes de avançar</span>
+        <span style="font-size:29px; line-height:1.4">{{ phaseSel.check }}</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:30px; display:flex; flex-direction:column; gap:10px; background:var(--color-neutral-100)">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">No exemplo do leitor de RSS</span>
+        <span style="font-size:29px; line-height:1.4">{{ phaseSel.rss }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Artefatos vivos" data-screen-label="24" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Artefatos vivos</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:1500px">A especificação não envelhece na gaveta — ela se adapta</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:24px; font-size:29px; line-height:1.45">
+      <p style="margin:0">Documentos de requisitos estáticos são criados uma vez e ficam desatualizados. As saídas do SDD são artefatos vivos: a especificação é atualizada quando você aprende algo novo, e plano e tarefas se ajustam em seguida.</p>
+      <p style="margin:0">O paralelo é com a inspeção e adaptação do Agile — mas no SDD a própria especificação se adapta.</p>
+      <div style="border:2px solid var(--color-text); padding:28px; background:var(--color-neutral-100); display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Quem atualiza o quê</span>
+        <span style="font-size:27px; line-height:1.4">O gerente de produto muda critérios de aceitação → os planos sinalizam as decisões técnicas afetadas. O arquiteto descobre um padrão melhor → a especificação passa a refletir a nova possibilidade.</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0; border-top:2px solid var(--color-text)">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700); padding:24px 0 16px">O ciclo de feedback vem da produção</span>
+      <div style="display:grid; grid-template-columns:1fr; gap:0">
+        <div style="padding:22px 0; border-top:2px solid var(--color-divider); font-size:28px; line-height:1.4">Métricas e incidentes não só acionam correção rápida — atualizam as especificações para a próxima regeneração.</div>
+        <div style="padding:22px 0; border-top:2px solid var(--color-divider); font-size:28px; line-height:1.4">Gargalos de desempenho tornam-se novos requisitos não funcionais.</div>
+        <div style="padding:22px 0; border-top:2px solid var(--color-divider); border-bottom:2px solid var(--color-text); font-size:28px; line-height:1.4">Vulnerabilidades de segurança tornam-se restrições que afetam todas as gerações futuras.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Papéis" data-screen-label="25" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Divisão de trabalho</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">Humanos dirigem. A IA rascunha.</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); flex:1; border:2px solid var(--color-text)">
+    <div style="background:var(--color-accent-100); padding:36px; display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Papel do desenvolvedor: direção</span>
+      <div style="display:flex; flex-direction:column; gap:16px; font-size:28px; line-height:1.4">
+        <span>Criar a especificação e decidir o que entra nela.</span>
+        <span>Definir restrições e princípios do projeto.</span>
+        <span>Verificar cada saída contra a especificação.</span>
+      </div>
+      <span style="margin-top:auto; font-size:25px; color:var(--color-neutral-800); border-top:2px solid var(--color-accent-300); padding-top:18px">Trabalha em um nível mais alto de abstração: intenção e design.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:36px; display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Papel da IA: geração</span>
+      <div style="display:flex; flex-direction:column; gap:16px; font-size:28px; line-height:1.4">
+        <span>Transformar ideias vagas em especificações abrangentes por diálogo iterativo.</span>
+        <span>Gerar planos que mapeiam requisitos para decisões de arquitetura.</span>
+        <span>Criar divisões detalhadas de tarefas e produzir o código.</span>
+        <span>Analisar especificações em busca de ambiguidade, contradições e lacunas.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Anatomia de spec.md" data-screen-label="26" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:26px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Fase 1 · Especificar</span><span>Interativo · clique nas seções</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">Anatomia de um <span style="font-family:'IBM Plex Mono', monospace; font-weight:500">spec.md</span></h2>
+  <div style="display:grid; grid-template-columns:1fr 1.05fr; gap:44px; flex:1; align-items:start">
+    <div style="border:2px solid var(--color-text); background:var(--color-neutral-100); padding:0; display:flex; flex-direction:column">
+      <div style="padding:16px 24px; border-bottom:2px solid var(--color-text); font-family:'IBM Plex Mono', monospace; font-size:24px; display:flex; justify-content:space-between"><span>specs/001-leitor-rss/spec.md</span><span style="color:var(--color-neutral-600)">markdown</span></div>
+      <sc-for list="{{ spotList }}" as="s" hint-placeholder-count="6">
+        <button onClick="{{ s.onClick }}" style="border:none; border-bottom:2px solid var(--color-divider); background:{{ s.bg }}; color:{{ s.fg }}; text-align:left; padding:18px 24px; cursor:pointer; font-family:'IBM Plex Mono', monospace; font-size:25px; display:flex; justify-content:space-between; align-items:center; gap:16px">
+          <span>## {{ s.head }}</span>
+          <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; opacity:{{ s.badgeOpacity }}">ver</span>
+        </button>
+      </sc-for>
+      <div style="padding:20px 24px; font-size:24px; color:var(--color-neutral-700); line-height:1.4">As seis seções que o módulo define como padrão de uma boa especificação.</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:44px; line-height:1.05">{{ spotSel.head }}</span>
+      <span style="font-size:29px; line-height:1.45; color:var(--color-neutral-900)">{{ spotSel.desc }}</span>
+      <div style="border-left:6px solid var(--color-accent); background:var(--color-accent-100); padding:24px 28px; display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Exemplo · leitor de RSS</span>
+        <sc-for list="{{ spotSel.exemplos }}" as="e" hint-placeholder-count="2">
+          <span style="font-size:27px; line-height:1.4; font-style:italic">{{ e.txt }}</span>
+        </sc-for>
+      </div>
+      <div style="border-top:2px solid var(--color-divider); padding-top:18px; font-size:26px; line-height:1.4; color:var(--color-neutral-800)"><strong>Se faltar:</strong> {{ spotSel.risco }}</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Fase 2 · Plano" data-screen-label="27" style="padding:58px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:22px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Fase 2 · Planejar</span><span>plan.md</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">A especificação diz o quê. O plano diz como.</h2>
+  <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-text); flex:1">
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; padding:15px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:31px">Visão de arquitetura</span>
+      <span style="font-size:27px; line-height:1.4; color:var(--color-neutral-800)">Como os componentes interagem. "Um FeedService manipula a análise e a validação do RSS/Atom; a interface exibe lista de feeds e visualização de artigo com acompanhamento de leitura."</span>
+    </div>
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; padding:15px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:31px">Pilha e decisões</span>
+      <span style="font-size:27px; line-height:1.4; color:var(--color-neutral-800)">Cada escolha explícita e justificada: runtime, armazenamento, biblioteca de parsing, sanitização de HTML antes de renderizar.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; padding:15px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:31px">Sequência de implementação</span>
+      <span style="font-size:27px; line-height:1.4; color:var(--color-neutral-800)">Ordem lógica: o esquema de banco existe antes do componente que grava nele.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; padding:15px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:31px; color:var(--color-accent-700)">Verificação da constituição</span>
+      <span style="font-size:27px; line-height:1.4; color:var(--color-neutral-800)">A solução proposta respeita os princípios do projeto? Se a constituição exige sanitizar HTML, o plano confirma a biblioteca usada.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; padding:15px 0; border-bottom:2px solid var(--color-text)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:31px">Suposições e perguntas abertas</span>
+      <span style="font-size:27px; line-height:1.4; color:var(--color-neutral-800)">Documentar o que ainda não se sabe expõe o risco antes da implementação.</span>
+    </div>
+  </div>
+  <div style="border-left:8px solid var(--color-accent); padding-left:32px">
+    <span style="font-size:30px; line-height:1.35">Trocar SQLite por outro banco muda o <strong>plano</strong>. A <strong>especificação</strong> permanece praticamente inalterada — os requisitos de funcionalidade não mudaram.</span>
+  </div>
+</section>
+
+<section data-label="Fase 3 · Tarefas" data-screen-label="28" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:32px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Fase 3 · Tarefas</span><span>tasks.md</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">Uma lista de verificação ordenada</h2>
+  <div style="display:grid; grid-template-columns:1fr 1.1fr; gap:52px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Toda boa tarefa é</span>
+      <div style="display:flex; flex-direction:column; gap:0; border-top:2px solid var(--color-divider)">
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:28px"><strong>Executável</strong> — diz claramente o que fazer.</div>
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:28px"><strong>Testável</strong> — dá para verificar quando terminou.</div>
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:28px"><strong>Independente</strong> — não espera trabalho não relacionado.</div>
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:28px"><strong>Limitada no tempo</strong> — cabe em um período razoável.</div>
+      </div>
+      <div style="border:2px solid var(--color-text); background:var(--color-neutral-100); padding:26px; display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Exemplo bem escopado</span>
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.45">"Implementar um método AddFeed que aceita uma URL RSS/Atom. Valida o formato, analisa o conteúdo, armazena metadados e artigos no SQLite e retorna o ID do feed."</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Organização por fases</span>
+      <div style="display:flex; flex-direction:column; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+        <div style="background:var(--color-bg); padding:20px 26px; font-size:27px"><strong>1 · Fundação</strong> — estrutura do projeto, esquema do banco, pacotes.</div>
+        <div style="background:var(--color-bg); padding:20px 26px; font-size:27px"><strong>2 · Funcionalidade principal</strong> — parsing de feeds, validação de URL, armazenamento de artigos.</div>
+        <div style="background:var(--color-bg); padding:20px 26px; font-size:27px"><strong>3 · Interface</strong> — lista de feeds, exibição de artigo, rastreamento de lido/não lido.</div>
+        <div style="background:var(--color-bg); padding:20px 26px; font-size:27px"><strong>4 · Segurança</strong> — sanitização de HTML, HTTPS somente, tratamento de erros.</div>
+        <div style="background:var(--color-bg); padding:20px 26px; font-size:27px"><strong>5 · Teste</strong> — testes de unidade e integração, documentação.</div>
+      </div>
+      <div style="border-left:6px solid var(--color-accent); padding-left:26px; font-size:27px; line-height:1.4">A ordem importa: esquema antes do back-end, endpoints antes do front-end, teste depois do código que ele testa.</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Fase 4 · Implementar" data-screen-label="29" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Fase 4 · Implementar</span><span>Código</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">Se as fases 1 a 3 foram bem feitas, aqui é simples</h2>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:28px 24px; display:flex; flex-direction:column; gap:12px"><span style="font-family:'IBM Plex Mono', monospace; font-size:34px; color:var(--color-accent)">01</span><span style="font-size:27px; line-height:1.4">Selecione a próxima tarefa da lista.</span></div>
+    <div style="background:var(--color-bg); padding:28px 24px; display:flex; flex-direction:column; gap:12px"><span style="font-family:'IBM Plex Mono', monospace; font-size:34px; color:var(--color-accent)">02</span><span style="font-size:27px; line-height:1.4">Escreva o código — manualmente ou com a IA.</span></div>
+    <div style="background:var(--color-bg); padding:28px 24px; display:flex; flex-direction:column; gap:12px"><span style="font-family:'IBM Plex Mono', monospace; font-size:34px; color:var(--color-accent)">03</span><span style="font-size:27px; line-height:1.4">Teste contra as expectativas da especificação e do plano.</span></div>
+    <div style="background:var(--color-bg); padding:28px 24px; display:flex; flex-direction:column; gap:12px"><span style="font-family:'IBM Plex Mono', monospace; font-size:34px; color:var(--color-accent)">04</span><span style="font-size:27px; line-height:1.4">Marque como concluída e vá para a próxima.</span></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px">Descobriu algo no meio do caminho?</span>
+      <span style="font-size:29px; line-height:1.45; color:var(--color-neutral-900)">Em vez de alteração de código ad hoc, volte e atualize a especificação ou o plano, e ajuste as tarefas restantes. É isso que mantém os artefatos em sincronia com a realidade.</span>
+    </div>
+    <div style="border:2px solid var(--color-text); background:var(--color-accent-100); padding:30px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">O estado final</span>
+      <span style="font-size:29px; line-height:1.45">Código alinhado à especificação, e documentação que corresponde exatamente à implementação — o oposto de projetos em que a documentação se desalinha do código.</span>
+    </div>
+  </div>
+</section>
+
+<!-- <section data-label="SDD e outras metodologias" data-screen-label="30" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:26px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Interativo · escolha a metodologia</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">O SDD comparado ao que você já usa</h2>
+  <div style="display:flex; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+    <sc-for list="{{ methodTabs }}" as="tab" hint-placeholder-count="4">
+      <button onClick="{{ tab.onClick }}" style="flex:1; border:none; padding:18px 24px; text-align:left; font-family:var(--font-body); font-size:26px; font-weight:600; cursor:pointer; background:{{ tab.bg }}; color:{{ tab.fg }}">{{ tab.label }}</button>
+    </sc-for>
+  </div>
+  <div style="display:grid; grid-template-columns:1.25fr 1fr; gap:44px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; border:2px solid var(--color-text)">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--color-text); color:#fff; font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700">
+        <span style="padding:14px 18px">Aspecto</span>
+        <span style="padding:14px 18px">{{ methodSel.nome }}</span>
+        <span style="padding:14px 18px; background:var(--color-accent)">SDD</span>
+      </div>
+      <sc-for list="{{ methodSel.linhas }}" as="l" hint-placeholder-count="6">
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:24px; line-height:1.35">
+          <span style="padding:16px 18px; font-weight:600">{{ l.a }}</span>
+          <span style="padding:16px 18px; color:var(--color-neutral-800)">{{ l.b }}</span>
+          <span style="padding:16px 18px; background:var(--color-accent-100)">{{ l.c }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px">
+      <div style="border:2px solid var(--color-divider); padding:26px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Diferença central</span>
+        <span style="font-size:27px; line-height:1.4">{{ methodSel.diferenca }}</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:26px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Onde se alinham</span>
+        <span style="font-size:27px; line-height:1.4">{{ methodSel.alinha }}</span>
+      </div>
+      <div style="border:2px solid var(--color-accent); background:var(--color-accent-100); padding:26px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Como se complementam</span>
+        <span style="font-size:27px; line-height:1.4">{{ methodSel.complementa }}</span>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section data-label="Onde o SDD brilha" data-screen-label="31" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Quando usar</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">Uma ferramenta do repertório, não uma bala de prata</h2>
+  <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:2px; background:var(--color-divider); flex:1; border:2px solid var(--color-text)">
+    <div style="background:var(--color-accent-100); padding:36px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Onde o SDD brilha</span>
+      <div style="display:flex; flex-direction:column; gap:16px; font-size:27px; line-height:1.4">
+        <span><strong>Projetos complexos com metas claras</strong> — sistemas empresariais, aplicativos essenciais, requisitos regulatórios.</span>
+        <span><strong>Desenvolvimento acelerado por IA</strong> — quem estrutura a entrada recebe implementação precisa em vez de código para consertar.</span>
+        <span><strong>Comunicação entre equipes</strong> — produto, desenvolvimento e agentes de IA trabalhando de uma única versão confiável.</span>
+        <span><strong>Vários caminhos de implementação</strong> — a mesma especificação gera abordagens diferentes para comparar.</span>
+      </div>
+    </div>
+    <div style="background:var(--color-bg); padding:36px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Quando algo mais leve basta</span>
+      <div style="display:flex; flex-direction:column; gap:16px; font-size:27px; line-height:1.4">
+        <span>Protótipos rápidos e provas de conceito.</span>
+        <span>Scripts e utilitários pontuais.</span>
+        <span>Experimentação rápida e deliberada.</span>
+      </div>
+      <span style="margin-top:auto; font-size:25px; color:var(--color-neutral-800); border-top:2px solid var(--color-divider); padding-top:18px">Nesses casos, o bloco 02 desta aula é a resposta certa.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Três níveis de SDD" data-screen-label="32" style="padding:70px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:24px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Níveis de rigor</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:56px; line-height:1.02; letter-spacing:-0.02em; margin:0">"Spec-driven" não é uma prática só: são três níveis</h2>
+  <div style="display:flex; flex-direction:column; border:2px solid var(--color-text); flex:1">
+    <div style="display:grid; grid-template-columns:0.62fr 1fr 0.8fr 0.8fr; background:var(--color-text); color:#fff; font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700">
+      <span style="padding:13px 20px">Nível</span><span style="padding:13px 20px">O que acontece com a spec</span><span style="padding:13px 20px">Quem edita o quê</span><span style="padding:13px 20px">Quando faz sentido</span>
+    </div>
+    <div style="display:grid; grid-template-columns:0.62fr 1fr 0.8fr 0.8fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35">
+      <span style="padding:20px; font-family:var(--font-heading); font-weight:800; font-size:32px">Spec-first</span>
+      <span style="padding:20px">Escrita com cuidado antes do código e usada para gerar a implementação inicial. Depois de entregar, não é mais mantida — é andaime.</span>
+      <span style="padding:20px; color:var(--color-neutral-800)">Humanos e IA editam spec e código. O código é o artefato que sobrevive.</span>
+      <span style="padding:20px; color:var(--color-neutral-800)">Exploração, ferramenta interna descartável. É o nível de menor compromisso e onde quase todo time começa.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:0.62fr 1fr 0.8fr 0.8fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35; background:var(--color-accent-100)">
+      <span style="padding:20px; font-family:var(--font-heading); font-weight:800; font-size:32px; color:var(--color-accent-700)">Spec-anchored</span>
+      <span style="padding:20px">Permanece viva ao lado do código depois da entrega. Requisito muda? A spec muda primeiro, e a implementação é verificada contra ela.</span>
+      <span style="padding:20px; color:var(--color-neutral-900)">Humanos mantêm os dois. Quem chega depois — pessoa ou agente — é apontado para a spec, não só para o código.</span>
+      <span style="padding:20px; color:var(--color-neutral-900)">Quando a deriva é cara: contrato de API, mais de um time no mesmo código, sistema que precisa durar.</span>
+    </div>
+    <div style="display:grid; grid-template-columns:0.62fr 1fr 0.8fr 0.8fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35">
+      <span style="padding:20px; font-family:var(--font-heading); font-weight:800; font-size:32px">Spec-as-source<br><span style="font-size:24px; font-weight:600; color:var(--color-neutral-700)">(spec-as-code)</span></span>
+      <span style="padding:20px">A spec <em>é</em> o arquivo-fonte. Mudança na spec regenera o código, que é tratado como produto descartável.</span>
+      <span style="padding:20px; color:var(--color-neutral-800)">O humano edita só a spec e nunca o código — como o compilador tornou o assembly um artefato que ninguém edita à mão.</span>
+      <span style="padding:20px; color:var(--color-neutral-800)">Experimental, ou domínio regulado onde uma definição precisa dirigir vários alvos e auditorias.</span>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:36px">
+    <span style="font-size:25px; line-height:1.4; border-left:6px solid var(--color-accent); padding-left:24px">O erro comum não é escolher o nível errado: é não saber em qual você está — e pagar o custo do nível de cima colhendo o benefício do de baixo.</span>
+    <span style="font-size:24px; line-height:1.4; color:var(--color-neutral-800)">Taxonomia de Birgitta Böckeler (Thoughtworks), em martinfowler.com. A própria autora observa que nenhuma ferramenta atual sustenta spec-as-source de forma consistente — e que o Spec Kit, apesar do discurso, se comporta como spec-first na prática, com uma branch por especificação.</span>
+  </div>
+</section>
+
+<section data-label="O que é o Spec Kit" data-screen-label="33" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · GitHub Spec Kit</span><span>Ferramenta</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0; max-width:1500px">GitHub Spec Kit</h2>
+  <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:start; flex:1">
+    <div style="display:flex; flex-direction:column; gap:24px; font-size:29px; line-height:1.45">
+      <p style="margin:0">Kit de ferramentas de software livre da GitHub que orquestra o fluxo do SDD por comandos estruturados, modelos e artefatos persistentes, integrado a assistentes como o GitHub Copilot.</p>
+      <p style="margin:0; font-weight:600">Não é um modelo de IA. É uma estrutura e uma CLI que trabalham com o agente que você já usa.</p>
+      <div style="display:flex; flex-direction:column; gap:0; border-top:2px solid var(--color-text)">
+        <div style="padding:20px 0; border-bottom:2px solid var(--color-divider)"><strong>Artefatos persistentes</strong> — especificações, planos e tarefas ficam como Markdown no repositório.</div>
+        <div style="padding:20px 0; border-bottom:2px solid var(--color-divider)"><strong>Fluxo padronizado</strong> — um processo definido de requisito a implementação.</div>
+        <div style="padding:20px 0; border-bottom:2px solid var(--color-text)"><strong>Comandos reutilizáveis</strong> — os comandos de barra encapsulam padrões de prompt, então você não recria o prompt ideal a cada fase.</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <div style="border:2px solid var(--color-text); padding:30px; display:flex; flex-direction:column; gap:14px; background:var(--color-neutral-100)">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Os quatro arquivos</span>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:26px; line-height:1.35">
+          <span><code style="font-family:'IBM Plex Mono', monospace">constitution.md</code> — princípios e restrições não negociáveis do projeto</span>
+          <span><code style="font-family:'IBM Plex Mono', monospace">spec.md</code> — requisitos, histórias de usuário, critérios de aceitação</span>
+          <span><code style="font-family:'IBM Plex Mono', monospace">plan.md</code> — arquitetura técnica e estratégia</span>
+          <span><code style="font-family:'IBM Plex Mono', monospace">tasks.md</code> — itens de trabalho discretos e acionáveis</span>
+        </div>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:30px; display:flex; flex-direction:column; gap:12px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Agnóstico de agente</span>
+        <span style="font-size:26px; line-height:1.4">Copilot, Claude Code, Cursor, Windsurf, Amazon Q, Gemini CLI. Os artefatos são idênticos em qualquer um — sem aprisionamento de fornecedor.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Fase → comando → arquivo" data-screen-label="34" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · GitHub Spec Kit</span><span>Mapeamento</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">Cada fase do SDD tem um comando e um arquivo</h2>
+  <div style="display:flex; flex-direction:column; border:2px solid var(--color-text); flex:1">
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--color-text); color:#fff; font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700">
+      <span style="padding:16px 24px">Fase do SDD</span><span style="padding:16px 24px">Comando</span><span style="padding:16px 24px">Saída</span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:29px; align-items:center"><span style="padding:22px 24px">Estabelecimento</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace; color:var(--color-accent-700)">/speckit.constitution</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace">constitution.md</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:29px; align-items:center"><span style="padding:22px 24px">Especificar</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace; color:var(--color-accent-700)">/speckit.specify</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace">spec.md</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:29px; align-items:center"><span style="padding:22px 24px">Planejar</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace; color:var(--color-accent-700)">/speckit.plan</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace">plan.md</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:29px; align-items:center"><span style="padding:22px 24px">Tarefas</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace; color:var(--color-accent-700)">/speckit.tasks</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace">tasks.md</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:29px; align-items:center; background:var(--color-accent-100)"><span style="padding:22px 24px">Implementar</span><span style="padding:22px 24px; font-family:'IBM Plex Mono', monospace; color:var(--color-accent-700)">/speckit.implement</span><span style="padding:22px 24px">Código-fonte</span></div>
+  </div>
+  <span style="font-size:26px; color:var(--color-neutral-800)">O mapeamento um-para-um mostra que o SDD não é só teoria: o Spec Kit o operacionaliza em comandos e artefatos concretos.</span>
+</section>
+
+<section data-label="Instalação" data-screen-label="35" style="padding:54px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:20px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Ferramentas</span><span>Instalação · para depois da aula</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">Preparar o ambiente — em casa, não aqui</h2>
+  <div style="display:grid; grid-template-columns:1fr 1.15fr; gap:38px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:20px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Pré-requisitos</span>
+      <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-divider)">
+        <div style="padding:12px 0; border-bottom:2px solid var(--color-divider); font-size:27px"><strong>Python 3.11+</strong> — a CLI do Spec Kit é uma ferramenta Python.</div>
+        <div style="padding:12px 0; border-bottom:2px solid var(--color-divider); font-size:27px"><strong>Git</strong> — controle de versão e pull do kit.</div>
+        <div style="padding:12px 0; border-bottom:2px solid var(--color-divider); font-size:27px"><strong>uv</strong> — gerenciador de pacotes usado pelo Spec Kit.</div>
+        <div style="padding:12px 0; border-bottom:2px solid var(--color-divider); font-size:27px"><strong>Um assistente de IA</strong> configurado e funcionando.</div>
+      </div>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Linux, macOS e Windows são todos suportados — no Windows, com scripts do PowerShell.</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <div style="border:2px solid var(--color-text); background:var(--color-neutral-900); color:#f4f2f2; padding:26px 28px; font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.5; display:flex; flex-direction:column; gap:4px">
+        <span style="color:var(--color-neutral-500)"># uv · macOS e Linux</span>
+        <span>curl -LsSf https://astral.sh/uv/install.sh | sh</span>
+        <span style="color:var(--color-neutral-500); margin-top:12px"># uv · Windows, no PowerShell</span>
+        <span>powershell -c "irm https://astral.sh/uv/install.ps1 | iex"</span>
+        <span style="color:var(--color-neutral-500); margin-top:12px"># CLI specify · instalação global recomendada</span>
+        <span>uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</span>
+        <span style="color:var(--color-neutral-500); margin-top:12px"># uso único, sem instalar</span>
+        <span>uvx --from git+https://github.com/github/spec-kit.git specify init</span>
+        <span style="color:var(--color-neutral-500); margin-top:12px"># conferir a instalação</span>
+        <span style="color:var(--color-accent-400)">specify check</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:22px 26px; font-size:25px; line-height:1.45; display:flex; flex-direction:column; gap:8px">
+        <span style="font-weight:700">Se algo não for encontrado</span>
+        <span>Feche e reabra o terminal; confira se o diretório de instalação está no PATH; no Windows pode ser preciso reiniciar. <code style="font-family:'IBM Plex Mono', monospace">uv tool list</code> mostra se o specify-cli está lá.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Simulador de comandos" data-screen-label="36" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:26px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · GitHub Spec Kit</span><span>Interativo · avance os comandos</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:40px">
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:56px; line-height:1.02; letter-spacing:-0.02em; margin:0">O fluxo, comando por comando</h2>
+    <div style="display:flex; gap:12px; align-items:center">
+      <span style="font-size:24px; color:var(--color-neutral-700)">{{ termCount }}</span>
+      <button onClick="{{ termNext }}" style="border:2px solid var(--color-accent); background:var(--color-accent); color:#fff; font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px 22px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ termLabel }}</button>
+      <button onClick="{{ termReset }}" style="border:2px solid var(--color-text); background:transparent; color:var(--color-text); font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px 22px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">Reiniciar</button>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:36px; flex:1; align-items:stretch">
+    <div style="border:2px solid var(--color-text); background:var(--color-neutral-900); color:#f4f2f2; padding:28px 30px; font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.6; display:flex; flex-direction:column; gap:4px; overflow:hidden">
+      <sc-for list="{{ termLines }}" as="l" hint-placeholder-count="4">
+        <span style="color:{{ l.color }}; white-space:pre-wrap">{{ l.txt }}</span>
+      </sc-for>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <div style="border:2px solid var(--color-accent); background:var(--color-accent-100); padding:26px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Passo atual</span>
+        <span style="font-size:30px; line-height:1.3; font-family:var(--font-heading); font-weight:700">{{ termStepTitle }}</span>
+        <span style="font-size:26px; line-height:1.4">{{ termStepDesc }}</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:26px; display:flex; flex-direction:column; gap:10px">
+        <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Seu trabalho aqui</span>
+        <span style="font-size:26px; line-height:1.4">{{ termStepReview }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Comandos de apoio" data-screen-label="37" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · GitHub Spec Kit</span><span>Comandos opcionais</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:62px; line-height:1.02; letter-spacing:-0.02em; margin:0">Três comandos que melhoram o resultado</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:16px">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:30px; color:var(--color-accent-700)">/speckit.clarify</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Acha o que está ambíguo</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">A IA faz perguntas esclarecedoras — "a especificação menciona atualizar feeds, mas não com que frequência" — e atualiza a especificação com suas respostas.</span>
+    </div>
+    <div style="background:var(--color-accent-100); padding:34px 30px; display:flex; flex-direction:column; gap:16px; border-left:2px solid var(--color-accent); border-right:2px solid var(--color-accent)">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:30px; color:var(--color-accent-700)">/speckit.analyze</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Verifica consistência</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">O plano atende a todos os requisitos? As tarefas cobrem todo o plano? Tudo respeita a constituição? Rode depois de plano e tarefas, antes de implementar.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:16px">
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:30px; color:var(--color-accent-700)">/speckit.checklist</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:32px">Gera lista de qualidade</span>
+      <span style="font-size:26px; line-height:1.45; color:var(--color-neutral-800)">Para autorrevisão antes de mostrar a especificação aos stakeholders.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="OpenSpec" data-screen-label="38" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:22px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · OpenSpec</span><span>A segunda ferramenta</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">OpenSpec: a mesma ideia em uma camada mais leve</h2>
+  <div style="display:grid; grid-template-columns:1.05fr 1fr; gap:44px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <span style="font-size:29px; line-height:1.45">Framework spec-driven de código aberto (MIT, da Fission AI) para agentes de codificação. Universal, sem chaves de API e sem MCP, com suporte nativo a mais de vinte ferramentas — Copilot, Claude Code, Cursor, Codex, Gemini CLI e outras.</span>
+      <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-text)">
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:27px; line-height:1.4"><strong>A unidade de trabalho é a mudança, não a fase.</strong> Cada mudança ganha uma pasta com proposta, decisões técnicas, tarefas e o delta da especificação.</div>
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-divider); font-size:27px; line-height:1.4"><strong>As especificações vivem no repositório</strong>, organizadas por capacidade — não são descartadas depois do planejamento.</div>
+        <div style="padding:18px 0; border-bottom:2px solid var(--color-text); font-size:27px; line-height:1.4"><strong>Sem portões rígidos de fase.</strong> Você atualiza qualquer artefato a qualquer momento; a proposta do projeto é "fluido, não rígido; iterativo, não cascata".</div>
+      </div>
+      <span style="font-size:26px; line-height:1.4; color:var(--color-neutral-800)">O projeto se posiciona como <em>brownfield-first</em>: pensado para bases de código que já existem, onde a dificuldade real é entender como o sistema funciona hoje.</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <div style="border:2px solid var(--color-text); background:var(--color-neutral-900); color:#f4f2f2; padding:24px 26px; font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.6; display:flex; flex-direction:column; gap:2px">
+        <span style="color:var(--color-neutral-500)"># requer Node.js 20.19+</span>
+        <span>npm install -g @fission-ai/openspec@latest</span>
+        <span>cd seu-projeto &amp;&amp; openspec init</span>
+        <span style="color:var(--color-neutral-500); margin-top:10px"># no chat do agente</span>
+        <span style="color:#ff9783">/opsx:propose adicionar-modo-escuro</span>
+        <span style="color:#ff9783">/opsx:apply</span>
+        <span style="color:#ff9783">/opsx:archive</span>
+      </div>
+      <div style="border:2px solid var(--color-divider); padding:24px 26px; font-family:'IBM Plex Mono', monospace; font-size:24px; line-height:1.55; display:flex; flex-direction:column">
+        <span style="font-family:var(--font-body); font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); margin-bottom:10px">O que o propose cria</span>
+        <span>openspec/changes/adicionar-modo-escuro/</span>
+        <span>├── proposal.md · por que e o que muda</span>
+        <span>├── design.md · decisões técnicas</span>
+        <span>├── tasks.md · checklist de implementação</span>
+        <span>└── specs/ · deltas de requisitos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Spec Kit vs OpenSpec" data-screen-label="39" style="padding:76px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:26px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Ferramentas</span><span>Duas opções para o trabalho de casa</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:56px; line-height:1.02; letter-spacing:-0.02em; margin:0">Spec Kit e OpenSpec, lado a lado</h2>
+  <div style="display:flex; flex-direction:column; border:2px solid var(--color-text); flex:1">
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; background:var(--color-text); color:#fff; font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700">
+      <span style="padding:14px 20px">Aspecto</span><span style="padding:14px 20px">GitHub Spec Kit</span><span style="padding:14px 20px; background:var(--color-accent)">OpenSpec</span>
+    </div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Origem</span><span style="padding:14px 20px">GitHub, software livre</span><span style="padding:14px 20px; background:var(--color-accent-100)">Fission AI, licença MIT</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Instalação</span><span style="padding:14px 20px; font-family:'IBM Plex Mono', monospace">Python 3.11+, uv, specify CLI</span><span style="padding:14px 20px; background:var(--color-accent-100); font-family:'IBM Plex Mono', monospace">Node 20.19+, npm install -g</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Unidade de trabalho</span><span style="padding:14px 20px">A funcionalidade, em quatro fases</span><span style="padding:14px 20px; background:var(--color-accent-100)">A mudança, com delta de especificação</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Artefatos</span><span style="padding:14px 20px; font-family:'IBM Plex Mono', monospace">constitution · spec · plan · tasks</span><span style="padding:14px 20px; background:var(--color-accent-100); font-family:'IBM Plex Mono', monospace">proposal · design · tasks · specs/</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Processo</span><span style="padding:14px 20px">Sequência com pontos de verificação entre fases</span><span style="padding:14px 20px; background:var(--color-accent-100)">Fluido: qualquer artefato muda a qualquer momento</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Comandos</span><span style="padding:14px 20px; font-family:'IBM Plex Mono', monospace">/speckit.specify · plan · tasks · implement</span><span style="padding:14px 20px; background:var(--color-accent-100); font-family:'IBM Plex Mono', monospace">/opsx:propose · apply · archive</span></div>
+    <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr; border-top:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="padding:14px 20px; font-weight:600">Ênfase declarada</span><span style="padding:14px 20px">Estrutura e repetibilidade, pronto para empresa</span><span style="padding:14px 20px; background:var(--color-accent-100)">Leveza e bases de código existentes</span></div>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px">
+    <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">A documentação do OpenSpec descreve o Spec Kit como "completo, mas pesado". É a comparação de um concorrente, não um veredito neutro — os dois implementam o mesmo raciocínio de SDD.</span>
+    <span style="font-size:25px; line-height:1.4; border-left:6px solid var(--color-accent); padding-left:24px">No trabalho de casa você escolhe <strong>uma</strong> das duas. O critério não é qual é melhor: é qual se encaixa no projeto que você vai usar.</span>
+  </div>
+</section>
+
+<section data-label="Checklist de spec" data-screen-label="40" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:28px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>03 · Spec-driven development</span><span>Interativo · marque os itens</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <div style="display:flex; align-items:baseline; justify-content:space-between; gap:40px">
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">A especificação está pronta para virar plano?</h2>
+    <span style="font-family:'IBM Plex Mono', monospace; font-size:52px; color:{{ checkColor }}">{{ checkScore }}</span>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); flex:1; border:2px solid var(--color-text)">
+    <sc-for list="{{ checkItems }}" as="c" hint-placeholder-count="8">
+      <button onClick="{{ c.onClick }}" style="border:none; background:{{ c.bg }}; text-align:left; padding:24px 28px; cursor:pointer; font-family:var(--font-body); display:flex; gap:20px; align-items:flex-start">
+        <span style="flex:0 0 34px; height:34px; border:2px solid var(--color-text); background:{{ c.boxBg }}; color:#fff; font-size:24px; line-height:30px; text-align:center; font-weight:800">{{ c.mark }}</span>
+        <span style="font-size:27px; line-height:1.4; color:var(--color-text)">{{ c.txt }}</span>
+      </button>
+    </sc-for>
+  </div>
+  <span style="font-size:25px; color:var(--color-neutral-800)">Melhor passar mais tempo aqui do que corrigir problemas depois. É mais barato mudar a especificação do que o código.</span>
+</section>
+
+<section data-label="Divisor Lab 3" data-screen-label="41" style="padding:96px; background:var(--color-accent); color:#ffffff; font-family:var(--font-body); display:flex; flex-direction:column; justify-content:space-between">
+  <div style="font-size:24px; letter-spacing:0.16em; text-transform:uppercase; font-weight:700">Laboratório 3 · 35 minutos · sem instalar nada</div>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="height:2px; background:#ffffff"></div>
+    <h2 style="font-family:var(--font-heading); font-weight:800; font-size:112px; line-height:0.98; letter-spacing:-0.03em; margin:0; max-width:1500px">SDD sem framework nenhum</h2>
+    <p style="font-size:36px; margin:0; max-width:1200px; line-height:1.35">O mesmo leitor de RSS do laboratório 2 — quatro arquivos escritos à mão, você no lugar da ferramenta.</p>
+  </div>
+</section>
+
+<section data-label="Lab 3" data-screen-label="42" style="padding:40px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:16px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">
+    <span>Laboratório 3</span><span>Spec-driven à mão · só editor de texto e chat</span>
+  </div>
+  <div style="height:2px; background:var(--color-accent)"></div>
+  <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:44px; flex:1; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:18px">
+      <h2 style="font-family:var(--font-heading); font-weight:800; font-size:50px; line-height:1.03; letter-spacing:-0.02em; margin:0">Você é o framework hoje</h2>
+      <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-divider)">
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">1</span><span>Crie a pasta <code style="font-family:'IBM Plex Mono', monospace">spec/</code> no projeto do lab 2 e escreva <strong>constitution.md</strong>: cinco regras não negociáveis, tiradas do seu <code style="font-family:'IBM Plex Mono', monospace">suposicoes.md</code>.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">2</span><span><strong>spec.md</strong> — as seis seções do slide 26. Peça um rascunho à IA com um prompt seu, cole no arquivo e <em>reescreva</em> o que estiver vago. Mínimo: 3 critérios de aceitação e 3 casos extremos.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">3</span><span><strong>clarify à mão</strong> — cole a spec no chat: <em>"liste toda ambiguidade e informação faltante; não escreva código"</em>. Responda no arquivo, não no chat.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">4</span><span><strong>plan.md</strong> — arquitetura, pilha, sequência de implementação, verificação contra a constituição e suposições em aberto.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">5</span><span><strong>tasks.md</strong> — lista ordenada em fases: fundação, funcionalidade, interface, segurança, teste.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-divider); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">6</span><span><strong>analise à mão</strong> — cole spec, plano e tarefas juntos: <em>"que requisito não tem tarefa? que tarefa não vem do plano?"</em>. Corrija os arquivos.</span></div>
+        <div style="display:grid; grid-template-columns:46px 1fr; gap:18px; padding:7px 0; border-bottom:2px solid var(--color-text); font-size:25px; line-height:1.35"><span style="font-family:'IBM Plex Mono', monospace; color:var(--color-accent)">7</span><span><strong>Implemente as tarefas 1 a 3</strong> anexando os quatro arquivos ao contexto em cada mensagem. Verifique cada tarefa contra a spec antes da próxima.</span></div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px">
+        <div style="border:2px solid var(--color-text); padding:16px 20px; font-size:24px; line-height:1.35"><strong>Entregável:</strong> a pasta <code style="font-family:'IBM Plex Mono', monospace">spec/</code> com os quatro arquivos, comitada.</div>
+        <div style="border:2px solid var(--color-accent); background:var(--color-accent-100); padding:16px 20px; font-size:24px; line-height:1.35"><strong>O que observar:</strong> quanto trabalho de contexto o framework faria por você e o que você esqueceu de reanexar.</div>
+      </div>
+    </div>
+    <div style="border:2px solid var(--color-text); padding:30px; display:flex; flex-direction:column; gap:18px; background:var(--color-neutral-100)">
+      <span style="font-size:24px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Cronômetro</span>
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:112px; font-weight:500; line-height:1; letter-spacing:-0.02em; color:{{ lab3.color }}">{{ lab3.time }}</span>
+      <div style="display:flex; gap:12px">
+        <button onClick="{{ lab3.toggle }}" style="flex:1; border:2px solid var(--color-accent); background:var(--color-accent); color:#fff; font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">{{ lab3.label }}</button>
+        <button onClick="{{ lab3.reset }}" style="border:2px solid var(--color-text); background:transparent; color:var(--color-text); font-family:var(--font-body); font-size:24px; font-weight:700; padding:14px 20px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em">Zerar</button>
+      </div>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-neutral-700)">Marcos</span>
+      <div style="display:flex; flex-direction:column; gap:8px; font-size:24px; line-height:1.3">
+        <span><strong>08 min</strong> — constituição pronta</span>
+        <span><strong>18 min</strong> — spec.md revisada e clarificada</span>
+        <span><strong>28 min</strong> — plano e tarefas, com analyze feito</span>
+        <span><strong>35 min</strong> — parar onde estiver</span>
+      </div>
+      <div style="height:2px; background:var(--color-divider)"></div>
+      <span style="font-size:24px; line-height:1.35; color:var(--color-neutral-800)">Sem IA na máquina? Escreva os quatro arquivos em dupla. O raciocínio é o mesmo.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Trabalho para casa" data-screen-label="43" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:30px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700">
+    <span>Trabalho para casa</span><span>Duas semanas · entrega por repositório</span>
+  </div>
+  <div style="height:2px; background:var(--color-accent)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:58px; line-height:1.02; letter-spacing:-0.02em; margin:0">Uma funcionalidade real, com a ferramenta que você escolher</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-divider); border:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:28px 30px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Opção A · GitHub Spec Kit</span>
+      <span style="font-size:26px; line-height:1.4">Python 3.11+, uv e a CLI <code style="font-family:'IBM Plex Mono', monospace">specify</code>. Fluxo em fases, com pontos de verificação — mais estrutura, mais cerimônia.</span>
+    </div>
+    <div style="background:var(--color-accent-100); padding:28px 30px; display:flex; flex-direction:column; gap:12px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Opção B · OpenSpec</span>
+      <span style="font-size:26px; line-height:1.4">Node 20.19+ e <code style="font-family:'IBM Plex Mono', monospace">npm install -g</code>. Fluxo por mudança, sem portões de fase — mais leve, bom em base de código existente.</span>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-accent-100); padding:24px 26px; display:flex; flex-direction:column; gap:10px; border-left:2px solid var(--color-accent)">
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:30px">Entrega</span>
+      <span style="font-size:25px; line-height:1.4; color:var(--color-neutral-800)">Repositório com artefatos e código, mais um <code style="font-family:'IBM Plex Mono', monospace">RELATO.md</code> de uma página.  02/09/2026.</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Fecho" data-screen-label="44" style="padding:88px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:36px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Fecho</span><span>10 min</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:68px; line-height:1.02; letter-spacing:-0.02em; margin:0">O que levar daqui</h2>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--color-divider); flex:1; border-top:2px solid var(--color-text); border-bottom:2px solid var(--color-text)">
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Prompt</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px; line-height:1.1">Escreva o que você não quer adivinhar</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Papel, contexto, tarefa, restrições, formato, exemplos. Toda lacuna é uma decisão que a IA vai tomar sozinha.</span>
+    </div>
+    <div style="background:var(--color-bg); padding:34px 30px; display:flex; flex-direction:column; gap:18px">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Vibe coding</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px; line-height:1.1">Use com prazo e escopo curtos</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Ótimo para descobrir se algo é possível. Ruim para tudo que precisa continuar existindo semana que vem.</span>
+    </div>
+    <div style="background:var(--color-accent-100); padding:34px 30px; display:flex; flex-direction:column; gap:18px; border-left:2px solid var(--color-accent)">
+      <span style="font-size:24px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Spec-driven</span>
+      <span style="font-family:var(--font-heading); font-weight:800; font-size:36px; line-height:1.1">A intenção é o artefato, o código é a saída</span>
+      <span style="font-size:27px; line-height:1.45; color:var(--color-neutral-800)">Quatro fases, pontos de verificação entre elas, artefatos vivos versionados junto com o código.</span>
+    </div>
+  </div>
+  <div style="border-left:8px solid var(--color-accent); padding-left:36px">
+    <span style="font-size:34px; line-height:1.35; font-family:var(--font-heading); font-weight:600">A pergunta que fica: no seu próximo recurso, onde está escrita a intenção — no chat, na sua cabeça, ou no repositório?</span>
+  </div>
+</section>
+
+<!-- <section data-label="Referências" data-screen-label="45" style="padding:80px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:28px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Referências · 1 de 2</span><span>Módulo Microsoft Learn na ordem</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:54px; line-height:1.02; letter-spacing:-0.02em; margin:0">Introdução ao desenvolvimento controlado por especificações e ao GitHub Spec Kit</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 56px; font-size:25px; line-height:1.35">
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/1-introduction" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">01 · Introdução</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/7-examine-github-spec-kit-environment-installation" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">07 · Configurar o Spec Kit no seu ambiente</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/2-what-spec-driven-development" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">02 · O que é o desenvolvimento controlado por especificações?</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/8-examine-github-spec-kit-commands-results" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">08 · Examinar os comandos e resultados do Spec Kit</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/3-examine-spec-driven-development-principles-processes" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">03 · Princípios e processos do SDD</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/9-exercise-create-greenfield-application-github-spec-kit" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">09 · Exercício · aplicativo do zero com o Spec Kit</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/4-compare-spec-driven-development-other-methodologies" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">04 · Comparar o SDD com outras metodologias</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/10-knowledge-check" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">10 · Avaliação do módulo</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/5-examine-spec-driven-development-workflow-phases" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">05 · Fases do fluxo de trabalho do SDD</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/11-summary" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">11 · Resumo</a>
+    <a href="https://learn.microsoft.com/pt-br/training/modules/spec-driven-development-github-spec-kit-greenfield-intro/6-introduction-github-spec-kit" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">06 · O que é o GitHub Spec Kit?</a>
+    <a href="https://github.com/github/spec-kit" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">Repositório · github/spec-kit</a>
+    <a href="https://openspec.dev/" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">OpenSpec · openspec.dev</a>
+    <a href="https://github.com/Fission-AI/OpenSpec/" style="padding:13px 0; border-bottom:2px solid var(--color-divider); text-decoration:none">Repositório · Fission-AI/OpenSpec</a>
+  </div>
+  <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:baseline; border-top:2px solid var(--color-text); padding-top:22px; font-size:24px; color:var(--color-neutral-700)">
+    <span>Material da aula: slides, roteiro do instrutor, handout e enunciado do trabalho.</span>
+    <span>Conteúdo do módulo © Microsoft. Citações reproduzidas para fins didáticos.</span>
+  </div>
+</section> -->
+
+<section data-label="Leitura complementar" data-screen-label="46" style="padding:78px 96px; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); display:flex; flex-direction:column; gap:26px">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-neutral-700); font-weight:600">
+    <span>Referências</span><span>Leitura complementar e ferramentas</span>
+  </div>
+  <div style="height:2px; background:var(--color-text)"></div>
+  <h2 style="font-family:var(--font-heading); font-weight:800; font-size:54px; line-height:1.02; letter-spacing:-0.02em; margin:0">Para aprofundar</h2>
+  <div style="display:flex; flex-direction:column; border-top:2px solid var(--color-text); flex:1">
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:36px; padding:20px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Os três níveis</span>
+      <span style="font-size:26px; line-height:1.4">Birgitta Böckeler. <em>Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl</em>. Thoughtworks, em martinfowler.com — origem da distinção entre spec-first, spec-anchored e spec-as-source.<br><a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" style="font-family:'IBM Plex Mono', monospace; font-size:24px">martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html</a></span>
+    </div>
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:36px; padding:20px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">O termo em disputa</span>
+      <span style="font-size:26px; line-height:1.4">Thoughtworks Technology Podcast. <em>What is spec-driven development?</em> — Böckeler e Laura Tacho sobre a diluição do termo e o que sobra dele na prática.<br><a href="https://www.thoughtworks.com/insights/podcasts/technology-podcasts/what-is-spec-driven-development" style="font-family:'IBM Plex Mono', monospace; font-size:24px">thoughtworks.com/insights/podcasts/technology-podcasts</a></span>
+    </div>
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:36px; padding:20px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Guia acadêmico</span>
+      <span style="font-size:26px; line-height:1.4">Deepak Babu Piskala. <em>Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants</em>. arXiv — os três níveis de rigor com estudos de caso em API, sistemas corporativos e embarcados.<br><a href="https://arxiv.org/html/2602.00180v1" style="font-family:'IBM Plex Mono', monospace; font-size:24px">arxiv.org/html/2602.00180v1</a></span>
+    </div>
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:36px; padding:20px 0; border-bottom:2px solid var(--color-divider)">
+      <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Visão de fornecedor</span>
+      <span style="font-size:26px; line-height:1.4">IBM Think. <em>What is Spec-Driven Development?</em> — leitura curta dos mesmos três níveis, com ênfase em testes automatizados como ponte entre spec e implementação.<br><a href="https://www.ibm.com/think/topics/spec-driven-development" style="font-family:'IBM Plex Mono', monospace; font-size:24px">ibm.com/think/topics/spec-driven-development</a></span>
+    </div>
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:36px; padding:20px 0; border-bottom:2px solid var(--color-text)">
+      <span style="font-size:24px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700)">Ferramentas</span>
+      <span style="font-size:26px; line-height:1.4">GitHub Spec Kit · <a href="https://github.com/github/spec-kit" style="font-family:'IBM Plex Mono', monospace; font-size:24px">github.com/github/spec-kit</a><br>OpenSpec · <a href="https://openspec.dev/" style="font-family:'IBM Plex Mono', monospace; font-size:24px">openspec.dev</a> · <a href="https://github.com/Fission-AI/OpenSpec/" style="font-family:'IBM Plex Mono', monospace; font-size:24px">github.com/Fission-AI/OpenSpec</a></span>
+    </div>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;minutosLab1&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:5,&quot;max&quot;:60,&quot;unit&quot;:&quot;min&quot;,&quot;section&quot;:&quot;Cronômetros&quot;},&quot;minutosLab2&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:15,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:5,&quot;max&quot;:60,&quot;unit&quot;:&quot;min&quot;,&quot;section&quot;:&quot;Cronômetros&quot;},&quot;minutosLab3&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:35,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:5,&quot;max&quot;:90,&quot;unit&quot;:&quot;min&quot;,&quot;section&quot;:&quot;Cronômetros&quot;},&quot;minutosIntervalo&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:5,&quot;max&quot;:30,&quot;unit&quot;:&quot;min&quot;,&quot;section&quot;:&quot;Cronômetros&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const mins = k => Math.max(1, Number(this.props[k] ?? { minutosLab1: 20, minutosLab2: 15, minutosLab3: 35, minutosIntervalo: 10 }[k]));
+    this.state = {
+      pcase: 0, revealed: false,
+      path: 0,
+      phase: 0,
+      spot: 0,
+      method: 0,
+      term: 0,
+      checked: {},
+      timers: { lab1: mins('minutosLab1') * 60, lab2: mins('minutosLab2') * 60, lab3: mins('minutosLab3') * 60, brk: mins('minutosIntervalo') * 60 },
+      running: {}
+    };
+  }
+
+  componentDidMount() {
+    this.iv = setInterval(() => {
+      const run = this.state.running;
+      if (!Object.keys(run).some(k => run[k])) return;
+      this.setState(s => {
+        const t = { ...s.timers };
+        Object.keys(s.running).forEach(k => { if (s.running[k] && t[k] > 0) t[k] = t[k] - 1; });
+        return { timers: t };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this.iv); }
+
+  initial(k) {
+    const map = { lab1: 'minutosLab1', lab2: 'minutosLab2', lab3: 'minutosLab3', brk: 'minutosIntervalo' };
+    const def = { lab1: 20, lab2: 15, lab3: 35, brk: 10 };
+    return Math.max(1, Number(this.props[map[k]] ?? def[k])) * 60;
+  }
+
+  timer(k) {
+    const left = this.state.timers[k] ?? 0;
+    const m = Math.floor(left / 60), s = left % 60;
+    return {
+      time: String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'),
+      color: left === 0 ? 'var(--color-accent)' : 'var(--color-text)',
+      label: this.state.running[k] ? 'Pausar' : 'Iniciar',
+      toggle: () => this.setState(s => ({ running: { ...s.running, [k]: !s.running[k] } })),
+      reset: () => this.setState(s => ({ timers: { ...s.timers, [k]: this.initial(k) }, running: { ...s.running, [k]: false } }))
+    };
+  }
+
+  tabs(list, active, setter) {
+    return list.map((label, i) => ({
+      label, n: i + 1,
+      bg: i === active ? 'var(--color-accent)' : 'var(--color-bg)',
+      fg: i === active ? '#ffffff' : 'var(--color-neutral-800)',
+      onClick: () => this.setState({ [setter]: i, revealed: setter === 'pcase' ? false : this.state.revealed })
+    }));
+  }
+
+  renderVals() {
+    const S = this.state;
+
+    const prompts = [
+      {
+        label: 'Validar um feed',
+        ruim: 'faz uma função de validação de feed RSS',
+        adivinha: 'linguagem, biblioteca, o que conta como válido, o que fazer com timeout, formato do retorno.',
+        bom: 'Você é um desenvolvedor .NET sênior.\n\nContexto: aplicativo de console .NET 8, sem dependências além de System.ServiceModel.Syndication.\n\nTarefa: escreva um método ValidarFeed(string url) que verifique se a URL responde um feed RSS 2.0 ou Atom 1.0 válido.\n\nRestrições: somente HTTPS; timeout de 5s; nenhuma exceção deve escapar do método.\n\nFormato: um arquivo único com o método e três testes xUnit.',
+        mudou: 'papel, contexto com versão e dependências, uma tarefa só, restrições explícitas e formato de saída. A IA deixou de escolher por você.'
+      },
+      {
+        label: 'Corrigir um erro',
+        ruim: 'tá dando erro no parser, arruma',
+        adivinha: 'qual erro, em que entrada, qual comportamento esperado, o que você já tentou, se pode mudar a assinatura.',
+        bom: 'Contexto: FeedService.Parse falha com FormatException na linha 42 quando o feed traz <pubDate> vazio. Stack anexado. .NET 8, xUnit.\n\nComportamento esperado: artigo sem data é aceito e recebe DateTime.MinValue.\n\nJá tentei: try/catch em volta do parse inteiro — engoliu erros reais.\n\nTarefa: antes de propor patch, liste as hipóteses de causa. Depois entregue o diff mínimo e um teste que falha hoje.',
+        mudou: 'erro reproduzível, comportamento esperado, tentativa descartada e um pedido de raciocínio antes do código — você ganha um ponto de auditoria.'
+      },
+      {
+        label: 'Criar um login',
+        ruim: 'cria um endpoint de login',
+        adivinha: 'fluxo de autenticação, formato do token, política de senha, o que retornar em falha, limite de tentativas.',
+        bom: 'Tarefa: endpoint POST /sessao que autentica e-mail e senha.\n\nFluxo: senha verificada com Argon2id; sucesso devolve JWT de 15 min mais refresh token opaco em cookie HttpOnly.\n\nTratamento de erros: credencial inválida e usuário inexistente retornam a mesma resposta 401 genérica; 5 falhas em 10 min bloqueiam por 15 min.\n\nRestrições: sem log de senha ou token; nenhuma nova dependência.\n\nFormato: controller, serviço e testes de integração dos três caminhos.',
+        mudou: 'é o exemplo do módulo: com requisitos de segurança, fluxo de autenticação e tratamento de erros, a IA produz exatamente o que é necessário.'
+      }
+    ];
+
+    const paths = [
+      {
+        label: 'Caminho A · vibe coding',
+        bg: 'var(--color-neutral-100)',
+        passos: [
+          { n: '1', txt: 'Um prompt de uma linha no chat. A IA escolhe linguagem, armazenamento e formato de feed.' },
+          { n: '2', txt: 'Em dez minutos há algo rodando na tela. Sensação de progresso alta.' },
+          { n: '3', txt: 'Pedido novo: "sincronizar entre dispositivos". Sessão nova, contexto zero.' },
+          { n: '4', txt: 'A IA propõe uma estrutura de dados diferente da que ela mesma criou ontem.' },
+          { n: '5', txt: 'Você reconstrói o contexto no prompt, de memória, a cada mudança.' }
+        ],
+        depois: 'Ninguém sabe por que o campo "lido" é booleano em um lugar e timestamp em outro. A decisão nunca foi escrita.',
+        artefatos: 'Histórico de chat, que ninguém lê, e código que ninguém consegue justificar.'
+      },
+      {
+        label: 'Caminho B · spec-driven',
+        bg: 'var(--color-accent-100)',
+        passos: [
+          { n: '1', txt: 'Constituição: princípios do projeto — só HTTPS, HTML sanitizado, dados locais.' },
+          { n: '2', txt: 'Especificação: histórias de usuário, critérios de aceitação, casos extremos. Revisada antes de qualquer código.' },
+          { n: '3', txt: 'Plano: pilha, arquitetura, sequência de implementação, verificação contra a constituição.' },
+          { n: '4', txt: 'Tarefas: lista ordenada e verificável, agrupada em fases.' },
+          { n: '5', txt: 'Implementação tarefa por tarefa, cada uma conferida contra a especificação.' }
+        ],
+        depois: 'O pedido de sincronização é uma atualização de especificação. Plano e tarefas se ajustam; a mudança se propaga.',
+        artefatos: 'constitution.md, spec.md, plan.md e tasks.md versionados junto com o código.'
+      }
+    ];
+
+    const phases = [
+      {
+        label: 'Especificar', pergunta: 'O quê e por quê — não como',
+        resumo: 'Define o resultado desejado e os requisitos. Se a funcionalidade não está na especificação, não aparece no produto.',
+        pontos: [
+          { txt: 'Captura necessidades do usuário, critérios de aceitação e restrições.' },
+          { txt: 'Torna-se a fonte autoritativa para todo o trabalho seguinte.' },
+          { txt: 'Escrever a especificação é tão importante quanto escrever código.' }
+        ],
+        saida: 'Um documento de especificação — spec.md',
+        check: 'A especificação foi revisada e está completa e clara?',
+        rss: 'Assinar feeds por URL, ver artigos mais recentes primeiro, acompanhar lido e não lido, persistir localmente.'
+      },
+      {
+        label: 'Planejar', pergunta: 'Como construir o que a especificação descreve',
+        resumo: 'Decide a abordagem técnica: arquitetura, pilha de tecnologia e restrições de design, mapeando cada requisito para uma estratégia.',
+        pontos: [
+          { txt: 'Cada decisão de tecnologia é registrada com sua justificativa.' },
+          { txt: 'Inclui a sequência de implementação e a verificação da constituição.' },
+          { txt: 'Suposições e perguntas abertas ficam documentadas.' }
+        ],
+        saida: 'Um plano técnico — plan.md',
+        check: 'O plano é viável e detalhado o suficiente?',
+        rss: '.NET 8, SQLite com Entity Framework Core, System.ServiceModel.Syndication, sanitização de HTML antes de renderizar.'
+      },
+      {
+        label: 'Tarefas', pergunta: 'Em que pedaços isso se divide',
+        resumo: 'Divide especificação e plano em tarefas pequenas o suficiente para implementar e verificar de forma independente.',
+        pontos: [
+          { txt: 'Cada tarefa é executável, testável, independente e limitada no tempo.' },
+          { txt: 'Recursos complexos se organizam em fases: fundação, funcionalidade, interface, segurança, teste.' },
+          { txt: 'A ordem respeita dependências: esquema antes do código que grava nele.' }
+        ],
+        saida: 'Uma lista de verificação ordenada — tasks.md',
+        check: 'As tarefas cobrem todos os requisitos? Alguma está vaga ou grande demais?',
+        rss: '"Implementar AddFeed que valida a URL, analisa o feed, grava metadados e artigos no SQLite e retorna o ID."'
+      },
+      {
+        label: 'Implementar', pergunta: 'Escrever o código, tarefa por tarefa',
+        resumo: 'Executa a lista com a especificação e o plano à mão, verificando cada tarefa concluída antes de seguir.',
+        pontos: [
+          { txt: 'Loop: selecionar, escrever, testar contra a especificação, marcar concluída.' },
+          { txt: 'Integre e teste com frequência, não apenas no fim.' },
+          { txt: 'Descoberta no meio do caminho volta para a especificação ou o plano, não para um patch improvisado.' }
+        ],
+        saida: 'Código testado que satisfaz os requisitos originais',
+        check: 'O código foi validado contra a especificação antes de considerar o trabalho concluído?',
+        rss: 'Fundação e persistência primeiro; interface e rastreamento de leitura depois; sanitização e testes ao fim.'
+      }
+    ];
+
+    const spots = [
+      { head: 'Resumo', desc: 'Uma descrição concisa do recurso pela perspectiva do usuário final: o que ele faz, em uma ou duas frases.', exemplos: [{ txt: '"Permite assinar feeds RSS e Atom, exibir artigos mais recentes primeiro e acompanhar o status de leitura. Os dados persistem localmente no dispositivo."' }], risco: 'ninguém concorda sobre o escopo, e cada fase seguinte herda a divergência.' },
+      { head: 'Histórias do usuário', desc: 'Descrições narrativas breves de como as pessoas interagem com o recurso. Capturam intenção e valor, não implementação.', exemplos: [{ txt: '"Como usuário, quero adicionar feeds RSS por URL para seguir meus sites favoritos."' }, { txt: '"Como usuário, quero ver artigos não lidos mais recentes primeiro."' }], risco: 'o recurso vira lista de telas sem motivo, e a IA otimiza a coisa errada.' },
+      { head: 'Critérios de aceitação', desc: 'Condições específicas e testáveis, escritas como fatos observáveis, que devem valer para o recurso estar pronto.', exemplos: [{ txt: '"O usuário pode adicionar um feed inserindo uma URL RSS ou Atom válida."' }, { txt: '"URLs inválidas exibem uma mensagem de erro clara."' }, { txt: '"O status de leitura persiste entre sessões."' }], risco: 'não existe definição de pronto — e "pronto" passa a significar "compilou".' },
+      { head: 'Requisitos funcionais', desc: 'Descrições detalhadas do comportamento do sistema: interfaces, processos e manipulação de dados que elaboram as histórias.', exemplos: [{ txt: '"Ao adicionar um feed, o app valida a URL, busca o conteúdo, analisa os artigos e os armazena localmente."' }], risco: 'a IA preenche o comportamento com o padrão mais comum que já viu.' },
+      { head: 'Requisitos não funcionais', desc: 'Atributos de qualidade: desempenho, segurança, escalabilidade. Garantem que o código gerado atenda aos padrões da casa, não só à correção funcional.', exemplos: [{ txt: '"Sanitizar HTML antes de renderizar conteúdo de artigo."' }, { txt: '"Buscar feeds somente por HTTPS."' }], risco: 'você recebe código funcional e inseguro — e descobre em produção.' },
+      { head: 'Casos extremos', desc: 'Cenários incomuns, condições de erro e comportamentos de fronteira. É a seção que impede a IA de assumir por conta própria.', exemplos: [{ txt: '"Feed responde 404 ou muda de URL."' }, { txt: '"Artigo sem data de publicação."' }, { txt: '"Dois feeds publicam o mesmo artigo."' }], risco: 'a IA decide silenciosamente o que fazer no caso raro — e ninguém revisou a decisão.' }
+    ];
+
+    const methods = [
+      {
+        nome: 'Cascata',
+        linhas: [
+          { a: 'Artefato primário', b: 'Documento de requisitos', c: 'Especificação' },
+          { a: 'Requisitos definidos', b: 'Uma vez, antecipadamente', c: 'Por funcionalidade, refinados continuamente' },
+          { a: 'Documentação', b: 'Abrangente, estática', c: 'Especificações vivas que geram código' },
+          { a: 'Mudança', b: 'Difícil, caro', c: 'Atualizar especificação, regenerar artefatos' },
+          { a: 'Integração de IA', b: 'Não nativa', c: 'Criada para colaboração de IA' },
+          { a: 'Iteração', b: 'Fases sequenciais', c: 'Especificar-planejar-tarefas-implementar' }
+        ],
+        diferenca: 'Em cascata, o documento de requisitos é artefato de fase: criado e depois abandonado. No SDD é continuamente usado e atualizado, e gera a implementação.',
+        alinha: 'Ambos valorizam entender os requisitos antes de implementar.',
+        complementa: 'O SDD mantém a disciplina de planejamento da cascata e descarta a rigidez: a especificação continua revisável, e as mudanças se propagam por plano, tarefas e código.'
+      },
+      {
+        nome: 'Agile / Scrum',
+        linhas: [
+          { a: 'Artefato primário', b: 'Software em funcionamento', c: 'Especificação' },
+          { a: 'Requisitos definidos', b: 'Incrementalmente', c: 'Por funcionalidade, refinados continuamente' },
+          { a: 'Documentação', b: 'Mínima, apenas o suficiente', c: 'Especificações vivas que geram código' },
+          { a: 'Mudança', b: 'Incorporada', c: 'Atualizar especificação, regenerar artefatos' },
+          { a: 'Integração de IA', b: 'Não nativa', c: 'Criada para colaboração de IA' },
+          { a: 'Iteração', b: 'Ciclos de sprint', c: 'Especificar-planejar-tarefas-implementar' }
+        ],
+        diferenca: 'Histórias de usuário podem não ter a precisão que a geração por IA exige. O SDD opera dentro do Scrum tratando cada história como um microciclo completo.',
+        alinha: 'Os dois abraçam desenvolvimento iterativo e esperam que requisitos mudem.',
+        complementa: 'Uma equipe ágil adota o SDD dentro de cada sprint: a especificação cumpre o papel de histórias detalhadas com critérios de aceitação, em estrutura que a IA consome direto.'
+      },
+      {
+        nome: 'TDD',
+        linhas: [
+          { a: 'Artefato primário', b: 'Testes', c: 'Especificação' },
+          { a: 'Requisitos definidos', b: 'Por unidade ou funcionalidade', c: 'Por funcionalidade, refinados continuamente' },
+          { a: 'Documentação', b: 'Testes como documentação', c: 'Especificações vivas que geram código' },
+          { a: 'Mudança', b: 'Refatorar com base nos testes', c: 'Atualizar especificação, regenerar artefatos' },
+          { a: 'Integração de IA', b: 'Não nativa', c: 'Criada para colaboração de IA' },
+          { a: 'Iteração', b: 'Refatoração vermelho-verde', c: 'Especificar-planejar-tarefas-implementar' }
+        ],
+        diferenca: 'O TDD opera em nível de unidade; o SDD em nível de requisitos. Testes guiam o design no TDD; no SDD a especificação guia design e código.',
+        alinha: 'Os dois pensam no resultado antes de escrever a implementação e produzem artefatos verificáveis.',
+        complementa: 'Use o SDD para dar direção e o TDD dentro da implementação para qualidade de código — o SDD pode até gerar as especificações de teste na fase de tarefas.'
+      },
+      {
+        nome: 'BDD',
+        linhas: [
+          { a: 'Artefato primário', b: 'Cenários comportamentais', c: 'Especificação' },
+          { a: 'Requisitos definidos', b: 'Por comportamento', c: 'Por funcionalidade, refinados continuamente' },
+          { a: 'Documentação', b: 'Cenários como documentação', c: 'Especificações vivas que geram código' },
+          { a: 'Mudança', b: 'Atualizar cenários', c: 'Atualizar especificação, regenerar artefatos' },
+          { a: 'Integração de IA', b: 'Não nativa', c: 'Criada para colaboração de IA' },
+          { a: 'Iteração', b: 'Orientada por cenários', c: 'Especificar-planejar-tarefas-implementar' }
+        ],
+        diferenca: 'O BDD resulta em testes automatizados que o desenvolvedor satisfaz com código. A especificação e o plano do SDD resultam em tarefas e código gerados com IA.',
+        alinha: 'Ambos colocam requisitos primeiro e focam no quê e no por quê antes da implementação.',
+        complementa: 'Cenários Gherkin podem entrar na especificação do SDD como requisitos, e a IA os usa para validar a implementação quando gera testes nas tarefas.'
+      }
+    ];
+
+    const termSteps = [
+      {
+        cmd: 'specify check', title: 'Conferir o ambiente',
+        out: ['✓ git encontrado', '✓ GitHub Copilot detectado (Visual Studio Code)', '✓ python 3.12.2', 'ambiente pronto'],
+        desc: 'Verifica ferramentas necessárias e confirma que a instalação funcionou.',
+        review: 'Se relatar problema — agente não detectado, PATH — resolva antes de seguir.'
+      },
+      {
+        cmd: 'specify init leitor-rss', title: 'Inicializar o projeto',
+        out: ['leitor-rss/', '├── .github/prompts/', '├── .specify/memory/constitution.md', '├── .specify/templates/', '└── specs/', 'selecione seu assistente de IA: GitHub Copilot'],
+        desc: 'Cria a estrutura de diretórios, arquivos de configuração e modelos. Em pasta existente, use --here.',
+        review: 'Escolha o agente que você vai usar de verdade — os artefatos são idênticos em qualquer um.'
+      },
+      {
+        cmd: '/speckit.constitution', title: 'Estabelecer os princípios',
+        out: ['→ .specify/memory/constitution.md atualizado', '  padrões de tecnologia · segurança · desempenho', '  convenções de código · conformidade'],
+        desc: 'Princípios, restrições e requisitos não negociáveis do projeto inteiro.',
+        review: 'Revise com cuidado: a IA usa este documento ao gerar todos os planos e código.'
+      },
+      {
+        cmd: '/speckit.specify Create an RSS Feed Reader…', title: 'Gerar a especificação',
+        out: ['→ specs/001-leitor-rss/spec.md', '  resumo · histórias de usuário · critérios de aceitação', '  requisitos funcionais e não funcionais · casos extremos'],
+        desc: 'A IA transforma a descrição em uma especificação com as seis seções padrão.',
+        review: 'É um ponto de partida, não a verdade: verifique integridade e precisão, acrescente o que falta, remova o que não pertence.'
+      },
+      {
+        cmd: '/speckit.plan Use .NET 8, SQLite…', title: 'Criar o plano técnico',
+        out: ['→ specs/001-leitor-rss/plan.md', '  arquitetura · pilha · sequência de implementação', '  verificação da constituição · suposições'],
+        desc: 'Converte os requisitos em decisões técnicas, informado pelas suas preferências e restrições.',
+        review: 'As escolhas de tecnologia são apropriadas? Algo da especificação ficou sem cobertura no plano?'
+      },
+      {
+        cmd: '/speckit.tasks', title: 'Gerar a lista de tarefas',
+        out: ['→ specs/001-leitor-rss/tasks.md', '  fase 1 fundação · fase 2 gerenciamento de feed', '  fase 3 exibição de artigo · fase 4 segurança · fase 5 teste'],
+        desc: 'Lê especificação e plano e produz uma lista de verificação de itens discretos.',
+        review: 'Se uma tarefa diz "implementar autenticação", está ampla demais: divida.'
+      },
+      {
+        cmd: '/speckit.analyze', title: 'Verificar consistência',
+        out: ['plano × especificação: 2 requisitos sem cobertura', 'tarefas × plano: ok', 'constituição: sanitização de HTML não referenciada'],
+        desc: 'Checagem cruzada entre os artefatos antes de escrever código.',
+        review: 'Corrija o que aparecer aqui. É mais barato do que descobrir na implementação.'
+      },
+      {
+        cmd: '/speckit.implement', title: 'Implementar',
+        out: ['tarefa 1/18 · estrutura do projeto ✓', 'tarefa 2/18 · modelos Feed e Artigo ✓', 'tarefa 3/18 · FeedService com validação de URL ✓', '…'],
+        desc: 'A IA percorre as tarefas em sequência. Você pode direcionar um subconjunto: implement tasks 1-3.',
+        review: 'Verifique cada tarefa contra a especificação, o plano e a constituição antes de seguir.'
+      }
+    ];
+
+    const checkList = [
+      'Toda história de usuário tem critérios de aceitação observáveis.',
+      'Os critérios de aceitação são testáveis por outra pessoa, sem te perguntar nada.',
+      'Requisitos não funcionais de segurança e desempenho estão escritos.',
+      'Casos extremos e condições de erro estão listados explicitamente.',
+      'Nada na especificação descreve como implementar — só o quê e por quê.',
+      'Nenhum requisito depende de conhecimento que só está na cabeça de alguém.',
+      'As suposições em aberto estão marcadas como perguntas, não como fatos.',
+      'Você entregaria isso a outro desenvolvedor sem uma reunião de explicação.'
+    ];
+
+    const term = S.term;
+    const lines = [];
+    termSteps.slice(0, term).forEach(st => {
+      lines.push({ txt: (st.cmd.startsWith('/') ? '' : '$ ') + st.cmd, color: '#ff9783' });
+      st.out.forEach(o => lines.push({ txt: '  ' + o, color: '#e9e5e5' }));
+      lines.push({ txt: '', color: '#e9e5e5' });
+    });
+    if (term === 0) lines.push({ txt: 'Clique em "Próximo comando" para percorrer o fluxo.', color: '#9b9797' });
+    const cur = termSteps[Math.max(0, term - 1)];
+
+    const nChecked = Object.keys(S.checked).filter(k => S.checked[k]).length;
+
+    return {
+      promptTabs: this.tabs(prompts.map(p => p.label), S.pcase, 'pcase'),
+      promptSel: prompts[S.pcase],
+      promptRevealed: S.revealed,
+      promptHidden: !S.revealed,
+      revealLabel: S.revealed ? 'Ocultar' : 'Revelar',
+      revealBg: S.revealed ? 'var(--color-accent)' : 'transparent',
+      revealFg: S.revealed ? '#ffffff' : 'var(--color-accent-700)',
+      togglePrompt: () => this.setState(s => ({ revealed: !s.revealed })),
+
+      pathTabs: this.tabs(paths.map(p => p.label), S.path, 'path'),
+      pathSel: paths[S.path],
+
+      phaseTabs: this.tabs(phases.map(p => p.label), S.phase, 'phase'),
+      phaseSel: phases[S.phase],
+
+      spotList: spots.map((s, i) => ({
+        head: s.head,
+        bg: i === S.spot ? 'var(--color-accent)' : 'transparent',
+        fg: i === S.spot ? '#ffffff' : 'var(--color-text)',
+        badgeOpacity: i === S.spot ? '0.85' : '0.35',
+        onClick: () => this.setState({ spot: i })
+      })),
+      spotSel: spots[S.spot],
+
+      methodTabs: this.tabs(methods.map(m => m.nome), S.method, 'method'),
+      methodSel: methods[S.method],
+
+      termLines: lines,
+      termCount: 'Passo ' + term + ' de ' + termSteps.length,
+      termLabel: term >= termSteps.length ? 'Fim do fluxo' : 'Próximo comando',
+      termStepTitle: term === 0 ? 'Nada executado ainda' : cur.title,
+      termStepDesc: term === 0 ? 'O fluxo segue uma sequência: cada comando se apoia nas saídas dos anteriores.' : cur.desc,
+      termStepReview: term === 0 ? 'Sempre examine as saídas da IA. Ela auxilia; o especialista de domínio é você.' : cur.review,
+      termNext: () => this.setState(s => ({ term: Math.min(termSteps.length, s.term + 1) })),
+      termReset: () => this.setState({ term: 0 }),
+
+      checkItems: checkList.map((txt, i) => ({
+        txt,
+        mark: S.checked[i] ? '✓' : '',
+        bg: S.checked[i] ? 'var(--color-accent-100)' : 'var(--color-bg)',
+        boxBg: S.checked[i] ? 'var(--color-accent)' : 'transparent',
+        onClick: () => this.setState(s => ({ checked: { ...s.checked, [i]: !s.checked[i] } }))
+      })),
+      checkScore: nChecked + '/' + checkList.length,
+      checkColor: nChecked === checkList.length ? 'var(--color-accent)' : 'var(--color-neutral-600)',
+
+      lab1: this.timer('lab1'),
+      lab2: this.timer('lab2'),
+      lab3: this.timer('lab3'),
+      brk: this.timer('brk')
+    };
+  }
+}
+</script>
+</body>
+</html>
